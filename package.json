@@ -1,0 +1,22 @@
+{
+  "name": "anime-365-player-findings",
+  "private": true,
+  "type": "module",
+  "description": "Anime 365 web player: playback problems, proposed fixes and a reproduction bench",
+  "scripts": {
+    "fetch-site": "node scripts/fetch-site.mjs",
+    "pretty": "node scripts/pretty.mjs",
+    "media": "bash scripts/make-media.sh",
+    "redact:check": "node scripts/redact.mjs --check",
+    "test:all": "node runner/run.mjs",
+    "test:quick": "node runner/run.mjs --quick",
+    "netlog": "node scripts/netlog-summary.mjs",
+    "hooks": "bash scripts/install-hooks.sh",
+    "serve:site": "node server/site/index.mjs",
+    "serve:cdn": "node server/cdn/index.mjs"
+  },
+  "devDependencies": {
+    "js-beautify": "^1.15.4",
+    "ws": "^8.22.0"
+  }
+}

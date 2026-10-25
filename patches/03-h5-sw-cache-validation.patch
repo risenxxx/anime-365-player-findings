@@ -1,0 +1,86 @@
+--- a/swMain.js
++++ b/swMain.js
+@@ -303,9 +303,9 @@
+ }
+ 
+ // Save metadata (total size, content type) for a video
+-async function saveMetadata(mParam, totalSize, contentType) {
++async function saveMetadata(mParam, totalSize, contentType, validator = null) {
+     // Store in memory for quick access
+-    metadataMap.set(mParam, { totalSize, contentType });
++    metadataMap.set(mParam, { totalSize, contentType, validator });
+ 
+     // Record usage at creation so a freshly-cached video has a recent timestamp
+     // (otherwise cleanup would treat it as unknown-age and evict it).
+@@ -314,7 +314,7 @@
+     try {
+         const cache = await caches.open(getCacheName(mParam));
+         const metaKey = `https://cache.local/meta?m=${mParam}`;
+-        const metaData = { totalSize, contentType };
++        const metaData = { totalSize, contentType, validator };  // [fix H5] validator = ETag or Last-Modified
+         const response = new Response(JSON.stringify(metaData), {
+             headers: { 'Content-Type': 'application/json' }
+         });
+@@ -540,9 +540,10 @@
+             const match = contentRange.match(/bytes \d+-\d+\/(\d+)/);
+             if (match) {
+                 const totalSize = parseInt(match[1], 10);
+-                log('[CachingService] Extracted metadata: size=', totalSize, 'type=', contentType);
+-                await saveMetadata(mParam, totalSize, contentType);
+-                return { totalSize, contentType };
++                const validator = response.headers.get('ETag') || response.headers.get('Last-Modified') || null;
++                log('[CachingService] Extracted metadata: size=', totalSize, 'type=', contentType, 'validator=', validator);
++                await saveMetadata(mParam, totalSize, contentType, validator);
++                return { totalSize, contentType, validator };
+             }
+         }
+         // [SEEK-DIAG] no parseable Content-Range -> totalSize stays unknown (this is why
+@@ -2616,6 +2617,30 @@
+     });
+ }
+ 
++// [fix H5] A video cache is keyed by `m` only. Once per SW instance, before serving a
++// video whose metadata came from an earlier session, check that the origin still has
++// the same file (size + ETag/Last-Modified). On mismatch drop the whole cache of `m`,
++// so chunks of two different files are never mixed.
++const revalidatedMParams = new Set();
++async function revalidateCache(mParam, url) {
++    if (revalidatedMParams.has(mParam)) return;
++    revalidatedMParams.add(mParam);
++    const meta = await getMetadata(mParam);
++    if (!meta?.totalSize) return;
++    try {
++        const r = await fetch(url, { headers: { 'Range': 'bytes=0-0' } });
++        try { await r.body.cancel(); } catch (e) {}
++        if (r.status !== 206) return;
++        const total = +((r.headers.get('Content-Range') || '').split('/')[1]);
++        const validator = r.headers.get('ETag') || r.headers.get('Last-Modified') || null;
++        const changed = (total && total !== meta.totalSize) || (validator && meta.validator && validator !== meta.validator) || (validator && !meta.validator);
++        if (changed) {
++            logError('[SEEK-DIAG] cache of m=', mParam, 'is stale (size', meta.totalSize, '->', total, 'validator', meta.validator, '->', validator, '), deleting');
++            await deleteVideoCache(getCacheName(mParam), mParam);
++        }
++    } catch (e) { /* network trouble: keep the cache, serve() handles the origin */ }
++}
++
+ addEventListener('fetch', event => {
+     const request = event.request;
+ 
+@@ -2651,6 +2676,7 @@
+     event.respondWith((async () => {
+         try {
+             let { start, end } = rangeInfo || { start: 0, end: null };
++            await revalidateCache(mParam, url);
+ 
+             // Use a reasonable default for the initial request if end is unknown
+             const initialEnd = end !== null ? end : (1024 * 1024 * 100);
+@@ -2854,6 +2880,9 @@
+         const { mParam } = event.data;
+         log('[SW] Blacklisting mParam:', mParam);
+         blacklistedMParams.add(mParam);
++        // [fix H5] the cached bytes are the likely cause of the decode error: drop them,
++        // otherwise every new SW instance (blacklist is in memory only) serves them again.
++        event.waitUntil(deleteVideoCache(getCacheName(mParam), mParam).catch(() => {}));
+ 
+         // Stop background loader for this mParam
+         const bgState = backgroundLoader.loadingStates.get(mParam);

@@ -1,0 +1,46 @@
+--- a/js/lib/videojs.concatenate.min.js
++++ b/js/lib/videojs.concatenate.min.js
+@@ -6,7 +6,9 @@
+     r = (m._blacklistedMParams = m._blacklistedMParams || {}, m._cachedRanges = m._cachedRanges || {}, m._stripCacheBuster = function(e) {
+       return e && e.replace(/&rand=[^&]*/, "")
+     }, navigator.serviceWorker && navigator.serviceWorker.addEventListener("message", function(e) {
+-      e.data && "cachedRanges" === e.data.type && (m._cachedRanges[e.data.mParam] = e.data.ranges, v.trigger("progressChunks"))
++      e.data && "cachedRanges" === e.data.type && (m._cachedRanges[e.data.mParam] = e.data.ranges, v.trigger("progressChunks")),
++      // [fix H4] the SW reports that the origin refused the signed URL: refresh sources
++      e.data && "originStatus" === e.data.type && m._onSourceExpired && m._onSourceExpired(e.data.mParam, e.data.status)
+     }), navigator.serviceWorker && !window.__swVisibilityHooked && (window.__swVisibilityHooked = !0, window.__swSendVisibility = function() {
+       var e = navigator.serviceWorker.controller;
+       if (e) {
+@@ -349,7 +351,22 @@
+               m.videos[t].urls[r].src = i && i.src ? i.src : i
+             }
+       } else e && e.length && (m.videos = e)
+-    }, m._refreshSources = function() {
++    }, m._onSourceExpired = function(mp, status) {
++      // [fix H4] fetch fresh signed URLs and switch to them, keeping the position
++      var before = m._stripCacheBuster(v.currentSrc());
++      m._currentSourceInfo().m === mp && (console.log("[Player] origin answered " + status + ", refreshing sources"), m._refreshSources(function() {
++        var cur = m.videos[m.currentVideoSource],
++          u = cur && cur.urls[Math.max(0, m.currentVideo)],
++          nu = u && (u.src || u);
++        if (nu && nu !== before) {
++          var t = v.currentTime();
++          .5 < t && (v.lastSuccessTime = t), v.restorePending = !0, v.off("canplay", m.restoreLastTime), v.one("canplay", m.restoreLastTime), v.src({
++            type: cur.type,
++            src: nu
++          })
++        }
++      }))
++    }, m._refreshSources = function(done) {
+       var e, t;
+       m._refreshingSources || (e = $(v.tag).attr("data-type"), t = $(v.tag).attr("data-id"), null != e && null != t && (m._refreshingSources = !0, $.ajax({
+         method: "POST",
+@@ -360,7 +377,7 @@
+         dataType: "json",
+         success: function(e) {
+           if (m._refreshingSources = !1, e && e.sources) try {
+-            m._applyRefreshedSources(JSON.parse(e.sources)), e.alternativeSources && v.el_.setAttribute("data-alternative-sources", e.alternativeSources), m._sourcesLoadedAt = (new Date).getTime()
++            m._applyRefreshedSources(JSON.parse(e.sources)), e.alternativeSources && v.el_.setAttribute("data-alternative-sources", e.alternativeSources), m._sourcesLoadedAt = (new Date).getTime(), "function" == typeof done && done()
+           } catch (e) {}
+         },
+         error: function() {

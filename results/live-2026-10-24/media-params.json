@@ -1,0 +1,17 @@
+{
+ "sizeBytes": 644492800,
+ "type": "video/mp4",
+ "acceptRanges": "bytes",
+ "exposeHeaders": "content-range,content-type,content-length,cache-control,accept-ranges,date,etag,last-modified,x-cache,x-content-length,x-server-id,x-uid",
+ "viaProxyHttp": "HTTP/2.0",
+ "moov": "start",
+ "durationS": 1420.033,
+ "trackDims": [
+  [
+   1920,
+   1080
+  ]
+ ],
+ "avcProfile": 77,
+ "avcLevel": 40
+}

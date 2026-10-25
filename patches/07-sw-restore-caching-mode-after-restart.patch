@@ -1,0 +1,68 @@
+--- a/swMain.js
++++ b/swMain.js
+@@ -48,6 +48,30 @@
+ // turns this on (with setVideoMode) only for the singlethread/multithread modes, so
+ // an "auto"/"simple" user never gets SW caching even before any message arrives.
+ let videoCachingEnabled = false; // Global flag to enable/disable video caching (set by page via postMessage)
++// [fix SW restart] The page sends setVideoCachingEnabled/setVideoMode only on load and on
++// controllerchange. When the browser stops an idle SW (e.g. during a pause) the next
++// instance would silently bypass caching until the page is reloaded. Persist the last
++// mode the page chose and restore it when a new instance starts.
++const SETTINGS_KEY = 'https://cache.local/settings';
++let settingsLoaded = false;
++const settingsReady = (async () => {
++    try {
++        const r = await (await caches.open(CACHE_META_NAME)).match(SETTINGS_KEY);
++        if (r && !settingsLoaded) {
++            const st = await r.json();
++            videoCachingEnabled = !!st.enabled;
++            if (st.mode === 'singlethread' || st.mode === 'multithread') videoMode = st.mode;
++            log('[SW] restored video settings: caching=', videoCachingEnabled, 'mode=', videoMode);
++        }
++    } catch (e) { /* keep defaults */ }
++    settingsLoaded = true;
++})();
++function persistSettings() {
++    settingsLoaded = true; // an explicit message from the page wins over the stored value
++    return caches.open(CACHE_META_NAME)
++        .then(c => c.put(SETTINGS_KEY, new Response(JSON.stringify({ enabled: videoCachingEnabled, mode: videoMode }))))
++        .catch(() => {});
++}
+ const metadataMap = new Map(); // In-memory metadata cache: mParam -> {totalSize, contentType}
+ const cachedChunksMap = new Map(); // Track cached chunks per mParam: mParam -> Set<chunkIndex>
+ 
+@@ -2689,7 +2713,8 @@
+     }
+ 
+     // If video caching is disabled globally, bypass SW entirely
+-    if (!videoCachingEnabled) {
++    // ([fix SW restart] only once the stored settings are known; until then decide below)
++    if (!videoCachingEnabled && settingsLoaded) {
+         log('[SW] Video caching disabled, bypassing SW');
+         return; // Let browser handle request directly
+     }
+@@ -2700,6 +2725,8 @@
+     log('[SW] FETCH from BROWSER:', url, 'Range:', rangeInfo, 'time:', Date.now());
+ 
+     event.respondWith((async () => {
++        await settingsReady;
++        if (!videoCachingEnabled) return fetch(request);
+         try {
+             let { start, end } = rangeInfo || { start: 0, end: null };
+             await revalidateCache(mParam, url);
+@@ -2935,6 +2962,7 @@
+     if (event.data.type === 'setVideoCachingEnabled') {
+         videoCachingEnabled = !!event.data.enabled;
+         log('[SW] Video caching enabled:', videoCachingEnabled);
++        event.waitUntil(persistSettings());
+         if (!videoCachingEnabled) singleThread.stopAll('caching disabled');
+         return;
+     }
+@@ -2970,6 +2998,7 @@
+             }
+             videoMode = mode;
+         }
++        event.waitUntil(persistSettings());
+         return;
+     }
+ 

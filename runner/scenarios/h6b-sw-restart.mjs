@@ -1,0 +1,24 @@
+import { SLOW } from './_common.mjs';
+// Seen on the live site: Chrome stopped the idle SW ~45 s into a pause and started it again
+// later; the new instance bypassed caching (53 MB re-downloaded with a full cache).
+export default {
+  id: 'h6b-sw-restart', title: 'SW остановлен браузером во время паузы, затем продолжение', hypothesis: 'H6',
+  expected: 'Новый экземпляр начинает с videoCachingEnabled=false: после продолжения запросы <video> идут мимо SW и кэша, хотя кэш есть.',
+  describe: 'CDN 600 КБ/с; 40 с игры, пауза, через 20 с SW останавливается (как при простое), ещё 10 с, продолжение, 40 с игры, перемотка назад на 0:10, 15 с.',
+  site: { engine: 'singlethread' }, cdn: { throttleBps: SLOW },
+  user: { resumeAfterErrorSec: 4 },
+  async steps(b) {
+    await b.open(); await b.play(); await b.wait(40);
+    await b.pause(); await b.wait(20);
+    b.note('stop SW: ' + await b.stopSW()); await b.wait(10);
+    await b.play(); await b.wait(40);
+    await b.seek(10); await b.wait(15);
+  },
+  judge(m) {
+    const bypass = m.sw_bypassDisabled;
+    return {
+      verdict: bypass ? 'воспроизведено' : 'не воспроизводится',
+      why: `экземпляров SW: ${m.swInstances.length}; запросов мимо SW («Video caching disabled, bypassing SW»): ${bypass}; прямых запросов <video> к CDN: ${m.cdnElementDirect}; ошибок <video>: ${m.errors.length}; стояло ${m.stalledSec} с.`,
+    };
+  },
+};

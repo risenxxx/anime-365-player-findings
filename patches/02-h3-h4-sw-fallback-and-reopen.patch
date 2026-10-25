@@ -1,0 +1,59 @@
+--- a/swMain.js
++++ b/swMain.js
+@@ -2036,12 +2036,23 @@
+                             // one) is left untouched: concurrent serves are tracked
+                             // side-by-side in the per-mParam set and torn down independently.
+                             countFg();
+-                            try {
+-                                conn = await engine._openConnection(mParam, pos, sourceUrl, contentType, totalSize);
+-                            } catch (e) {
+-                                uncountFg();
+-                                if (cancelled) return;
+-                                throw e;
++                            // [fix H4] a transient origin failure (5xx/429/network) while the
++                            // browser is mid-body: retry with a growing pause before erroring
++                            // the stream, instead of a single attempt.
++                            for (let attempt = 0; ; attempt++) {
++                                try {
++                                    conn = await engine._openConnection(mParam, pos, sourceUrl, contentType, totalSize);
++                                    break;
++                                } catch (e) {
++                                    const st = +(((e && e.message) || '').match(/Fetch failed: (\d+)/) || [])[1] || 0;
++                                    const retryable = st === 0 || st === 429 || st >= 500;
++                                    if (cancelled) { uncountFg(); return; }
++                                    if (!retryable || attempt >= 4) { uncountFg(); throw e; }
++                                    const delay = 500 * Math.pow(2, attempt);
++                                    logError('[SEEK-DIAG] reopen failed, retry', attempt + 1, 'in', delay, 'ms m=', mParam, 'pos=', pos, 'err=', (e && e.message) || e);
++                                    await new Promise(r => setTimeout(r, delay));
++                                    if (cancelled || controller.desiredSize === null) { uncountFg(); return; }
++                                }
+                             }
+                         }
+ 
+@@ -2645,10 +2656,25 @@
+             const initialEnd = end !== null ? end : (1024 * 1024 * 100);
+ 
+             // Ensure metadata is available (from cache or by fetching first chunk)
+-            const { metadata } = isSingleThread()
++            let { metadata } = isSingleThread()
+                 ? await singleThread.ensureMetadata(mParam, start, url, (promise) => event.waitUntil(promise))
+                 : await cachingService.ensureMetadata(mParam, start, initialEnd, url, (promise) => event.waitUntil(promise));
+ 
++            // [fix H3] Without the real size we would answer with a synthetic
++            // 'bytes 0-104857600/*' and then fail mid-body. Retry the metadata a couple
++            // of times (a transient 5xx usually clears: a direct 503 is fatal for the
++            // media stack), then let the browser talk to the origin directly.
++            let meta = metadata;
++            for (let i = 0; (!meta || !meta.totalSize) && i < 2 && isSingleThread(); i++) {
++                await new Promise(r => setTimeout(r, 500 * (i + 1)));
++                meta = (await singleThread.ensureMetadata(mParam, start, url)).metadata;
++            }
++            if (!meta || !meta.totalSize) {
++                logError('[SEEK-DIAG] no metadata -> direct fetch m=', mParam);
++                return fetch(request);
++            }
++            metadata = meta;
++
+             // Now calculate end with real metadata
+             if (end === null) {
+                 if (metadata?.totalSize) {

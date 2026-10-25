@@ -1,0 +1,198 @@
+{
+  "origin": "https://smotret-anime.org",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+  "delayMs": 300,
+  "fetchedAt": "2026-10-24",
+  "files": [
+    {
+      "path": "/translations/embed/6042685",
+      "query": "",
+      "volatile": true,
+      "role": "embed page (no-store, not hashed; external script list is checked)",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "path": "/js/vendor/libassjs.js",
+      "query": "1787480615",
+      "inEmbed": true,
+      "sha256": "9aada2c838b0e22549de99e320956ce21afc4d972ce75ec189c786095ec206c1",
+      "bytes": 1982297
+    },
+    {
+      "path": "/js/vendor/jquery.min.js",
+      "query": "",
+      "inEmbed": true,
+      "sha256": "d4dce89ce01ebad4204b8b1016422ae28426d0fa26cee937876644e77108c518",
+      "bytes": 133232
+    },
+    {
+      "path": "/js/vendor/jquery-ui.min.js",
+      "query": "",
+      "inEmbed": true,
+      "sha256": "3065fcf4c1b98d43e103697ba6c479f833e6f38b190b60f402aa0aa862e76595",
+      "bytes": 303071
+    },
+    {
+      "path": "/js/vendor/isMobile.min.js",
+      "query": "",
+      "inEmbed": true,
+      "sha256": "e19c55b6b3191d5a0fb93024a16ed0ea5284bce8964cc457741e0b71b4606a79",
+      "bytes": 2850
+    },
+    {
+      "path": "/js/lib/utils.min.js",
+      "query": "1484779953",
+      "inEmbed": true,
+      "sha256": "f67680cee5fd155f882f6549e6986e39e8006a50d4fc42d16eb27eb2a9fbd133",
+      "bytes": 9030
+    },
+    {
+      "path": "/js/vendor/videojs/video.dev.min.js",
+      "query": "1575369477",
+      "inEmbed": true,
+      "sha256": "a9d4aaaed860bb8e8db25f84b9d310c5e2eb07d45dfa3eb9cba80b8ab5877f57",
+      "bytes": 169307
+    },
+    {
+      "path": "/js/lib/videojs.concatenate.min.js",
+      "query": "1789631056",
+      "inEmbed": true,
+      "sha256": "742d653d5cf4d21ddcac3fd99e0c762ec0d5a5cbdcd068d3310eae02af769bdd",
+      "bytes": 29330
+    },
+    {
+      "path": "/js/lib/videojs.hotkeys.min.js",
+      "query": "1575369225",
+      "inEmbed": true,
+      "sha256": "39b0854f5cc7bfe568246d7264bebe7ff24c8ca8011fd28a88c089cd9cb57990",
+      "bytes": 7295
+    },
+    {
+      "path": "/js/lib/videojs.persistvolume.min.js",
+      "query": "1484779981",
+      "inEmbed": true,
+      "sha256": "75234935e5216ef97b90a8b9656e2b5e41087c5afd3ed5bedab75f40c7702884",
+      "bytes": 515
+    },
+    {
+      "path": "/js/lib/videojs.logo.min.js",
+      "query": "1559522137",
+      "inEmbed": true,
+      "sha256": "c6611be2851d5ec7d25e98e7e0caa1f8e60fe92ce0f03daa4ece40a5fba1e598",
+      "bytes": 1028
+    },
+    {
+      "path": "/js/lib/videojs.helpers.min.js",
+      "query": "1487022131",
+      "inEmbed": true,
+      "sha256": "08bbc53146fcfc327aec3ca22d178052d68ea3fd4814fa2fb05b3087f1dc356f",
+      "bytes": 27653
+    },
+    {
+      "path": "/js/lib/videojs.subtitles.min.js",
+      "query": "1787145769",
+      "inEmbed": true,
+      "sha256": "544818796fff2aed0a7ca9ddfdd8b28178b33f1316516da875c36cf973d269d6",
+      "bytes": 13774
+    },
+    {
+      "path": "/js/lib/jquery.ba-throttle-debounce-mod.min.js",
+      "query": "",
+      "inEmbed": true,
+      "sha256": "cc903b24ab6e1d933d721049f428df4e13968db7727960325bb61d7a06339fd5",
+      "bytes": 1540
+    },
+    {
+      "path": "/js/vendor/d3.v3.min.js",
+      "query": "1484779748",
+      "inEmbed": true,
+      "sha256": "1d92c1ff1b8095949f762b8bd9c0c994922c4afedd00c2033e6f29b5f8c39df6",
+      "bytes": 241730
+    },
+    {
+      "path": "/js/lib/d3-scale-timebar.min.js",
+      "query": "1484779911",
+      "inEmbed": true,
+      "sha256": "9edf866d9589dba47bc83af4fd888fd8ada42609b5124e5b27d922d5e0858be5",
+      "bytes": 21472
+    },
+    {
+      "path": "/js/lib/videojs.rangeslider.components.min.js",
+      "query": "1556219529",
+      "inEmbed": true,
+      "sha256": "772764d73141440b7e2820e27fa0ddd001be1f197e43fca433cddcb1c420080b",
+      "bytes": 52315
+    },
+    {
+      "path": "/js/lib/videojs.rangeslider.min.js",
+      "query": "1556219983",
+      "inEmbed": true,
+      "sha256": "d7d24a6cc78f4a3064b848b786f7590c944606ade7789aaf8197c512cd4432a3",
+      "bytes": 29414
+    },
+    {
+      "path": "/js/lib/videojs.screenshoot.min.js",
+      "query": "1787144485",
+      "inEmbed": true,
+      "sha256": "726b06c3ce0ed9307c4f2d822c25ecdd9382b66cffa332559b60f646920c0118",
+      "bytes": 15825
+    },
+    {
+      "path": "/js/lib/videojs.seektooltip.min.js",
+      "query": "1484780004",
+      "inEmbed": true,
+      "sha256": "2419353c7e127e0af2287793f6607e12e6c252bb06e5cb3ffbff3e123540ee7c",
+      "bytes": 11060
+    },
+    {
+      "path": "/js/lib/videojs.topbar.min.js",
+      "query": "1484780014",
+      "inEmbed": true,
+      "sha256": "f0fb0460edad82dddce3b3d1301a5904aa41e83ec6817f37b6018d8776c17217",
+      "bytes": 2563
+    },
+    {
+      "path": "/js/vendor/jquery.doubletap.min.js",
+      "query": "",
+      "inEmbed": true,
+      "sha256": "92346b9e0795631db41f6ba2f4d3b4df793411bb58ab3fec960fd0edc9ebc7ed",
+      "bytes": 2592
+    },
+    {
+      "path": "/js/app/embed.min.js",
+      "query": "1785943069",
+      "inEmbed": true,
+      "sha256": "b58cc49d9cf10078be1ebaf5ce6fabfa7b0569d294b7760747e1440bc8cb90ae",
+      "bytes": 13285
+    },
+    {
+      "path": "/js/require.min.js",
+      "query": "",
+      "inEmbed": true,
+      "sha256": "b9139647a039a1ae4456f397f04ca4cc294c8fd39e7f09b2ee3916203f883616",
+      "bytes": 25940
+    },
+    {
+      "path": "/js/vendor/OneSignalSDK.js",
+      "query": "",
+      "inEmbed": true,
+      "sha256": "68e99fc4f572de942d2bd48b40493ea693533fed6a176bee64cc5ae9dc711876",
+      "bytes": 9987
+    },
+    {
+      "path": "/sworker.js",
+      "query": "24",
+      "role": "SW loader, registered by embed.min.js",
+      "sha256": "dc5d847759459ecb8f465ab6e258d5ae07ad41bbd9b7b68389fd70abb05c4e64",
+      "bytes": 1821
+    },
+    {
+      "path": "/swMain.js",
+      "query": "v=24",
+      "role": "SW engine (not minified)",
+      "sha256": "091974b8b12b1e08f22da15c5ee2fc5d242287b0f216dd6cf14932bb5f94afed",
+      "bytes": 144723
+    }
+  ]
+}

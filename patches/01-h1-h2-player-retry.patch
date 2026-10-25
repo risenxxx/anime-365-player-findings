@@ -1,0 +1,54 @@
+--- a/js/lib/videojs.concatenate.min.js
++++ b/js/lib/videojs.concatenate.min.js
+@@ -50,6 +50,10 @@
+       }
+     }, m.onError = function(e) {
+       var t = v.error();
++      // [fix H2] keep the last good position on every error, separately from the
++      // "restore pending" flag; 0 (the position right after load()) never overwrites it.
++      var cur = v.cache_.currentTime || v.currentTime();
++      .5 < cur && (v.lastSuccessTime = cur);
+       if (null != t && (3 === t.code || 4 === t.code) && navigator.serviceWorker && navigator.serviceWorker.controller) {
+         var r = v.currentSrc();
+         if (r) try {
+@@ -57,20 +61,33 @@
+           if (o && !m._blacklistedMParams[o]) return i = 3 === t.code ? "MEDIA_ERR_DECODE" : "MEDIA_ERR_SRC_NOT_SUPPORTED", console.log(i + ": Blacklisting mParam", o, "and retrying immediately"), m._blacklistedMParams[o] = !0, navigator.serviceWorker.controller.postMessage({
+             type: "blacklist",
+             mParam: o
+-          }), v.errorCounter = 0, void setTimeout(function() {
++          }), v.restorePending = !0, v.off("canplay", m.restoreLastTime), v.one("canplay", m.restoreLastTime), void setTimeout(function() {
++            // [fix H2b] the blacklist reload restores the position as well
+             v.src(r + "&rand=" + Math.random()), v.load()
+           }, 0)
+         } catch (e) {
+           console.log("Error extracting mParam:", e)
+         }
+       }
+-      null != t && -1 === window.location.href.indexOf("embedTest") && (null == v.lastSuccessTime && (i = v.cache_.currentTime, o = v.currentTime(), v.lastSuccessTime = 0 == i ? o : i), console.log("Error #" + t.code + ": " + t.message), console.log("Current time: ", v.lastSuccessTime), console.log(t), v.errorCounter++, 4 < v.errorCounter ? (console.log(v.errorCounter + " errors in row. Exit."), console.log("Notify broken."), m.notifyBroken()) : (v.one("playing", function() {
+-        v.errorCounter = 0
+-      }), o = function() {
++      if (null == t || -1 !== window.location.href.indexOf("embedTest")) return;
++      // [fix H1] count errors in a sliding 2-minute window instead of "in a row until the
++      // next playing": a fault that repeats after every reload now reaches notifyBroken.
++      var now = Date.now();
++      v.errorTimes = (v.errorTimes || []).filter(function(x) {
++        return now - x < 12e4
++      }), v.errorTimes.push(now), v.errorCounter = v.errorTimes.length;
++      if (console.log("Error #" + t.code + ": " + t.message), console.log("Current time: ", v.lastSuccessTime), console.log(t), 4 < v.errorCounter) return console.log(v.errorCounter + " errors in 2 min. Exit."), console.log("Notify broken."), void m.notifyBroken();
++      v.restorePending = !0, o = function() {
+         null !== v.el_ && (3 < v.errorCounter && .1 < v.lastSuccessTime && (v.lastSuccessTime -= .1), v.off("canplay", m.restoreLastTime), v.one("canplay", m.restoreLastTime), v.errorCounter < 3 || !m.useAlternativeSources()) && v.load()
+-      }, 1 <= v.errorCounter ? setTimeout(o, 500) : o()))
+-    }, v.on("error", m.onError), m.restoreLastTime = function() {
+-      0 < v.lastSuccessTime && (v.currentTime(v.lastSuccessTime), v.lastSuccessTime = null, v.play())
++      };
++      // [fix H1] growing pause between reloads: 0.5, 1, 2, 4 s
++      setTimeout(o, 500 * Math.pow(2, v.errorCounter - 1))
++    }, v.on("error", m.onError), v.on("timeupdate", function() {
++      // [fix H2] track the position while playing normally (not while a restore is pending)
++      var c = v.currentTime();
++      !v.restorePending && .5 < c && (v.lastSuccessTime = c)
++    }), m.restoreLastTime = function() {
++      v.restorePending && 0 < v.lastSuccessTime && (v.currentTime(v.lastSuccessTime), v.play()), v.restorePending = !1
+     }, m.init = function(e, t) {
+       if (m.summaryDuration = 0, m.watchedEventAfterTime = 0, m.currentVideo = -1, m.currentVideoStart = 0, m.currentVideoEnd = -1, m.videoLockedForLoading = !1, m.isChangingSource = !1, m.videoLockedCurrentTime = 0, m.playAfterVideoEnd = !1, m.audioSyncPlanned = !1, m.poster = v.poster(), m.seekInProgress = !1, m.seekPosition = 0, m.trySeekAfterDate = null, m.isOneVideo = !1, m.alternativeSourcesUsed = !1, m.vigo = null, m.vigoHost = void 0, m.vigoQuality = 0, null == v.tag) {
+         if (!v.tech) return v.tech = {

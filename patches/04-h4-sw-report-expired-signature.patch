@@ -1,0 +1,39 @@
+--- a/swMain.js
++++ b/swMain.js
+@@ -115,6 +115,18 @@
+         start: parseInt(rangeMatch[1], 10),
+         end: rangeMatch[2] ? parseInt(rangeMatch[2], 10) : null
+     };
++}
++
++// [fix H4] The origin refused the signed URL (403/410: the signature expired). Retrying
++// the same URL cannot help, so tell the page; it can fetch fresh sources. At most once
++// per 10 s per video.
++const originStatusSent = new Map();
++function notifyOriginStatus(mParam, status) {
++    if (status !== 403 && status !== 410) return;
++    const now = Date.now();
++    if (now - (originStatusSent.get(mParam) || 0) < 10000) return;
++    originStatusSent.set(mParam, now);
++    self.clients.matchAll().then(cs => cs.forEach(c => c.postMessage({ type: 'originStatus', mParam, status }))).catch(() => {});
+ }
+ 
+ // Validate that a ranged fetch actually returned the requested partial content.
+@@ -1773,7 +1785,7 @@
+         const abort = new AbortController();
+         log('[SingleThread] FETCH to ORIGIN (serve, exact-byte) bytes=' + atByte + '- for m=', mParam);
+         const response = await fetch(sourceUrl, { headers: { 'Range': `bytes=${atByte}-` }, signal: abort.signal });
+-        if (!response.ok) { logError('[SEEK-DIAG] origin fetch NOT OK m=', mParam, 'atByte=', atByte, 'status=', response.status); try { abort.abort(); } catch (e) {} throw new Error(`Fetch failed: ${response.status}`); }
++        if (!response.ok) { notifyOriginStatus(mParam, response.status); logError('[SEEK-DIAG] origin fetch NOT OK m=', mParam, 'atByte=', atByte, 'status=', response.status); try { abort.abort(); } catch (e) {} throw new Error(`Fetch failed: ${response.status}`); }
+         const rangeErr = validateRangeResponse(response, atByte);
+         if (rangeErr) { logError('[SEEK-DIAG] origin BAD range m=', mParam, 'atByte=', atByte, 'reason=', rangeErr, 'cr=', response.headers.get('Content-Range'), 'status=', response.status); try { abort.abort(); } catch (e) {} throw new Error(`Bad range response: ${rangeErr}`); }
+         let ts = totalSize;
+@@ -2351,7 +2363,7 @@
+         try {
+             log('[SingleThread] FETCH to ORIGIN (loader, long-lived) bytes=' + startByte + '- for m=', mParam);
+             response = await fetch(state.sourceUrl, { headers: { 'Range': `bytes=${startByte}-` }, signal: abort.signal });
+-            if (!response.ok) throw new Error(`Fetch failed: ${response.status}`);
++            if (!response.ok) { notifyOriginStatus(mParam, response.status); throw new Error(`Fetch failed: ${response.status}`); }
+             const rangeErr = validateRangeResponse(response, startByte);
+             if (rangeErr) throw new Error(`Bad range response: ${rangeErr}`);
+             if (!metadataMap.get(mParam)?.totalSize) {

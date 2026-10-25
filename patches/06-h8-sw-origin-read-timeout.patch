@@ -1,0 +1,48 @@
+--- a/swMain.js
++++ b/swMain.js
+@@ -68,6 +68,7 @@
+ const SINGLETHREAD_MIN_BG_BYTES = 10 * 1024 * 1024; // min buffer before a NON-active (background/related) video releases its connection
+ const ACTIVE_FETCH_WINDOW_MS = 30 * 60 * 1000; // a video the browser fetched within this window is the "active" one: prefetch it fully ahead even while Chrome is not consuming
+ const SINGLETHREAD_LINGER_MS = 300; // keep a serve connection warm this long after the browser cancels, so an immediate re-request (probe->stream) reuses it
++const ORIGIN_READ_TIMEOUT_MS = 12000; // [fix H8] no bytes from the origin for this long -> reopen
+ 
+ // Expose states globally for debugging
+ self.lastStates = {
+@@ -1960,7 +1961,7 @@
+                     while (!cancelled && controller.desiredSize !== null && controller.desiredSize <= 0) {
+                         if (c && !c.dead && !c.done && await engine._shouldKeepDraining(c)) {
+                             let res;
+-                            try { res = await c.reader.read(); }
++                            try { res = await readOrStall(c); }
+                             catch (e) { c.dead = true; engine._removeConn(c); return 'stopped'; }
+                             if (res.done) { c.done = true; flushFinal(c); return 'stopped'; }
+                             c.buffer.push(res.value); c.bufferLen += res.value.length; c.frontier += res.value.length;
+@@ -1986,6 +1987,19 @@
+                     if (!c || c.dead || c.done) return 'stopped';
+                     return pos < c.frontier ? 'lag' : 'demand';
+                 };
++
++                // [fix H8] a CDN stream can stop delivering bytes without being reset. Nothing
++                // else times out (not the browser either), so bound every origin read: no
++                // bytes for ORIGIN_READ_TIMEOUT_MS -> abort the connection; the outer loop
++                // then reopens from pos like after any other mid-serve death.
++                const readOrStall = (c) => new Promise((resolve, reject) => {
++                    const t = setTimeout(() => {
++                        logError('[SEEK-DIAG] origin read STALLED', ORIGIN_READ_TIMEOUT_MS, 'ms m=', mParam, 'frontier=', c.frontier);
++                        try { c.abort.abort('stalled'); } catch (e) {}
++                        reject(new Error('origin read stalled'));
++                    }, ORIGIN_READ_TIMEOUT_MS);
++                    c.reader.read().then((r) => { clearTimeout(t); resolve(r); }, (e) => { clearTimeout(t); reject(e); });
++                });
+ 
+                 let pos = startByte;   // [SEEK-DIAG] hoisted out of try so the catch can report how far we served
+                 let diagTotal = null;
+@@ -2077,7 +2091,7 @@
+                         try {
+                             while (pos <= endByte && !cancelled) {
+                                 let res;
+-                                try { res = await conn.reader.read(); }
++                                try { res = await readOrStall(conn); }
+                                 catch (e) {
+                                     if (cancelled) return;          // browser gone
+                                     // The connection died under us (dropped by teardown, or a

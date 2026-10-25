@@ -1,0 +1,14 @@
+vendor/
+media/
+captures/raw/
+profiles/
+node_modules/
+*.netlog
+*.har
+*.mitm
+.DS_Store
+# runtime output of the local bench before redaction
+results/**/raw/
+tmp/
+__pycache__/
+*.pyc

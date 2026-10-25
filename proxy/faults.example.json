@@ -1,0 +1,7 @@
+{
+  "maxFaults": 40,
+  "faults": [
+    { "action": "cut", "afterBytes": 8388608, "when": { "times": 3 } },
+    { "action": "status", "code": 503, "when": { "withinMsAfterCut": 5000 } }
+  ]
+}
