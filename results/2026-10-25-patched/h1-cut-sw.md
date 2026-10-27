@@ -16,6 +16,7 @@
 | load() после старта / src с &rand | 0 / 0 |
 | сброс в начало | [] |
 | прыжки назад | [] |
+| перемотка не сработала | [] |
 | сыграно / стояло, с | 149 / 0 |
 | notifyBroken (POST brokenVideo) | 0 |
 | экземпляры SW (по обёртке логов) | h2xo6t |
@@ -28,27 +29,27 @@
 ### Ключевые строки SW
 
 ```
-+0.6s h2xo6t [bench] SW script evaluated, instance=h2xo6t script=?24
-+0.6s h2xo6t [SW] Install event fired at 1792881021453
-+0.6s h2xo6t [SW] Activate event fired at 1792881021455
-+11.3s h2xo6t [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 6291456 frontier= 6291456 err= network error
++0.1s h2xo6t [bench] SW script evaluated, instance=h2xo6t script=?24
++0.1s h2xo6t [SW] Install event fired at 1792881021453
++0.1s h2xo6t [SW] Activate event fired at 1792881021455
++10.8s h2xo6t [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 6291456 frontier= 6291456 err= network error
 ```
 
 ### Таймлайн
 
 ```
-+0.5s runner navigate
-+0.6s sw-target created
-+0.6s page: controllerchange
-+0.9s runner navigate
-+1.0s call src= el=main-video_html5_api
-+1.0s call load el=main-video_html5_api ct=0
-+1.0s video emptied ct=0
-+1.0s video loadstart ct=0
-+1.2s runner mute
-+2.8s video canplay ct=0
-+3.5s runner play
-+3.5s video playing ct=0
++0.0s runner navigate
++0.1s sw-target created
++0.1s page: controllerchange
++0.4s runner navigate
++0.5s call src= el=main-video_html5_api
++0.5s call load el=main-video_html5_api ct=0
++0.5s video emptied ct=0
++0.5s video loadstart ct=0
++0.7s runner mute
++2.3s video canplay ct=0
++3.0s runner play
++3.0s video playing ct=0
 ```
 
 ### Снимки состояния

@@ -16,6 +16,7 @@
 | load() после старта / src с &rand | 0 / 0 |
 | сброс в начало | [] |
 | прыжки назад | [] |
+| перемотка не сработала | [] |
 | сыграно / стояло, с | 149 / 0 |
 | notifyBroken (POST brokenVideo) | 0 |
 | экземпляры SW (по обёртке логов) | kegomx |
@@ -28,33 +29,33 @@
 ### Ключевые строки SW
 
 ```
-+0.5s kegomx [bench] SW script evaluated, instance=kegomx script=?24
-+0.5s kegomx [SW] Install event fired at 1792881177061
-+0.5s kegomx [SW] Activate event fired at 1792881177063
-+1.0s kegomx [SW] Video caching disabled, bypassing SW
-+11.5s kegomx [SW] Video caching disabled, bypassing SW
-+42.9s kegomx [SW] Video caching disabled, bypassing SW
-+69.1s kegomx [SW] Video caching disabled, bypassing SW
-+95.3s kegomx [SW] Video caching disabled, bypassing SW
-+122.0s kegomx [SW] Video caching disabled, bypassing SW
-+149.4s kegomx [SW] Video caching disabled, bypassing SW
++0.1s kegomx [bench] SW script evaluated, instance=kegomx script=?24
++0.1s kegomx [SW] Install event fired at 1792881177061
++0.1s kegomx [SW] Activate event fired at 1792881177063
++0.5s kegomx [SW] Video caching disabled, bypassing SW
++11.1s kegomx [SW] Video caching disabled, bypassing SW
++42.5s kegomx [SW] Video caching disabled, bypassing SW
++68.7s kegomx [SW] Video caching disabled, bypassing SW
++94.9s kegomx [SW] Video caching disabled, bypassing SW
++121.5s kegomx [SW] Video caching disabled, bypassing SW
++148.9s kegomx [SW] Video caching disabled, bypassing SW
 ```
 
 ### Таймлайн
 
 ```
-+0.5s runner navigate
-+0.5s sw-target created
-+0.5s page: controllerchange
-+0.9s runner navigate
-+0.9s call src= el=main-video_html5_api
-+0.9s call load el=main-video_html5_api ct=0
-+1.0s video emptied ct=0
-+1.0s video loadstart ct=0
-+1.1s runner mute
-+2.7s video canplay ct=0
-+3.4s runner play
-+3.4s video playing ct=0
++0.0s runner navigate
++0.1s sw-target created
++0.1s page: controllerchange
++0.4s runner navigate
++0.5s call src= el=main-video_html5_api
++0.5s call load el=main-video_html5_api ct=0
++0.5s video emptied ct=0
++0.5s video loadstart ct=0
++0.7s runner mute
++2.2s video canplay ct=0
++3.0s runner play
++3.0s video playing ct=0
 ```
 
 ### Снимки состояния

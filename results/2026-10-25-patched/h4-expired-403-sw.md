@@ -16,6 +16,7 @@
 | load() после старта / src с &rand | 1 / 0 |
 | сброс в начало | [] |
 | прыжки назад | [] |
+| перемотка не сработала | [] |
 | сыграно / стояло, с | 244 / 0 |
 | notifyBroken (POST brokenVideo) | 0 |
 | экземпляры SW (по обёртке логов) | g4yh9c |
@@ -28,37 +29,37 @@
 ### Ключевые строки SW
 
 ```
-+0.6s g4yh9c [bench] SW script evaluated, instance=g4yh9c script=?24
-+0.6s g4yh9c [SW] Install event fired at 1792882919979
-+0.6s g4yh9c [SW] Activate event fired at 1792882919981
++0.1s g4yh9c [bench] SW script evaluated, instance=g4yh9c script=?24
++0.1s g4yh9c [SW] Install event fired at 1792882919979
++0.1s g4yh9c [SW] Activate event fired at 1792882919981
 ```
 
 ### Таймлайн
 
 ```
-+0.5s runner navigate
-+0.6s sw-target created
-+0.6s page: controllerchange
-+0.9s runner navigate
-+1.0s call src= el=main-video_html5_api
-+1.0s call load el=main-video_html5_api ct=0
-+1.0s video emptied ct=0
-+1.0s video loadstart ct=0
-+1.2s runner mute
-+2.8s video canplay ct=0
-+3.5s runner play
-+3.5s video playing ct=0
-+48.5s runner cdn-config {"throttleBps":614400,"faults":[{"action":"status","code":403,"when":{"query":{"sig":1}}}]}
-+48.5s runner cdn-cut {"dest":"all","cut":1}
-+48.6s call src= el=main-video_html5_api
-+48.6s call load el=main-video_html5_api ct=0
-+48.6s video emptied ct=0
-+48.6s video loadstart ct=0
-+48.6s video canplay ct=0
-+48.6s video seeking ct=45.09
-+48.6s video waiting ct=45.09
-+48.7s video canplay ct=45.09
-+48.7s video playing ct=45.09
++0.0s runner navigate
++0.1s sw-target created
++0.1s page: controllerchange
++0.4s runner navigate
++0.5s call src= el=main-video_html5_api
++0.5s call load el=main-video_html5_api ct=0
++0.5s video emptied ct=0
++0.5s video loadstart ct=0
++0.7s runner mute
++2.2s video canplay ct=0
++3.0s runner play
++3.0s video playing ct=0
++48.0s runner cdn-config {"throttleBps":614400,"faults":[{"action":"status","code":403,"when":{"query":{"sig":1}}}]}
++48.0s runner cdn-cut {"dest":"all","cut":1}
++48.1s call src= el=main-video_html5_api
++48.1s call load el=main-video_html5_api ct=0
++48.1s video emptied ct=0
++48.1s video loadstart ct=0
++48.1s video canplay ct=0
++48.1s video seeking ct=45.09
++48.1s video waiting ct=45.09
++48.1s video canplay ct=45.09
++48.1s video playing ct=45.09
 ```
 
 ### Снимки состояния

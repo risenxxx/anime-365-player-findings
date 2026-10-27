@@ -58,18 +58,34 @@ export function analyze({ events, sw, site, cdn, t0, cdnT0 }) {
       m.backJumps.push({ t: rel(ticks[i].t), from: ticks[i - 1].ct, to: ticks[i].ct });
     }
   }
-  // reset to ~0 after an error: position before error > 10 s, then a tick within 20 s with ct < 2
+  // reset to ~0 after an error that happened > 10 s into the episode: within 20 s the video
+  // either starts PLAYING again from < 2 s, or sits at < 2 s for >= 5 consecutive ticks.
+  // (A source switch shows ct=0 for a second or two before the restore seek; that alone
+  // is not a reset.)
   m.resetToZero = [];
   for (const err of media.filter((e) => e.ev === 'error')) {
-    // position before the error: the error event's own ct (it may follow a seek that
-    // the last tick has not seen yet), or the last tick, whichever is larger
     const tick = [...ticks].reverse().find((t) => t.t <= err.t);
-    const before = { ct: Math.max(err.ct || 0, tick ? tick.ct : 0) };
-    if (before.ct < 10) continue;
-    const after = ticks.filter((t) => t.t > err.t + 2500 && t.t < err.t + 20000);
-    if (after.length && after.some((t) => t.ct < 2)) {
+    const before = Math.max(err.ct || 0, tick ? tick.ct : 0);
+    if (before < 10) continue;
+    const win = (e) => e.t > err.t && e.t < err.t + 20000;
+    const playedFromZero = media.find((e) => win(e) && e.ev === 'playing' && e.ct < 2);
+    let run = 0, longest = 0;
+    for (const t of ticks.filter(win)) { run = t.ct < 2 ? run + 1 : 0; longest = Math.max(longest, run); }
+    if (playedFromZero || longest >= 5) {
+      const after = ticks.filter(win);
       const playingAfter = after.filter((t) => !t.paused).length > 0;
-      m.resetToZero.push({ t: rel(err.t), before: before.ct, after: Math.min(...after.map((t) => t.ct)), pausedAfter: !playingAfter });
+      m.resetToZero.push({ t: rel(err.t), before, after: Math.min(...after.map((t) => t.ct), playedFromZero ? playedFromZero.ct : Infinity), pausedAfter: !playingAfter });
+    }
+  }
+
+  // a seek the player did not honour: 3-8 s after the runner's seek to X the position is
+  // still more than 10 s away from X (e.g. playback restarted from the beginning)
+  m.seekMisses = [];
+  for (const sk of runner.filter((e) => e.action === 'seek')) {
+    const target = +sk.arg;
+    const after = ticks.filter((t) => t.t > sk.t + 3000 && t.t < sk.t + 8000);
+    if (after.length && after.every((t) => Math.abs(t.ct - target) > 10)) {
+      m.seekMisses.push({ t: rel(sk.t), target, got: after[after.length - 1].ct });
     }
   }
 
@@ -99,6 +115,8 @@ export function analyze({ events, sw, site, cdn, t0, cdnT0 }) {
   // ---- service worker
   for (const [k, re] of Object.entries(SW_PATTERNS)) m['sw_' + k] = sw.filter((l) => re.test(l.msg)).length;
   m.swInstances = [...new Set(sw.map((l) => l.sw))];
+  // browser requests the SW actually served, per SW instance (in order of appearance)
+  m.swBrowserReqByInstance = m.swInstances.map((id) => sw.filter((l) => l.sw === id && SW_PATTERNS.browserReq.test(l.msg)).length);
   const swTargets = events.filter((e) => e.src === 'target' && /sworker\.js/.test(e.url || ''));
   m.swTargetsCreated = swTargets.filter((e) => e.ev === 'created').length;
   m.swDevtoolsAttached = swTargets.some((e) => e.attached === true);

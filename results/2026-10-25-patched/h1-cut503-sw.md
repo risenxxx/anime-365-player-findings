@@ -16,6 +16,7 @@
 | load() после старта / src с &rand | 0 / 0 |
 | сброс в начало | [] |
 | прыжки назад | [] |
+| перемотка не сработала | [] |
 | сыграно / стояло, с | 149 / 0 |
 | notifyBroken (POST brokenVideo) | 0 |
 | экземпляры SW (по обёртке логов) | 1cgtyo |
@@ -28,28 +29,28 @@
 ### Ключевые строки SW
 
 ```
-+0.5s 1cgtyo [bench] SW script evaluated, instance=1cgtyo script=?24
-+0.5s 1cgtyo [SW] Install event fired at 1792881332686
-+0.5s 1cgtyo [SW] Activate event fired at 1792881332687
-+11.3s 1cgtyo [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 6291456 frontier= 6291456 err= network error
-+11.3s 1cgtyo [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503
++0.1s 1cgtyo [bench] SW script evaluated, instance=1cgtyo script=?24
++0.1s 1cgtyo [SW] Install event fired at 1792881332686
++0.1s 1cgtyo [SW] Activate event fired at 1792881332687
++10.8s 1cgtyo [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 6291456 frontier= 6291456 err= network error
++10.8s 1cgtyo [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503
 ```
 
 ### Таймлайн
 
 ```
-+0.5s runner navigate
-+0.5s sw-target created
-+0.5s page: controllerchange
-+0.9s runner navigate
-+1.0s call src= el=main-video_html5_api
-+1.0s call load el=main-video_html5_api ct=0
-+1.0s video emptied ct=0
-+1.0s video loadstart ct=0
-+1.2s runner mute
-+2.7s video canplay ct=0
-+3.4s runner play
-+3.4s video playing ct=0
++0.0s runner navigate
++0.1s sw-target created
++0.1s page: controllerchange
++0.4s runner navigate
++0.5s call src= el=main-video_html5_api
++0.5s call load el=main-video_html5_api ct=0
++0.5s video emptied ct=0
++0.5s video loadstart ct=0
++0.7s runner mute
++2.3s video canplay ct=0
++3.0s runner play
++3.0s video playing ct=0
 ```
 
 ### Снимки состояния

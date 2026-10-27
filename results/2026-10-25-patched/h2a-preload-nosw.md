@@ -12,10 +12,11 @@
 
 | метрика | значение |
 |---|---|
-| ошибки <video> | +15.4s code=2 ct=0.01 |
+| ошибки <video> | +15s code=2 ct=0.01 |
 | load() после старта / src с &rand | 1 / 0 |
 | сброс в начало | [] |
 | прыжки назад | [] |
+| перемотка не сработала | [] |
 | сыграно / стояло, с | 134 / 0 |
 | notifyBroken (POST brokenVideo) | 0 |
 | экземпляры SW (по обёртке логов) | wr0q7k |
@@ -28,42 +29,42 @@
 ### Ключевые строки SW
 
 ```
-+0.5s wr0q7k [bench] SW script evaluated, instance=wr0q7k script=?24
-+0.5s wr0q7k [SW] Install event fired at 1792882450247
-+0.5s wr0q7k [SW] Activate event fired at 1792882450249
-+1.0s wr0q7k [SW] Video caching disabled, bypassing SW
-+3.9s wr0q7k [SW] Video caching disabled, bypassing SW
-+16.0s wr0q7k [SW] Video caching disabled, bypassing SW
-+125.7s wr0q7k [SW] Video caching disabled, bypassing SW
-+131.4s wr0q7k [SW] Video caching disabled, bypassing SW
++0.1s wr0q7k [bench] SW script evaluated, instance=wr0q7k script=?24
++0.1s wr0q7k [SW] Install event fired at 1792882450247
++0.1s wr0q7k [SW] Activate event fired at 1792882450249
++0.5s wr0q7k [SW] Video caching disabled, bypassing SW
++3.4s wr0q7k [SW] Video caching disabled, bypassing SW
++15.5s wr0q7k [SW] Video caching disabled, bypassing SW
++125.3s wr0q7k [SW] Video caching disabled, bypassing SW
++130.9s wr0q7k [SW] Video caching disabled, bypassing SW
 ```
 
 ### Таймлайн
 
 ```
-+0.5s runner navigate
-+0.5s sw-target created
-+0.5s page: controllerchange
-+0.9s runner navigate
-+1.0s call src= el=main-video_html5_api
-+1.0s call load el=main-video_html5_api ct=0
-+1.0s video emptied ct=0
-+1.0s video loadstart ct=0
-+1.1s runner mute
-+2.7s video canplay ct=0
-+15.4s runner play
-+15.4s video playing ct=0.01
-+15.4s video error ct=0.01 code=2 "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
-+15.5s player: Error #2: A network error caused the video download to fail part-way.
-+15.5s player: Current time:  null
-+15.5s video pause ct=0.01 code=2 "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
-+16.0s call load el=main-video_html5_api ct=0.01
-+16.0s video emptied ct=0
-+16.0s video loadstart ct=0
-+16.0s video canplay ct=0
-+20.4s runner user-play (player is paused after an error)
-+20.4s video playing ct=0
-+95.4s runner cdn-cut {"dest":"all","cut":1}
++0.0s runner navigate
++0.1s sw-target created
++0.1s page: controllerchange
++0.4s runner navigate
++0.5s call src= el=main-video_html5_api
++0.5s call load el=main-video_html5_api ct=0
++0.5s video emptied ct=0
++0.5s video loadstart ct=0
++0.7s runner mute
++2.3s video canplay ct=0
++15.0s runner play
++15.0s video playing ct=0.01
++15.0s video error ct=0.01 code=2 "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
++15.0s player: Error #2: A network error caused the video download to fail part-way.
++15.0s player: Current time:  null
++15.0s video pause ct=0.01 code=2 "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
++15.5s call load el=main-video_html5_api ct=0.01
++15.5s video emptied ct=0
++15.5s video loadstart ct=0
++15.5s video canplay ct=0
++20.0s runner user-play (player is paused after an error)
++20.0s video playing ct=0
++95.0s runner cdn-cut {"dest":"all","cut":1}
 ```
 
 ### Снимки состояния

@@ -2,7 +2,7 @@
   "origin": "https://smotret-anime.org",
   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
   "delayMs": 300,
-  "fetchedAt": "2026-10-24",
+  "fetchedAt": "2026-10-27",
   "files": [
     {
       "path": "/translations/embed/6042685",
@@ -56,10 +56,10 @@
     },
     {
       "path": "/js/lib/videojs.concatenate.min.js",
-      "query": "1789631056",
+      "query": "1793007100",
       "inEmbed": true,
-      "sha256": "742d653d5cf4d21ddcac3fd99e0c762ec0d5a5cbdcd068d3310eae02af769bdd",
-      "bytes": 29330
+      "sha256": "a79b43024f28738c3ce6fb676088b80859f01c5cc914fdeec082abb9c5aa7665",
+      "bytes": 33935
     },
     {
       "path": "/js/lib/videojs.hotkeys.min.js",
@@ -161,10 +161,10 @@
     },
     {
       "path": "/js/app/embed.min.js",
-      "query": "1785943069",
+      "query": "1793007100",
       "inEmbed": true,
-      "sha256": "b58cc49d9cf10078be1ebaf5ce6fabfa7b0569d294b7760747e1440bc8cb90ae",
-      "bytes": 13285
+      "sha256": "bed42bbe622815ef2628ab8eace1ba4af844955260dc1017e62ada34f0f0386b",
+      "bytes": 13475
     },
     {
       "path": "/js/require.min.js",
@@ -182,17 +182,17 @@
     },
     {
       "path": "/sworker.js",
-      "query": "24",
+      "query": "27",
       "role": "SW loader, registered by embed.min.js",
-      "sha256": "dc5d847759459ecb8f465ab6e258d5ae07ad41bbd9b7b68389fd70abb05c4e64",
+      "sha256": "3599facc4a1f90814224af7a792f2f3621ce2400690f64ae5087245472342c1a",
       "bytes": 1821
     },
     {
       "path": "/swMain.js",
-      "query": "v=24",
+      "query": "v=27",
       "role": "SW engine (not minified)",
-      "sha256": "091974b8b12b1e08f22da15c5ee2fc5d242287b0f216dd6cf14932bb5f94afed",
-      "bytes": 144723
+      "sha256": "8d4f58099f3ad080b9af12d022a80242eea60884a071a4dcb357d78570ea4b02",
+      "bytes": 156934
     }
   ]
 }

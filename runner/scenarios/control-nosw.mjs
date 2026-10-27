@@ -4,7 +4,7 @@ export default {
   id: 'control-nosw',
   title: 'Контроль: без сбоев, кэширование SW выключено',
   hypothesis: 'контроль',
-  expected: 'Игра без ошибок; все медиазапросы идут от <video> напрямую (dest=video), SW пишет `Video caching disabled, bypassing SW`.',
+  expected: 'Игра без ошибок; SW не обслуживает запросы из своего кэша (нет `serve enter`): до v27 запросы шли мимо SW (dest=video), с v27 SW проксирует их без кэша (dest=empty).',
   describe: 'site.videoLoadingEngine = "off". Старт, 60 с, перемотка на 10:00, 30 с, перемотка на 5:00, 20 с.',
   site: { engine: 'off' },
   cdn: {},
@@ -18,7 +18,10 @@ export default {
     await b.wait(20);
   },
   judge(m) {
-    const ok = m.errors.length === 0 && m.sw_serveEnter === 0 && (m.cdnByDest.empty || 0) === 0 && m.backJumps.length === 0;
+    // Caching off: the SW must not serve from its cache (no serve()). Before v27 it let the
+    // request go past it (dest=video at the CDN); since v27 it proxies with fetch(request)
+    // (dest=empty) — both are "no SW caching".
+    const ok = m.errors.length === 0 && m.sw_serveEnter === 0 && m.backJumps.length === 0;
     return {
       verdict: ok ? 'стенд работает' : 'стенд не откалиброван',
       why: `serve enter: ${m.sw_serveEnter}; запросы к CDN: ${JSON.stringify(m.cdnByDest)}; bypass-строк SW: ${m.sw_bypassDisabled}; ошибок: ${m.errors.length}.`,

@@ -16,6 +16,7 @@ BAD range: 25; total=MISSING: 0; serve FAIL: 0; ошибок <video>: {}; blackl
 | load() после старта / src с &rand | 0 / 0 |
 | сброс в начало | [] |
 | прыжки назад | [] |
+| перемотка не сработала | [] |
 | сыграно / стояло, с | 74 / 2 |
 | notifyBroken (POST brokenVideo) | 0 |
 | экземпляры SW (по обёртке логов) | s62fp8 |
@@ -28,73 +29,73 @@ BAD range: 25; total=MISSING: 0; serve FAIL: 0; ошибок <video>: {}; blackl
 ### Ключевые строки SW
 
 ```
-+0.5s s62fp8 [bench] SW script evaluated, instance=s62fp8 script=?24
-+0.5s s62fp8 [SW] Install event fired at 1792884976916
-+0.5s s62fp8 [SW] Activate event fired at 1792884976918
++0.1s s62fp8 [bench] SW script evaluated, instance=s62fp8 script=?24
++0.1s s62fp8 [SW] Install event fired at 1792884976916
++0.1s s62fp8 [SW] Activate event fired at 1792884976918
++0.5s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
++0.5s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
 +1.0s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
 +1.0s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
-+1.5s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
-+1.5s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
-+2.5s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
-+2.5s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
-+3.4s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
-+3.4s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
-+8.4s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
-+8.4s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
-+13.4s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
-+13.4s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
-+18.4s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
-+18.4s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
-+23.4s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
-+23.4s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
-+28.4s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
-+28.4s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
-+33.4s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
-+33.4s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
-+33.4s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 150142976 reason= missing Content-Range header on 206 response cr= null status= 206
-+33.4s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
-+33.9s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 150142976 reason= missing Content-Range header on 206 response cr= null status= 206
-+33.9s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
-+35.0s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 150142976 reason= missing Content-Range header on 206 response cr= null status= 206
-+35.0s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
-+38.5s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
-+38.5s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
-+43.4s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
-+43.4s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
-+48.4s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
-+48.4s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
-+53.4s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
-+53.4s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
-+58.4s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
-+58.4s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
-+63.4s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
++2.0s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
++2.0s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
++3.0s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
++3.0s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
++8.0s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
++8.0s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
++13.0s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
++13.0s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
++18.0s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
++18.0s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
++23.0s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
++23.0s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
++28.0s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
++28.0s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
++33.0s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
++33.0s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
++33.0s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 150142976 reason= missing Content-Range header on 206 response cr= null status= 206
++33.0s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
++33.5s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 150142976 reason= missing Content-Range header on 206 response cr= null status= 206
++33.5s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
++34.5s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 150142976 reason= missing Content-Range header on 206 response cr= null status= 206
++34.5s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
++38.0s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
++38.0s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
++43.0s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
++43.0s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
++48.0s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
++48.0s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
++53.0s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
++53.0s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
++58.0s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
++58.0s s62fp8 [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response
++63.0s s62fp8 [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206
 ```
 
 ### Таймлайн
 
 ```
-+0.5s runner navigate
-+0.5s sw-target created
-+0.5s page: controllerchange
-+0.9s runner navigate
-+1.0s call src= el=main-video_html5_api
-+1.0s call load el=main-video_html5_api ct=0
-+1.0s video emptied ct=0
-+1.0s video loadstart ct=0
-+1.1s runner mute
-+2.8s video canplay ct=0
-+3.4s runner play
-+3.4s video playing ct=0
-+33.4s runner seek 700
-+33.4s video seeking ct=700
-+33.4s video waiting ct=700
-+35.4s video canplay ct=700
-+35.4s video playing ct=700
-+63.4s runner seek 300
-+63.4s video seeking ct=300
-+63.4s video waiting ct=300
-+65.5s video canplay ct=300
-+65.5s video playing ct=300
++0.0s runner navigate
++0.1s sw-target created
++0.1s page: controllerchange
++0.4s runner navigate
++0.5s call src= el=main-video_html5_api
++0.5s call load el=main-video_html5_api ct=0
++0.5s video emptied ct=0
++0.5s video loadstart ct=0
++0.7s runner mute
++2.4s video canplay ct=0
++3.0s runner play
++3.0s video playing ct=0
++33.0s runner seek 700
++33.0s video seeking ct=700
++33.0s video waiting ct=700
++35.0s video canplay ct=700
++35.0s video playing ct=700
++63.0s runner seek 300
++63.0s video seeking ct=300
++63.0s video waiting ct=300
++65.0s video canplay ct=300
++65.0s video playing ct=300
 ```
 
 ### Снимки состояния

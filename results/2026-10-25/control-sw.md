@@ -16,6 +16,7 @@ serve enter: 3; записей в кэше: 295; прямых запросов <
 | load() после старта / src с &rand | 0 / 0 |
 | сброс в начало | [] |
 | прыжки назад | [] |
+| перемотка не сработала | [] |
 | сыграно / стояло, с | 108 / 0 |
 | notifyBroken (POST brokenVideo) | 0 |
 | экземпляры SW (по обёртке логов) | aoy0b0 |
@@ -28,36 +29,36 @@ serve enter: 3; записей в кэше: 295; прямых запросов <
 ### Ключевые строки SW
 
 ```
-+0.5s aoy0b0 [bench] SW script evaluated, instance=aoy0b0 script=?24
-+0.5s aoy0b0 [SW] Install event fired at 1792876697086
-+0.5s aoy0b0 [SW] Activate event fired at 1792876697087
++0.1s aoy0b0 [bench] SW script evaluated, instance=aoy0b0 script=?24
++0.1s aoy0b0 [SW] Install event fired at 1792876697086
++0.1s aoy0b0 [SW] Activate event fired at 1792876697087
 ```
 
 ### Таймлайн
 
 ```
++0.1s runner navigate
++0.1s sw-target created
++0.1s page: controllerchange
 +0.5s runner navigate
-+0.5s sw-target created
-+0.5s page: controllerchange
-+0.9s runner navigate
-+1.0s call src= el=main-video_html5_api
-+1.0s call load el=main-video_html5_api ct=0
-+1.0s video emptied ct=0
-+1.0s video loadstart ct=0
-+1.1s runner mute
-+1.4s video canplay ct=0
-+1.9s runner play
-+1.9s video playing ct=0
-+61.9s runner seek 600
-+61.9s video seeking ct=600
-+61.9s video waiting ct=600
-+61.9s video canplay ct=600
-+61.9s video playing ct=600
-+91.9s runner seek 300
-+91.9s video seeking ct=300
-+91.9s video waiting ct=300
-+92.0s video canplay ct=300
-+92.0s video playing ct=300
++0.6s call src= el=main-video_html5_api
++0.6s call load el=main-video_html5_api ct=0
++0.6s video emptied ct=0
++0.6s video loadstart ct=0
++0.7s runner mute
++1.0s video canplay ct=0
++1.5s runner play
++1.5s video playing ct=0
++61.5s runner seek 600
++61.5s video seeking ct=600
++61.5s video waiting ct=600
++61.5s video canplay ct=600
++61.5s video playing ct=600
++91.5s runner seek 300
++91.5s video seeking ct=300
++91.5s video waiting ct=300
++91.6s video canplay ct=300
++91.6s video playing ct=300
 ```
 
 ### Снимки состояния

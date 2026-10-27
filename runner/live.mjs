@@ -8,6 +8,7 @@
 //        later opened through mitmproxy (Chrome 155), so the proxy profile must never go direct
 //   node runner/live.mjs baseline <episode-url>   ~10 min: start, 3 seeks, pause > 5 min, resume
 //   node runner/live.mjs proxy <episode-url> [--port=8080] [--spki=<hash>]
+//   add --headless to baseline/proxy to run without a window
 //                                                 same, through mitmdump -s proxy/faults.py
 //
 // Profiles: profiles/live (baseline) and profiles/live-mitm (proxy). Both git-ignored.
@@ -48,7 +49,9 @@ async function main() {
   const rawDir = path.join(ROOT, 'captures', 'raw', `live-${ts}`);
   fs.mkdirSync(rawDir, { recursive: true });
   const netlog = mode.startsWith('login') ? null : path.join(ROOT, 'captures', 'raw', `live-${ts}.netlog`);
-  const s = new Session({ profileDir, netlog, headless: false, liteProbe: true }); // lite: see probe.js
+  // --headless: no window (login always needs one)
+  const headless = process.argv.includes('--headless') && !mode.startsWith('login');
+  const s = new Session({ profileDir, netlog, headless, liteProbe: true }); // lite: see probe.js
   s.opts.extraArgs = extraArgs;
   await s.start();
 

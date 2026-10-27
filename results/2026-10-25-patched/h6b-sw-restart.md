@@ -2,7 +2,7 @@
 
 Гипотеза: **H6**. Вердикт: **не воспроизводится** (код с патчами: all).
 
-экземпляров SW: 2; запросов мимо SW («Video caching disabled, bypassing SW»): 0; прямых запросов <video> к CDN: 0; ошибок <video>: 0; стояло 0 с.
+экземпляров SW: 2; запросов, обслуженных новым экземпляром: 2; строк «Video caching disabled, bypassing SW»: 0; прямых запросов <video> к CDN: 0; ошибок <video>: 0; стояло 0 с.
 
 **Ожидалось:** Новый экземпляр начинает с videoCachingEnabled=false: после продолжения запросы <video> идут мимо SW и кэша, хотя кэш есть.
 
@@ -16,6 +16,7 @@
 | load() после старта / src с &rand | 0 / 0 |
 | сброс в начало | [] |
 | прыжки назад | [] |
+| перемотка не сработала | [] |
 | сыграно / стояло, с | 92 / 0 |
 | notifyBroken (POST brokenVideo) | 0 |
 | экземпляры SW (по обёртке логов) | 3r5dke, meqc1x |
@@ -28,39 +29,39 @@
 ### Ключевые строки SW
 
 ```
-+0.6s 3r5dke [bench] SW script evaluated, instance=3r5dke script=?24
-+0.6s 3r5dke [SW] Install event fired at 1792884741221
-+0.6s 3r5dke [SW] Activate event fired at 1792884741225
-+73.5s meqc1x [bench] SW script evaluated, instance=meqc1x script=?24
++0.1s 3r5dke [bench] SW script evaluated, instance=3r5dke script=?24
++0.1s 3r5dke [SW] Install event fired at 1792884741221
++0.1s 3r5dke [SW] Activate event fired at 1792884741225
++73.0s meqc1x [bench] SW script evaluated, instance=meqc1x script=?24
 ```
 
 ### Таймлайн
 
 ```
-+0.5s runner navigate
-+0.6s sw-target created
-+0.6s page: controllerchange
-+0.9s runner navigate
-+1.0s call src= el=main-video_html5_api
-+1.0s call load el=main-video_html5_api ct=0
-+1.0s video emptied ct=0
-+1.0s video loadstart ct=0
-+1.2s runner mute
-+2.8s video canplay ct=0
-+3.5s runner play
-+3.5s video playing ct=0
-+43.5s runner pause
-+43.5s video pause ct=39.96
-+63.5s runner stopSW
-+63.5s runner note "stop SW: true"
-+73.5s runner play
-+73.5s sw-target created
-+73.5s video playing ct=40
-+113.5s runner seek 10
-+113.5s video seeking ct=10
-+113.5s video waiting ct=10
-+113.6s video canplay ct=10
-+113.6s video playing ct=10
++0.0s runner navigate
++0.1s sw-target created
++0.1s page: controllerchange
++0.4s runner navigate
++0.5s call src= el=main-video_html5_api
++0.5s call load el=main-video_html5_api ct=0
++0.5s video emptied ct=0
++0.5s video loadstart ct=0
++0.7s runner mute
++2.3s video canplay ct=0
++3.0s runner play
++3.0s video playing ct=0
++43.0s runner pause
++43.0s video pause ct=39.96
++63.0s runner stopSW
++63.0s runner note "stop SW: true"
++73.0s runner play
++73.0s sw-target created
++73.0s video playing ct=40
++113.0s runner seek 10
++113.0s video seeking ct=10
++113.0s video waiting ct=10
++113.0s video canplay ct=10
++113.0s video playing ct=10
 ```
 
 ### Снимки состояния

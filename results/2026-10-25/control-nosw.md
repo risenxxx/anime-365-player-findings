@@ -4,7 +4,7 @@
 
 serve enter: 0; запросы к CDN: {"video":3}; bypass-строк SW: 3; ошибок: 0.
 
-**Ожидалось:** Игра без ошибок; все медиазапросы идут от <video> напрямую (dest=video), SW пишет `Video caching disabled, bypassing SW`.
+**Ожидалось:** Игра без ошибок; SW не обслуживает запросы из своего кэша (нет `serve enter`): до v27 запросы шли мимо SW (dest=video), с v27 SW проксирует их без кэша (dest=empty).
 
 **Что увидел пользователь:** ошибок <video> нет; сыграно 107 с, стояло 0 с; notifyBroken: 0.
 
@@ -16,6 +16,7 @@ serve enter: 0; запросы к CDN: {"video":3}; bypass-строк SW: 3; о�
 | load() после старта / src с &rand | 0 / 0 |
 | сброс в начало | [] |
 | прыжки назад | [] |
+| перемотка не сработала | [] |
 | сыграно / стояло, с | 107 / 0 |
 | notifyBroken (POST brokenVideo) | 0 |
 | экземпляры SW (по обёртке логов) | 5wcxec |
@@ -28,39 +29,39 @@ serve enter: 0; запросы к CDN: {"video":3}; bypass-строк SW: 3; о�
 ### Ключевые строки SW
 
 ```
-+0.6s 5wcxec [bench] SW script evaluated, instance=5wcxec script=?24
-+0.6s 5wcxec [SW] Install event fired at 1792876811330
-+0.6s 5wcxec [SW] Activate event fired at 1792876811331
-+1.0s 5wcxec [SW] Video caching disabled, bypassing SW
-+62.0s 5wcxec [SW] Video caching disabled, bypassing SW
-+92.0s 5wcxec [SW] Video caching disabled, bypassing SW
++0.1s 5wcxec [bench] SW script evaluated, instance=5wcxec script=?24
++0.1s 5wcxec [SW] Install event fired at 1792876811330
++0.1s 5wcxec [SW] Activate event fired at 1792876811331
++0.6s 5wcxec [SW] Video caching disabled, bypassing SW
++61.5s 5wcxec [SW] Video caching disabled, bypassing SW
++91.5s 5wcxec [SW] Video caching disabled, bypassing SW
 ```
 
 ### Таймлайн
 
 ```
++0.1s runner navigate
++0.1s sw-target created
++0.1s page: controllerchange
 +0.5s runner navigate
-+0.6s sw-target created
-+0.6s page: controllerchange
-+0.9s runner navigate
-+1.0s call src= el=main-video_html5_api
-+1.0s call load el=main-video_html5_api ct=0
-+1.0s video emptied ct=0
-+1.0s video loadstart ct=0
-+1.2s runner mute
-+1.4s video canplay ct=0
-+2.0s runner play
-+2.0s video playing ct=0
-+62.0s runner seek 600
-+62.0s video seeking ct=600
-+62.0s video waiting ct=600
-+62.5s video canplay ct=600
-+62.5s video playing ct=600
-+92.0s runner seek 300
-+92.0s video seeking ct=300
-+92.0s video waiting ct=300
-+92.5s video canplay ct=300
-+92.5s video playing ct=300
++0.6s call src= el=main-video_html5_api
++0.6s call load el=main-video_html5_api ct=0
++0.6s video emptied ct=0
++0.6s video loadstart ct=0
++0.7s runner mute
++1.0s video canplay ct=0
++1.5s runner play
++1.5s video playing ct=0
++61.5s runner seek 600
++61.5s video seeking ct=600
++61.5s video waiting ct=600
++62.0s video canplay ct=600
++62.0s video playing ct=600
++91.5s runner seek 300
++91.5s video seeking ct=300
++91.5s video waiting ct=300
++92.0s video canplay ct=300
++92.0s video playing ct=300
 ```
 
 ### Снимки состояния

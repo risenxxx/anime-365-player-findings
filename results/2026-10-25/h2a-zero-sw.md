@@ -16,6 +16,7 @@
 | load() после старта / src с &rand | 0 / 0 |
 | сброс в начало | [] |
 | прыжки назад | [] |
+| перемотка не сработала | [] |
 | сыграно / стояло, с | 119 / 0 |
 | notifyBroken (POST brokenVideo) | 0 |
 | экземпляры SW (по обёртке логов) | zzmnws |
@@ -28,49 +29,49 @@
 ### Ключевые строки SW
 
 ```
-+0.5s zzmnws [bench] SW script evaluated, instance=zzmnws script=?24
-+0.6s zzmnws [SW] Install event fired at 1792878075001
-+0.6s zzmnws [SW] Activate event fired at 1792878075002
-+5.4s zzmnws [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 2752512 frontier= 2752512 err= network error
-+5.4s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503
-+5.4s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 0 pos= 2752512 end= 307695338 servedSoFar= 2752512 total= 307695339 connFrontier= 2752512 connDead= true err= Fetch failed: 503
-+5.8s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503
-+5.8s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503
-+6.1s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503
-+6.1s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503
++0.1s zzmnws [bench] SW script evaluated, instance=zzmnws script=?24
++0.1s zzmnws [SW] Install event fired at 1792878075001
++0.1s zzmnws [SW] Activate event fired at 1792878075002
++5.0s zzmnws [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 2752512 frontier= 2752512 err= network error
++5.0s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503
++5.0s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 0 pos= 2752512 end= 307695338 servedSoFar= 2752512 total= 307695339 connFrontier= 2752512 connDead= true err= Fetch failed: 503
++5.3s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503
++5.3s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503
++5.6s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503
++5.6s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503
++6.0s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503
++6.0s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503
 +6.5s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503
 +6.5s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503
 +7.0s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503
 +7.0s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503
-+7.5s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503
-+7.5s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503
-+8.0s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503
-+8.0s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503
-+8.7s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503
-+8.7s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503
-+9.3s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503
-+9.3s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503
-+10.0s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503
-+10.0s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503
++7.6s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503
++7.6s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503
++8.2s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503
++8.2s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503
++8.8s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503
++8.8s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503
++9.5s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503
++9.5s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503
 ```
 
 ### Таймлайн
 
 ```
-+0.5s runner navigate
-+0.5s sw-target created
-+0.6s page: controllerchange
-+0.9s runner navigate
-+1.0s call src= el=main-video_html5_api
-+1.0s call load el=main-video_html5_api ct=0
-+1.0s video emptied ct=0
-+1.0s video loadstart ct=0
-+1.2s runner mute
-+2.7s video canplay ct=0
-+5.4s runner cdn-cut {"dest":"all","cut":1}
-+17.4s runner play
-+17.4s video playing ct=0.01
-+97.5s runner cdn-cut {"dest":"all","cut":1}
++0.0s runner navigate
++0.1s sw-target created
++0.1s page: controllerchange
++0.4s runner navigate
++0.5s call src= el=main-video_html5_api
++0.5s call load el=main-video_html5_api ct=0
++0.5s video emptied ct=0
++0.5s video loadstart ct=0
++0.7s runner mute
++2.3s video canplay ct=0
++5.0s runner cdn-cut {"dest":"all","cut":1}
++17.0s runner play
++17.0s video playing ct=0.01
++97.0s runner cdn-cut {"dest":"all","cut":1}
 ```
 
 ### Снимки состояния

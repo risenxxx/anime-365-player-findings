@@ -16,6 +16,7 @@
 | load() после старта / src с &rand | 0 / 0 |
 | сброс в начало | [] |
 | прыжки назад | [] |
+| перемотка не сработала | [] |
 | сыграно / стояло, с | 24 / 114 |
 | notifyBroken (POST brokenVideo) | 0 |
 | экземпляры SW (по обёртке логов) | 5hff6u |
@@ -28,31 +29,31 @@
 ### Ключевые строки SW
 
 ```
-+0.5s 5hff6u [bench] SW script evaluated, instance=5hff6u script=?24
-+0.6s 5hff6u [SW] Install event fired at 1792879408733
-+0.6s 5hff6u [SW] Activate event fired at 1792879408736
++0.1s 5hff6u [bench] SW script evaluated, instance=5hff6u script=?24
++0.1s 5hff6u [SW] Install event fired at 1792879408733
++0.1s 5hff6u [SW] Activate event fired at 1792879408736
 ```
 
 ### Таймлайн
 
 ```
-+0.5s runner navigate
-+0.5s sw-target created
-+0.6s page: controllerchange
-+0.9s runner navigate
-+1.0s call src= el=main-video_html5_api
-+1.0s call load el=main-video_html5_api ct=0
-+1.0s video emptied ct=0
-+1.0s video loadstart ct=0
-+1.2s runner mute
-+2.7s video canplay ct=0
-+3.4s runner play
-+3.4s video playing ct=0
-+28.0s video waiting ct=24.52
-+103.4s runner note "ct before the nudge: 24.5"
-+103.4s runner seek 29.520213
-+103.4s video seeking ct=29.52
-+103.4s video waiting ct=29.52
++0.0s runner navigate
++0.1s sw-target created
++0.1s page: controllerchange
++0.4s runner navigate
++0.5s call src= el=main-video_html5_api
++0.5s call load el=main-video_html5_api ct=0
++0.5s video emptied ct=0
++0.5s video loadstart ct=0
++0.7s runner mute
++2.2s video canplay ct=0
++3.0s runner play
++3.0s video playing ct=0
++27.5s video waiting ct=24.52
++103.0s runner note "ct before the nudge: 24.5"
++103.0s runner seek 29.520213
++103.0s video seeking ct=29.52
++103.0s video waiting ct=29.52
 ```
 
 ### Снимки состояния

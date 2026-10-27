@@ -12,10 +12,11 @@
 
 | метрика | значение |
 |---|---|
-| ошибки <video> | +0.6s code=4 ct=0<br>+40.9s code=3 ct=189.23 |
+| ошибки <video> | +0.1s code=4 ct=0<br>+40.3s code=3 ct=189.23 |
 | load() после старта / src с &rand | 1 / 0 |
-| сброс в начало | [{"t":40.9,"before":189.23,"after":0,"pausedAfter":false}] |
-| прыжки назад | [{"t":41.6,"from":188.93,"to":0}] |
+| сброс в начало | [{"t":40.3,"before":189.23,"after":0,"pausedAfter":false}] |
+| прыжки назад | [{"t":41,"from":188.93,"to":0}] |
+| перемотка не сработала | [] |
 | сыграно / стояло, с | 54 / 0 |
 | notifyBroken (POST brokenVideo) | 0 |
 | экземпляры SW (по обёртке логов) | — |
@@ -34,38 +35,38 @@
 ### Таймлайн
 
 ```
-+0.5s runner navigate
-+0.6s call src= el=main-video_html5_api
++0.0s runner navigate
++0.1s call src= el=main-video_html5_api
++0.1s call load el=main-video_html5_api ct=0
++0.1s video emptied ct=0
++0.1s video loadstart ct=0
++0.1s video error ct=0 code=4 "MEDIA_ELEMENT_ERROR: Format error"
++0.1s sw-target created
++0.1s player: Error #4: The video could not be loaded, either because the server or network failed or because the format is not supported.
++0.1s player: Current time:  0
++0.3s runner mute
 +0.6s call load el=main-video_html5_api ct=0
 +0.6s video emptied ct=0
 +0.6s video loadstart ct=0
-+0.6s video error ct=0 code=4 "MEDIA_ELEMENT_ERROR: Format error"
-+0.6s sw-target created
-+0.6s player: Error #4: The video could not be loaded, either because the server or network failed or because the format is not supported.
-+0.6s player: Current time:  0
-+0.8s runner mute
-+1.1s call load el=main-video_html5_api ct=0
-+1.1s video emptied ct=0
-+1.1s video loadstart ct=0
-+1.5s video canplay ct=0
-+5.1s runner user-play (player is paused after an error)
-+5.1s video playing ct=0
-+6.1s runner play
-+21.1s runner seek 170
-+21.1s video seeking ct=170
-+21.1s video waiting ct=170
-+21.6s video canplay ct=170
-+21.6s video playing ct=170
-+40.9s video error ct=189.23 code=3 "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 "(null)" (-12909): VTDecompressionOutputCallback"
-+40.9s player: Error #3: The video playback was aborted due to a corruption problem or because the video used features your browser did not support.
-+40.9s player: Current time:  0
-+40.9s video pause ct=189.23 code=3 "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 "(null)" (-12909): VTDecompressionOutputCallback"
-+41.4s call load el=main-video_html5_api ct=189.23
-+41.4s video emptied ct=0
-+41.4s video loadstart ct=0
-+41.4s video canplay ct=0
-+45.1s runner user-play (player is paused after an error)
-+45.1s video playing ct=0
++1.0s video canplay ct=0
++4.5s runner user-play (player is paused after an error)
++4.5s video playing ct=0
++5.5s runner play
++20.5s runner seek 170
++20.5s video seeking ct=170
++20.5s video waiting ct=170
++21.1s video canplay ct=170
++21.1s video playing ct=170
++40.3s video error ct=189.23 code=3 "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 "(null)" (-12909): VTDecompressionOutputCallback"
++40.3s player: Error #3: The video playback was aborted due to a corruption problem or because the video used features your browser did not support.
++40.3s player: Current time:  0
++40.3s video pause ct=189.23 code=3 "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 "(null)" (-12909): VTDecompressionOutputCallback"
++40.8s call load el=main-video_html5_api ct=189.23
++40.8s video emptied ct=0
++40.8s video loadstart ct=0
++40.9s video canplay ct=0
++44.6s runner user-play (player is paused after an error)
++44.6s video playing ct=0
 ```
 
 ### Снимки состояния

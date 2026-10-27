@@ -30,7 +30,7 @@ export function mediaUrl(file, m, sig = 1) {
 
 const DEFAULTS = {
   engine: 'singlethread',
-  swVersion: 24,
+  swVersion: null,   // e.g. 99: /sworker.js imports swMain.js?v=99 instead of its own version (H7)
   m: 'bench-A',
   file: 'episode',
   height: 720,
@@ -83,6 +83,13 @@ function vendorFile(rel) {
   return path.join(VENDOR, rel);
 }
 
+// The SW script URL exactly as the site's embed.min.js registers it (e.g. /sworker.js?27):
+// registering another URL would trigger an extra SW update at the start of every scenario.
+function swRegisterUrl() {
+  const src = fs.readFileSync(vendorFile('js/app/embed.min.js'), 'utf8');
+  return (src.match(/register\("(\/sworker\.js\?\d+)"/) || [null, '/sworker.js'])[1];
+}
+
 function send(res, code, body, type = 'text/plain', extra = {}) {
   res.writeHead(code, { 'Content-Type': type, 'Cache-Control': 'no-cache', ...extra });
   res.end(body);
@@ -126,7 +133,7 @@ const server = http.createServer(async (req, res) => {
     // Same registration call as embed.min.js, without a player: lets a scenario start with
     // the SW already controlling the page (a returning visitor) and an empty video cache.
     return send(res, 200, `<!DOCTYPE html><html><head><meta charset="utf-8"><title>bench register</title></head><body>
-<script>navigator.serviceWorker.register("/sworker.js?24", { scope: "/" }).then(function () { return navigator.serviceWorker.ready; })
+<script>navigator.serviceWorker.register("${swRegisterUrl()}", { scope: "/" }).then(function () { return navigator.serviceWorker.ready; })
 .then(function () { document.title = "sw-ready"; });</script></body></html>`, TYPES['.html']);
   }
   if (p === `/translations/embed/${EMBED_ID}`) {
@@ -153,7 +160,7 @@ const server = http.createServer(async (req, res) => {
   if (p === '/sworker.js') {
     if (config.swUnavailable) { record('site', { what: 'sworker.js', status: 404 }); return send(res, 404, 'not found'); }
     let src = fs.readFileSync(vendorFile('sworker.js'), 'utf8');
-    if (config.swVersion !== 24) src = src.replace("'/swMain.js?v=24'", `'/swMain.js?v=${config.swVersion}'`);
+    if (config.swVersion != null) src = src.replace(/'\/swMain\.js\?v=\d+'/, `'/swMain.js?v=${config.swVersion}'`);
     record('site', { what: 'sworker.js', query: u.search, swVersion: config.swVersion });
     return send(res, 200, WRAPPER + '\n' + src, TYPES['.js']);
   }

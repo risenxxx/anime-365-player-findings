@@ -16,6 +16,7 @@
 | load() после старта / src с &rand | 0 / 0 |
 | сброс в начало | [] |
 | прыжки назад | [] |
+| перемотка не сработала | [] |
 | сыграно / стояло, с | 149 / 0 |
 | notifyBroken (POST brokenVideo) | 0 |
 | экземпляры SW (по обёртке логов) | p82p9w |
@@ -28,29 +29,29 @@
 ### Ключевые строки SW
 
 ```
-+0.5s p82p9w [bench] SW script evaluated, instance=p82p9w script=?24
-+0.6s p82p9w [SW] Install event fired at 1792877236752
-+0.6s p82p9w [SW] Activate event fired at 1792877236752
-+11.3s p82p9w [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 6291456 frontier= 6291456 err= network error
-+11.3s p82p9w [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503
-+11.3s p82p9w [SEEK-DIAG] serve FAIL m= bench-A start= 0 pos= 6291456 end= 307695338 servedSoFar= 6291456 total= 307695339 connFrontier= 6291456 connDead= true err= Fetch failed: 503
++0.1s p82p9w [bench] SW script evaluated, instance=p82p9w script=?24
++0.1s p82p9w [SW] Install event fired at 1792877236752
++0.1s p82p9w [SW] Activate event fired at 1792877236752
++10.8s p82p9w [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 6291456 frontier= 6291456 err= network error
++10.8s p82p9w [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503
++10.8s p82p9w [SEEK-DIAG] serve FAIL m= bench-A start= 0 pos= 6291456 end= 307695338 servedSoFar= 6291456 total= 307695339 connFrontier= 6291456 connDead= true err= Fetch failed: 503
 ```
 
 ### Таймлайн
 
 ```
++0.1s runner navigate
++0.1s sw-target created
++0.1s page: controllerchange
 +0.5s runner navigate
-+0.5s sw-target created
-+0.6s page: controllerchange
-+0.9s runner navigate
-+1.0s call src= el=main-video_html5_api
-+1.0s call load el=main-video_html5_api ct=0
-+1.0s video emptied ct=0
-+1.0s video loadstart ct=0
-+1.2s runner mute
-+2.8s video canplay ct=0
-+3.4s runner play
-+3.5s video playing ct=0
++0.6s call src= el=main-video_html5_api
++0.6s call load el=main-video_html5_api ct=0
++0.6s video emptied ct=0
++0.6s video loadstart ct=0
++0.7s runner mute
++2.3s video canplay ct=0
++3.0s runner play
++3.0s video playing ct=0
 ```
 
 ### Снимки состояния

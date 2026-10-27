@@ -4,7 +4,7 @@
 
 serve enter: 0; запросы к CDN: {"video":3}; bypass-строк SW: 3; ошибок: 0.
 
-**Ожидалось:** Игра без ошибок; все медиазапросы идут от <video> напрямую (dest=video), SW пишет `Video caching disabled, bypassing SW`.
+**Ожидалось:** Игра без ошибок; SW не обслуживает запросы из своего кэша (нет `serve enter`): до v27 запросы шли мимо SW (dest=video), с v27 SW проксирует их без кэша (dest=empty).
 
 **Что увидел пользователь:** ошибок <video> нет; сыграно 107 с, стояло 0 с; notifyBroken: 0.
 
@@ -16,6 +16,7 @@ serve enter: 0; запросы к CDN: {"video":3}; bypass-строк SW: 3; о�
 | load() после старта / src с &rand | 0 / 0 |
 | сброс в начало | [] |
 | прыжки назад | [] |
+| перемотка не сработала | [] |
 | сыграно / стояло, с | 107 / 0 |
 | notifyBroken (POST brokenVideo) | 0 |
 | экземпляры SW (по обёртке логов) | 047omw |
@@ -28,39 +29,39 @@ serve enter: 0; запросы к CDN: {"video":3}; bypass-строк SW: 3; о�
 ### Ключевые строки SW
 
 ```
-+0.4s 047omw [bench] SW script evaluated, instance=047omw script=?24
-+0.4s 047omw [SW] Install event fired at 1792880907288
-+0.4s 047omw [SW] Activate event fired at 1792880907289
-+0.9s 047omw [SW] Video caching disabled, bypassing SW
-+61.8s 047omw [SW] Video caching disabled, bypassing SW
-+91.8s 047omw [SW] Video caching disabled, bypassing SW
++0.1s 047omw [bench] SW script evaluated, instance=047omw script=?24
++0.1s 047omw [SW] Install event fired at 1792880907288
++0.1s 047omw [SW] Activate event fired at 1792880907289
++0.6s 047omw [SW] Video caching disabled, bypassing SW
++61.5s 047omw [SW] Video caching disabled, bypassing SW
++91.5s 047omw [SW] Video caching disabled, bypassing SW
 ```
 
 ### Таймлайн
 
 ```
-+0.4s runner navigate
-+0.4s sw-target created
-+0.4s page: controllerchange
-+0.8s runner navigate
-+0.9s call src= el=main-video_html5_api
-+0.9s call load el=main-video_html5_api ct=0
-+0.9s video emptied ct=0
-+0.9s video loadstart ct=0
-+1.1s runner mute
-+1.3s video canplay ct=0
-+1.8s runner play
-+1.8s video playing ct=0
-+61.8s runner seek 600
-+61.8s video seeking ct=600
-+61.8s video waiting ct=600
-+62.3s video canplay ct=600
-+62.3s video playing ct=600
-+91.8s runner seek 300
-+91.8s video seeking ct=300
-+91.8s video waiting ct=300
-+92.4s video canplay ct=300
-+92.4s video playing ct=300
++0.1s runner navigate
++0.1s sw-target created
++0.1s page: controllerchange
++0.5s runner navigate
++0.6s call src= el=main-video_html5_api
++0.6s call load el=main-video_html5_api ct=0
++0.6s video emptied ct=0
++0.6s video loadstart ct=0
++0.7s runner mute
++0.9s video canplay ct=0
++1.5s runner play
++1.5s video playing ct=0
++61.5s runner seek 600
++61.5s video seeking ct=600
++61.5s video waiting ct=600
++62.0s video canplay ct=600
++62.0s video playing ct=600
++91.5s runner seek 300
++91.5s video seeking ct=300
++91.5s video waiting ct=300
++92.0s video canplay ct=300
++92.0s video playing ct=300
 ```
 
 ### Снимки состояния

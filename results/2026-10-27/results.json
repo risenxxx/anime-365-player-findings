@@ -1,0 +1,2742 @@
+[
+ {
+  "id": "control-sw",
+  "title": "Контроль: без сбоев, SW singlethread",
+  "hypothesis": "контроль",
+  "expected": "Игра без ошибок <video>; запросы <video> идут через SW (на CDN только dest=empty), в логах SW есть `serve enter`, появляется кэш video-cache-v1-<m>.",
+  "metrics": {
+   "errors": [],
+   "errorCodes": {},
+   "detachedErrors": 0,
+   "loadsAfterStart": 0,
+   "srcChangesAfterStart": 0,
+   "randReloads": 0,
+   "reloadsPerMinMax": 0,
+   "playingEvents": 3,
+   "backJumps": [],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 108,
+   "stalledSec": 0,
+   "lastCt": 319.88,
+   "lastPaused": false,
+   "controllerLost": false,
+   "siteCalls": {
+    "sworker.js": 2,
+    "swMain.js": 2,
+    "embed": 1
+   },
+   "notifyBroken": 0,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": false,
+   "sw_serveEnter": 3,
+   "sw_serveFail": 0,
+   "sw_readDied": 0,
+   "sw_originNotOk": 0,
+   "sw_badRange": 0,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 0,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 3,
+   "sw_blacklistMsg": 0,
+   "sw_bypassBlacklisted": 0,
+   "sw_bypassDisabled": 0,
+   "sw_install": 1,
+   "sw_activate": 1,
+   "sw_evaluated": 1,
+   "swInstances": [
+    "a5q7x5"
+   ],
+   "swBrowserReqByInstance": [
+    3
+   ],
+   "swTargetsCreated": 1,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 3,
+   "cdnByDest": {
+    "empty": 3
+   },
+   "cdnStatus": {
+    "206": 3
+   },
+   "cdnCuts": 0,
+   "cdnMB": 295.3,
+   "cdnMaxConcurrent": 2,
+   "cdnElementDirect": 0,
+   "snapshots": [
+    {
+     "label": "end",
+     "t": 111.9,
+     "state": {
+      "ct": 319.897197,
+      "paused": false,
+      "errorCounter": 0,
+      "lastSuccessTime": null,
+      "blacklisted": [],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {
+      "video-cache-meta": 1,
+      "video-cache-v1-bench-A": 295
+     }
+    }
+   ]
+  },
+  "verdict": "стенд работает",
+  "why": "serve enter: 3; записей в кэше: 295; прямых запросов <video> к CDN: 0; ошибок: 0.",
+  "keyLines": [
+   "+0.1s a5q7x5 [bench] SW script evaluated, instance=a5q7x5 script=?27",
+   "+0.1s a5q7x5 [SW] Install event fired at 1793113907753",
+   "+0.1s a5q7x5 [SW] Activate event fired at 1793113907754"
+  ]
+ },
+ {
+  "id": "control-nosw",
+  "title": "Контроль: без сбоев, кэширование SW выключено",
+  "hypothesis": "контроль",
+  "expected": "Игра без ошибок; SW не обслуживает запросы из своего кэша (нет `serve enter`): до v27 запросы шли мимо SW (dest=video), с v27 SW проксирует их без кэша (dest=empty).",
+  "metrics": {
+   "errors": [],
+   "errorCodes": {},
+   "detachedErrors": 0,
+   "loadsAfterStart": 0,
+   "srcChangesAfterStart": 0,
+   "randReloads": 0,
+   "reloadsPerMinMax": 0,
+   "playingEvents": 3,
+   "backJumps": [],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 106,
+   "stalledSec": 0,
+   "lastCt": 318.45,
+   "lastPaused": false,
+   "controllerLost": false,
+   "siteCalls": {
+    "sworker.js": 2,
+    "swMain.js": 2,
+    "embed": 1
+   },
+   "notifyBroken": 0,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": false,
+   "sw_serveEnter": 0,
+   "sw_serveFail": 0,
+   "sw_readDied": 0,
+   "sw_originNotOk": 0,
+   "sw_badRange": 0,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 0,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 0,
+   "sw_blacklistMsg": 0,
+   "sw_bypassBlacklisted": 0,
+   "sw_bypassDisabled": 0,
+   "sw_install": 1,
+   "sw_activate": 1,
+   "sw_evaluated": 1,
+   "swInstances": [
+    "iecg0r"
+   ],
+   "swBrowserReqByInstance": [
+    0
+   ],
+   "swTargetsCreated": 1,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 3,
+   "cdnByDest": {
+    "empty": 3
+   },
+   "cdnStatus": {
+    "206": 3
+   },
+   "cdnCuts": 0,
+   "cdnMB": 69.8,
+   "cdnMaxConcurrent": 1,
+   "cdnElementDirect": 0,
+   "snapshots": [
+    {
+     "label": "end",
+     "t": 111.9,
+     "state": {
+      "ct": 319.451846,
+      "paused": false,
+      "errorCounter": 0,
+      "lastSuccessTime": null,
+      "blacklisted": [],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {}
+    }
+   ]
+  },
+  "verdict": "стенд работает",
+  "why": "serve enter: 0; запросы к CDN: {\"empty\":3}; bypass-строк SW: 0; ошибок: 0.",
+  "keyLines": [
+   "+0.1s iecg0r [bench] SW script evaluated, instance=iecg0r script=?27",
+   "+0.1s iecg0r [SW] Install event fired at 1793117997532",
+   "+0.1s iecg0r [SW] Activate event fired at 1793117997532"
+  ]
+ },
+ {
+  "id": "h1-cut-sw",
+  "title": "Обрыв каждого ответа CDN через 6 МБ (SW)",
+  "hypothesis": "H1",
+  "expected": "По коду serve() переоткрывает соединение после обрыва; если переоткрытие успешно, плеер ошибок не видит.",
+  "metrics": {
+   "errors": [],
+   "errorCodes": {},
+   "detachedErrors": 0,
+   "loadsAfterStart": 0,
+   "srcChangesAfterStart": 0,
+   "randReloads": 0,
+   "reloadsPerMinMax": 0,
+   "playingEvents": 1,
+   "backJumps": [],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 149,
+   "stalledSec": 0,
+   "lastCt": 149.45,
+   "lastPaused": false,
+   "controllerLost": false,
+   "siteCalls": {
+    "sworker.js": 2,
+    "swMain.js": 2,
+    "embed": 1
+   },
+   "notifyBroken": 0,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": false,
+   "sw_serveEnter": 1,
+   "sw_serveFail": 0,
+   "sw_readDied": 1,
+   "sw_originNotOk": 0,
+   "sw_badRange": 0,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 0,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 1,
+   "sw_blacklistMsg": 0,
+   "sw_bypassBlacklisted": 0,
+   "sw_bypassDisabled": 0,
+   "sw_install": 1,
+   "sw_activate": 1,
+   "sw_evaluated": 1,
+   "swInstances": [
+    "1bc4xg"
+   ],
+   "swBrowserReqByInstance": [
+    1
+   ],
+   "swTargetsCreated": 1,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 15,
+   "cdnByDest": {
+    "empty": 15
+   },
+   "cdnStatus": {
+    "206": 15
+   },
+   "cdnCuts": 14,
+   "cdnMB": 88.6,
+   "cdnMaxConcurrent": 1,
+   "cdnElementDirect": 0,
+   "snapshots": [
+    {
+     "label": "end",
+     "t": 153.4,
+     "state": {
+      "ct": 149.96024,
+      "paused": false,
+      "errorCounter": 0,
+      "lastSuccessTime": null,
+      "blacklisted": [],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {
+      "video-cache-meta": 1,
+      "video-cache-v1-bench-A": 89
+     }
+    }
+   ]
+  },
+  "verdict": "не воспроизводится",
+  "why": "Ни одной ошибки <video>: сбой поглощён ниже плеера (повтор в SW или в медиастеке Chrome).",
+  "keyLines": [
+   "+0.1s 1bc4xg [bench] SW script evaluated, instance=1bc4xg script=?27",
+   "+0.1s 1bc4xg [SW] Install event fired at 1793114136023",
+   "+0.1s 1bc4xg [SW] Activate event fired at 1793114136025",
+   "+10.8s 1bc4xg [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 6291456 frontier= 6291456 err= network error"
+  ]
+ },
+ {
+  "id": "h1-cut-nosw",
+  "title": "Обрыв каждого ответа CDN через 6 МБ (без SW)",
+  "hypothesis": "H1",
+  "expected": "Медиастек Chrome сам повторяет range-запрос после обрыва; плеер ошибок не видит.",
+  "metrics": {
+   "errors": [],
+   "errorCodes": {},
+   "detachedErrors": 0,
+   "loadsAfterStart": 0,
+   "srcChangesAfterStart": 0,
+   "randReloads": 0,
+   "reloadsPerMinMax": 0,
+   "playingEvents": 1,
+   "backJumps": [],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 149,
+   "stalledSec": 0,
+   "lastCt": 149.45,
+   "lastPaused": false,
+   "controllerLost": false,
+   "siteCalls": {
+    "sworker.js": 2,
+    "swMain.js": 2,
+    "embed": 1
+   },
+   "notifyBroken": 0,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": false,
+   "sw_serveEnter": 0,
+   "sw_serveFail": 0,
+   "sw_readDied": 0,
+   "sw_originNotOk": 0,
+   "sw_badRange": 0,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 0,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 0,
+   "sw_blacklistMsg": 0,
+   "sw_bypassBlacklisted": 0,
+   "sw_bypassDisabled": 0,
+   "sw_install": 1,
+   "sw_activate": 1,
+   "sw_evaluated": 1,
+   "swInstances": [
+    "dga2u2"
+   ],
+   "swBrowserReqByInstance": [
+    0
+   ],
+   "swTargetsCreated": 1,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 7,
+   "cdnByDest": {
+    "empty": 7
+   },
+   "cdnStatus": {
+    "206": 7
+   },
+   "cdnCuts": 6,
+   "cdnMB": 38.3,
+   "cdnMaxConcurrent": 1,
+   "cdnElementDirect": 0,
+   "snapshots": [
+    {
+     "label": "end",
+     "t": 153.5,
+     "state": {
+      "ct": 149.941928,
+      "paused": false,
+      "errorCounter": 0,
+      "lastSuccessTime": null,
+      "blacklisted": [],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {}
+    }
+   ]
+  },
+  "verdict": "не воспроизводится",
+  "why": "Ни одной ошибки <video>: сбой поглощён ниже плеера (повтор в SW или в медиастеке Chrome).",
+  "keyLines": [
+   "+0.1s dga2u2 [bench] SW script evaluated, instance=dga2u2 script=?27",
+   "+0.1s dga2u2 [SW] Install event fired at 1793114291675",
+   "+0.1s dga2u2 [SW] Activate event fired at 1793114291676"
+  ]
+ },
+ {
+  "id": "h1-cut503-sw",
+  "title": "Обрыв через 6 МБ + 503 на следующий запрос (SW)",
+  "hypothesis": "H1",
+  "expected": "Переоткрытие в serve() получает 503 → serve FAIL → ошибка <video> → load() → playing обнуляет errorCounter → цикл без notifyBroken.",
+  "metrics": {
+   "errors": [],
+   "errorCodes": {},
+   "detachedErrors": 0,
+   "loadsAfterStart": 0,
+   "srcChangesAfterStart": 0,
+   "randReloads": 0,
+   "reloadsPerMinMax": 0,
+   "playingEvents": 1,
+   "backJumps": [],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 149,
+   "stalledSec": 0,
+   "lastCt": 149.45,
+   "lastPaused": false,
+   "controllerLost": false,
+   "siteCalls": {
+    "sworker.js": 2,
+    "swMain.js": 2,
+    "embed": 1
+   },
+   "notifyBroken": 0,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": false,
+   "sw_serveEnter": 1,
+   "sw_serveFail": 0,
+   "sw_readDied": 1,
+   "sw_originNotOk": 0,
+   "sw_badRange": 0,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 0,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 1,
+   "sw_blacklistMsg": 0,
+   "sw_bypassBlacklisted": 0,
+   "sw_bypassDisabled": 0,
+   "sw_install": 1,
+   "sw_activate": 1,
+   "sw_evaluated": 1,
+   "swInstances": [
+    "zxcby9"
+   ],
+   "swBrowserReqByInstance": [
+    1
+   ],
+   "swTargetsCreated": 1,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 30,
+   "cdnByDest": {
+    "empty": 30
+   },
+   "cdnStatus": {
+    "206": 16,
+    "503": 14
+   },
+   "cdnCuts": 14,
+   "cdnMB": 88.6,
+   "cdnMaxConcurrent": 2,
+   "cdnElementDirect": 0,
+   "snapshots": [
+    {
+     "label": "end",
+     "t": 153.4,
+     "state": {
+      "ct": 149.956746,
+      "paused": false,
+      "errorCounter": 0,
+      "lastSuccessTime": null,
+      "blacklisted": [],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {
+      "video-cache-meta": 1,
+      "video-cache-v1-bench-A": 89
+     }
+    }
+   ]
+  },
+  "verdict": "не воспроизводится",
+  "why": "Ни одной ошибки <video>: сбой поглощён ниже плеера (повтор в SW или в медиастеке Chrome).",
+  "keyLines": [
+   "+0.1s zxcby9 [bench] SW script evaluated, instance=zxcby9 script=?27",
+   "+0.1s zxcby9 [SW] Install event fired at 1793114447264",
+   "+0.1s zxcby9 [SW] Activate event fired at 1793114447265",
+   "+10.8s zxcby9 [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 6291456 frontier= 6291456 err= network error"
+  ]
+ },
+ {
+  "id": "h1-cut503-nosw",
+  "title": "Обрыв через 6 МБ + 503 на следующий запрос (без SW)",
+  "hypothesis": "H1",
+  "expected": "Повтор Chrome получает 503 → MEDIA_ERR_NETWORK → load() → playing → цикл без notifyBroken.",
+  "metrics": {
+   "errors": [
+    {
+     "t": 11.2,
+     "code": 2,
+     "ct": 8.21,
+     "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
+    },
+    {
+     "t": 39.3,
+     "code": 2,
+     "ct": 35.7,
+     "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
+    },
+    {
+     "t": 67.2,
+     "code": 2,
+     "ct": 62.56,
+     "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
+    },
+    {
+     "t": 81.2,
+     "code": 2,
+     "ct": 72.31,
+     "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
+    },
+    {
+     "t": 114.8,
+     "code": 2,
+     "ct": 102.54,
+     "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
+    },
+    {
+     "t": 144.3,
+     "code": 2,
+     "ct": 127.82,
+     "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
+    }
+   ],
+   "errorCodes": {
+    "2": 6
+   },
+   "detachedErrors": 0,
+   "loadsAfterStart": 6,
+   "srcChangesAfterStart": 1,
+   "randReloads": 0,
+   "reloadsPerMinMax": 4,
+   "playingEvents": 7,
+   "backJumps": [
+    {
+     "t": 69.5,
+     "from": 62.56,
+     "to": 0
+    }
+   ],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 121,
+   "stalledSec": 4,
+   "lastCt": 127.82,
+   "lastPaused": false,
+   "controllerLost": false,
+   "siteCalls": {
+    "sworker.js": 2,
+    "swMain.js": 2,
+    "embed": 1,
+    "videoTelemetry": 2,
+    "sources": 1
+   },
+   "notifyBroken": 0,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": true,
+   "sw_serveEnter": 0,
+   "sw_serveFail": 0,
+   "sw_readDied": 0,
+   "sw_originNotOk": 0,
+   "sw_badRange": 0,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 0,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 0,
+   "sw_blacklistMsg": 0,
+   "sw_bypassBlacklisted": 0,
+   "sw_bypassDisabled": 0,
+   "sw_install": 1,
+   "sw_activate": 1,
+   "sw_evaluated": 1,
+   "swInstances": [
+    "p3lb8o"
+   ],
+   "swBrowserReqByInstance": [
+    0
+   ],
+   "swTargetsCreated": 1,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 18,
+   "cdnByDest": {
+    "empty": 18
+   },
+   "cdnStatus": {
+    "206": 12,
+    "503": 6
+   },
+   "cdnCuts": 6,
+   "cdnMB": 39.6,
+   "cdnMaxConcurrent": 1,
+   "cdnElementDirect": 0,
+   "snapshots": [
+    {
+     "label": "end",
+     "t": 153.3,
+     "state": {
+      "ct": 127.817875,
+      "paused": false,
+      "errorCounter": 6,
+      "lastSuccessTime": 127.817875,
+      "blacklisted": [],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {}
+    }
+   ]
+  },
+  "verdict": "воспроизведено",
+  "why": "6 ошибок <video> подряд, после каждой load() и снова playing (playing: 7); счётчик errorCounter сбрасывается, notifyBroken не вызван ни разу.",
+  "keyLines": [
+   "+0.1s p3lb8o [bench] SW script evaluated, instance=p3lb8o script=?27",
+   "+0.1s p3lb8o [SW] Install event fired at 1793114602750",
+   "+0.1s p3lb8o [SW] Activate event fired at 1793114602750"
+  ]
+ },
+ {
+  "id": "h1-outage-sw",
+  "title": "Обрыв через 6 МБ + 5 с отказа CDN (503) (sw)",
+  "hypothesis": "H1",
+  "expected": "Отказ длиннее повторов serve() и медиастека Chrome → ошибка <video> → load() через 500 мс → playing обнуляет errorCounter → цикл без notifyBroken.",
+  "metrics": {
+   "errors": [],
+   "errorCodes": {},
+   "detachedErrors": 0,
+   "loadsAfterStart": 0,
+   "srcChangesAfterStart": 0,
+   "randReloads": 0,
+   "reloadsPerMinMax": 0,
+   "playingEvents": 1,
+   "backJumps": [],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 149,
+   "stalledSec": 0,
+   "lastCt": 149.45,
+   "lastPaused": false,
+   "controllerLost": false,
+   "siteCalls": {
+    "sworker.js": 2,
+    "swMain.js": 2,
+    "embed": 1
+   },
+   "notifyBroken": 0,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": false,
+   "sw_serveEnter": 11,
+   "sw_serveFail": 10,
+   "sw_readDied": 1,
+   "sw_originNotOk": 10,
+   "sw_badRange": 0,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 0,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 11,
+   "sw_blacklistMsg": 0,
+   "sw_bypassBlacklisted": 0,
+   "sw_bypassDisabled": 0,
+   "sw_install": 1,
+   "sw_activate": 1,
+   "sw_evaluated": 1,
+   "swInstances": [
+    "ppqbtr"
+   ],
+   "swBrowserReqByInstance": [
+    11
+   ],
+   "swTargetsCreated": 1,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 109,
+   "cdnByDest": {
+    "empty": 109
+   },
+   "cdnStatus": {
+    "206": 10,
+    "503": 99
+   },
+   "cdnCuts": 7,
+   "cdnMB": 56.7,
+   "cdnMaxConcurrent": 2,
+   "cdnElementDirect": 0,
+   "snapshots": [
+    {
+     "label": "end",
+     "t": 153.4,
+     "state": {
+      "ct": 149.961891,
+      "paused": false,
+      "errorCounter": 0,
+      "lastSuccessTime": null,
+      "blacklisted": [],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {
+      "video-cache-meta": 1,
+      "video-cache-v1-bench-A": 53
+     }
+    }
+   ]
+  },
+  "verdict": "не воспроизводится",
+  "why": "Ни одной ошибки <video>: сбой поглощён ниже плеера (повтор в SW или в медиастеке Chrome).",
+  "keyLines": [
+   "+0.1s ppqbtr [bench] SW script evaluated, instance=ppqbtr script=?27",
+   "+0.1s ppqbtr [SW] Install event fired at 1793114758317",
+   "+0.1s ppqbtr [SW] Activate event fired at 1793114758318",
+   "+10.8s ppqbtr [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 6291456 frontier= 6291456 err= network error",
+   "+10.8s ppqbtr [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+10.8s ppqbtr [SEEK-DIAG] serve FAIL m= bench-A start= 0 pos= 6291456 end= 307695338 servedSoFar= 6291456 total= 307695339 connFrontier= 6291456 connDead= true err= Fetch failed: 503",
+   "+11.1s ppqbtr [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+11.1s ppqbtr [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+11.5s ppqbtr [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+11.5s ppqbtr [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+11.9s ppqbtr [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+11.9s ppqbtr [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+12.3s ppqbtr [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+12.3s ppqbtr [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+12.8s ppqbtr [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+12.8s ppqbtr [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+13.4s ppqbtr [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+13.4s ppqbtr [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+14.0s ppqbtr [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+14.0s ppqbtr [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+14.7s ppqbtr [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+14.7s ppqbtr [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+15.4s ppqbtr [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+15.4s ppqbtr [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503"
+  ]
+ },
+ {
+  "id": "h1-outage-nosw",
+  "title": "Обрыв через 6 МБ + 5 с отказа CDN (503) (nosw)",
+  "hypothesis": "H1",
+  "expected": "Отказ длиннее повторов serve() и медиастека Chrome → ошибка <video> → load() через 500 мс → playing обнуляет errorCounter → цикл без notifyBroken.",
+  "metrics": {
+   "errors": [
+    {
+     "t": 11.2,
+     "code": 2,
+     "ct": 8.18,
+     "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
+    },
+    {
+     "t": 12.4,
+     "code": 2,
+     "ct": 8.85,
+     "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
+    },
+    {
+     "t": 13.4,
+     "code": 2,
+     "ct": 8.85,
+     "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
+    },
+    {
+     "t": 15,
+     "code": 4,
+     "ct": 0,
+     "msg": "MEDIA_ELEMENT_ERROR: Format error"
+    },
+    {
+     "t": 15,
+     "code": 4,
+     "ct": 0,
+     "msg": "MEDIA_ELEMENT_ERROR: Format error"
+    },
+    {
+     "t": 30.3,
+     "code": 2,
+     "ct": 14.61,
+     "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
+    }
+   ],
+   "errorCodes": {
+    "2": 4,
+    "4": 2
+   },
+   "detachedErrors": 0,
+   "loadsAfterStart": 8,
+   "srcChangesAfterStart": 2,
+   "randReloads": 1,
+   "reloadsPerMinMax": 8,
+   "playingEvents": 6,
+   "backJumps": [
+    {
+     "t": 15.5,
+     "from": 8.85,
+     "to": 0
+    }
+   ],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 102,
+   "stalledSec": 30,
+   "lastCt": 104.65,
+   "lastPaused": false,
+   "controllerLost": false,
+   "siteCalls": {
+    "sworker.js": 2,
+    "swMain.js": 2,
+    "embed": 1,
+    "sources": 1,
+    "videoTelemetry": 2
+   },
+   "notifyBroken": 0,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": true,
+   "sw_serveEnter": 0,
+   "sw_serveFail": 0,
+   "sw_readDied": 0,
+   "sw_originNotOk": 0,
+   "sw_badRange": 0,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 0,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 0,
+   "sw_blacklistMsg": 1,
+   "sw_bypassBlacklisted": 8,
+   "sw_bypassDisabled": 0,
+   "sw_install": 1,
+   "sw_activate": 1,
+   "sw_evaluated": 1,
+   "swInstances": [
+    "qxpd9t"
+   ],
+   "swBrowserReqByInstance": [
+    0
+   ],
+   "swTargetsCreated": 1,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 12,
+   "cdnByDest": {
+    "empty": 5,
+    "video": 7
+   },
+   "cdnStatus": {
+    "206": 6,
+    "503": 6
+   },
+   "cdnCuts": 6,
+   "cdnMB": 36,
+   "cdnMaxConcurrent": 1,
+   "cdnElementDirect": 7,
+   "snapshots": [
+    {
+     "label": "end",
+     "t": 153.4,
+     "state": {
+      "ct": 105.158509,
+      "paused": false,
+      "errorCounter": 0,
+      "lastSuccessTime": null,
+      "blacklisted": [
+       "bench-A"
+      ],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {
+      "video-cache-meta": 0
+     }
+    }
+   ]
+  },
+  "verdict": "воспроизведено",
+  "why": "6 ошибок <video> подряд, после каждой load() и снова playing (playing: 6); счётчик errorCounter сбрасывается, notifyBroken не вызван ни разу.",
+  "keyLines": [
+   "+0.1s qxpd9t [bench] SW script evaluated, instance=qxpd9t script=?27",
+   "+0.1s qxpd9t [SW] Install event fired at 1793114913936",
+   "+0.1s qxpd9t [SW] Activate event fired at 1793114913938",
+   "+15.0s qxpd9t [SW] Blacklisting mParam: bench-A",
+   "+15.0s qxpd9t [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+19.6s qxpd9t [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+30.2s qxpd9t [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+62.3s qxpd9t [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+62.4s qxpd9t [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+82.5s qxpd9t [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+112.8s qxpd9t [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+138.7s qxpd9t [SW] mParam bench-A is blacklisted, bypassing cache"
+  ]
+ },
+ {
+  "id": "h1-long-outage-sw",
+  "title": "Обрыв через 6 МБ + 40 с отказа CDN (503) (sw)",
+  "hypothesis": "H1",
+  "expected": "Отказ дольше бюджета повторов Chrome (~30 попыток) и буфера → ошибка <video> → load() через 500 мс → playing обнуляет errorCounter → цикл без notifyBroken.",
+  "metrics": {
+   "errors": [
+    {
+     "t": 41.8,
+     "code": 2,
+     "ct": 24.52,
+     "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
+    },
+    {
+     "t": 92.5,
+     "code": 2,
+     "ct": 53.6,
+     "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
+    },
+    {
+     "t": 142.8,
+     "code": 2,
+     "ct": 82.79,
+     "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
+    },
+    {
+     "t": 193.4,
+     "code": 2,
+     "ct": 111.8,
+     "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
+    }
+   ],
+   "errorCodes": {
+    "2": 4
+   },
+   "detachedErrors": 0,
+   "loadsAfterStart": 5,
+   "srcChangesAfterStart": 1,
+   "randReloads": 0,
+   "reloadsPerMinMax": 3,
+   "playingEvents": 5,
+   "backJumps": [],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 120,
+   "stalledSec": 66,
+   "lastCt": 121.79,
+   "lastPaused": false,
+   "controllerLost": false,
+   "siteCalls": {
+    "sworker.js": 2,
+    "swMain.js": 2,
+    "embed": 1,
+    "videoTelemetry": 3,
+    "sources": 1
+   },
+   "notifyBroken": 0,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": false,
+   "sw_serveEnter": 177,
+   "sw_serveFail": 173,
+   "sw_readDied": 5,
+   "sw_originNotOk": 173,
+   "sw_badRange": 0,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 0,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 177,
+   "sw_blacklistMsg": 0,
+   "sw_bypassBlacklisted": 0,
+   "sw_bypassDisabled": 0,
+   "sw_install": 1,
+   "sw_activate": 1,
+   "sw_evaluated": 1,
+   "swInstances": [
+    "c4n1xm"
+   ],
+   "swBrowserReqByInstance": [
+    177
+   ],
+   "swTargetsCreated": 1,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 1131,
+   "cdnByDest": {
+    "empty": 1131
+   },
+   "cdnStatus": {
+    "206": 6,
+    "503": 1125
+   },
+   "cdnCuts": 5,
+   "cdnMB": 30.2,
+   "cdnMaxConcurrent": 1,
+   "cdnElementDirect": 0,
+   "snapshots": [
+    {
+     "label": "end",
+     "t": 213.4,
+     "state": {
+      "ct": 122.312842,
+      "paused": false,
+      "errorCounter": 4,
+      "lastSuccessTime": null,
+      "blacklisted": [],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {
+      "video-cache-meta": 1,
+      "video-cache-v1-bench-A": 31
+     }
+    }
+   ]
+  },
+  "verdict": "частично",
+  "why": "Ошибок: 4, playing: 5, notifyBroken: 0.",
+  "keyLines": [
+   "+0.1s c4n1xm [bench] SW script evaluated, instance=c4n1xm script=?27",
+   "+0.1s c4n1xm [SW] Install event fired at 1793115069565",
+   "+0.1s c4n1xm [SW] Activate event fired at 1793115069567",
+   "+10.8s c4n1xm [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 6291456 frontier= 6291456 err= network error",
+   "+10.8s c4n1xm [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+10.8s c4n1xm [SEEK-DIAG] serve FAIL m= bench-A start= 0 pos= 6291456 end= 307695338 servedSoFar= 6291456 total= 307695339 connFrontier= 6291456 connDead= true err= Fetch failed: 503",
+   "+11.1s c4n1xm [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+11.1s c4n1xm [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+11.4s c4n1xm [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+11.4s c4n1xm [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+11.8s c4n1xm [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+11.8s c4n1xm [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+12.3s c4n1xm [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+12.3s c4n1xm [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+12.8s c4n1xm [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+12.8s c4n1xm [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+13.4s c4n1xm [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+13.4s c4n1xm [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+14.0s c4n1xm [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+14.0s c4n1xm [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+14.6s c4n1xm [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+14.6s c4n1xm [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+15.3s c4n1xm [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+15.3s c4n1xm [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+16.1s c4n1xm [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+16.1s c4n1xm [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+16.9s c4n1xm [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+16.9s c4n1xm [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+17.8s c4n1xm [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+17.8s c4n1xm [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+18.7s c4n1xm [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+18.7s c4n1xm [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+19.6s c4n1xm [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+19.6s c4n1xm [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+20.6s c4n1xm [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+20.6s c4n1xm [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+21.7s c4n1xm [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+21.7s c4n1xm [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+22.8s c4n1xm [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+22.8s c4n1xm [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503"
+  ]
+ },
+ {
+  "id": "h2a-zero-sw",
+  "title": "Ошибка на 0:00 до старта, затем ошибка на ~1:30 (sw)",
+  "hypothesis": "H2a",
+  "expected": "Первая ошибка при ct=0 оставляет lastSuccessTime=0; вторая ошибка не восстанавливает позицию → серия с начала, на паузе.",
+  "metrics": {
+   "errors": [],
+   "errorCodes": {},
+   "detachedErrors": 0,
+   "loadsAfterStart": 0,
+   "srcChangesAfterStart": 0,
+   "randReloads": 0,
+   "reloadsPerMinMax": 0,
+   "playingEvents": 1,
+   "backJumps": [],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 119,
+   "stalledSec": 0,
+   "lastCt": 119.45,
+   "lastPaused": false,
+   "controllerLost": false,
+   "siteCalls": {
+    "sworker.js": 2,
+    "swMain.js": 2,
+    "embed": 1,
+    "videoTelemetry": 1
+   },
+   "notifyBroken": 0,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": false,
+   "sw_serveEnter": 11,
+   "sw_serveFail": 10,
+   "sw_readDied": 1,
+   "sw_originNotOk": 10,
+   "sw_badRange": 0,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 0,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 11,
+   "sw_blacklistMsg": 0,
+   "sw_bypassBlacklisted": 0,
+   "sw_bypassDisabled": 0,
+   "sw_install": 1,
+   "sw_activate": 1,
+   "sw_evaluated": 1,
+   "swInstances": [
+    "k806vk"
+   ],
+   "swBrowserReqByInstance": [
+    11
+   ],
+   "swTargetsCreated": 1,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 71,
+   "cdnByDest": {
+    "empty": 71
+   },
+   "cdnStatus": {
+    "206": 5,
+    "503": 66
+   },
+   "cdnCuts": 2,
+   "cdnMB": 71.3,
+   "cdnMaxConcurrent": 2,
+   "cdnElementDirect": 0,
+   "snapshots": [
+    {
+     "label": "end",
+     "t": 137.4,
+     "state": {
+      "ct": 119.989742,
+      "paused": false,
+      "errorCounter": 0,
+      "lastSuccessTime": null,
+      "blacklisted": [],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {
+      "video-cache-meta": 1,
+      "video-cache-v1-bench-A": 70
+     }
+    }
+   ]
+  },
+  "verdict": "не воспроизводится",
+  "why": "Ошибки <video> не возникло, сбой поглощён ниже плеера.",
+  "keyLines": [
+   "+0.1s k806vk [bench] SW script evaluated, instance=k806vk script=?27",
+   "+0.1s k806vk [SW] Install event fired at 1793115285255",
+   "+0.1s k806vk [SW] Activate event fired at 1793115285256",
+   "+5.0s k806vk [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 2752512 frontier= 2752512 err= network error",
+   "+5.0s k806vk [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
+   "+5.0s k806vk [SEEK-DIAG] serve FAIL m= bench-A start= 0 pos= 2752512 end= 307695338 servedSoFar= 2752512 total= 307695339 connFrontier= 2752512 connDead= true err= Fetch failed: 503",
+   "+5.3s k806vk [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
+   "+5.3s k806vk [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+5.6s k806vk [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
+   "+5.6s k806vk [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+6.0s k806vk [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
+   "+6.0s k806vk [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+6.5s k806vk [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
+   "+6.5s k806vk [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+7.0s k806vk [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
+   "+7.0s k806vk [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+7.6s k806vk [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
+   "+7.6s k806vk [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+8.2s k806vk [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
+   "+8.2s k806vk [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+8.8s k806vk [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
+   "+8.8s k806vk [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+9.5s k806vk [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
+   "+9.5s k806vk [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503"
+  ]
+ },
+ {
+  "id": "h2a-zero-nosw",
+  "title": "Ошибка на 0:00 до старта, затем ошибка на ~1:30 (nosw)",
+  "hypothesis": "H2a",
+  "expected": "Первая ошибка при ct=0 оставляет lastSuccessTime=0; вторая ошибка не восстанавливает позицию → серия с начала, на паузе.",
+  "metrics": {
+   "errors": [
+    {
+     "t": 17,
+     "code": 2,
+     "ct": 0.02,
+     "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
+    }
+   ],
+   "errorCodes": {
+    "2": 1
+   },
+   "detachedErrors": 0,
+   "loadsAfterStart": 1,
+   "srcChangesAfterStart": 0,
+   "randReloads": 0,
+   "reloadsPerMinMax": 1,
+   "playingEvents": 2,
+   "backJumps": [],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 118,
+   "stalledSec": 0,
+   "lastCt": 118.9,
+   "lastPaused": false,
+   "controllerLost": false,
+   "siteCalls": {
+    "sworker.js": 2,
+    "swMain.js": 2,
+    "embed": 1,
+    "videoTelemetry": 1
+   },
+   "notifyBroken": 0,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": false,
+   "sw_serveEnter": 0,
+   "sw_serveFail": 0,
+   "sw_readDied": 0,
+   "sw_originNotOk": 0,
+   "sw_badRange": 0,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 0,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 0,
+   "sw_blacklistMsg": 0,
+   "sw_bypassBlacklisted": 0,
+   "sw_bypassDisabled": 0,
+   "sw_install": 1,
+   "sw_activate": 1,
+   "sw_evaluated": 1,
+   "swInstances": [
+    "4ucia1"
+   ],
+   "swBrowserReqByInstance": [
+    0
+   ],
+   "swTargetsCreated": 1,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 4,
+   "cdnByDest": {
+    "empty": 4
+   },
+   "cdnStatus": {
+    "206": 3,
+    "503": 1
+   },
+   "cdnCuts": 2,
+   "cdnMB": 35.8,
+   "cdnMaxConcurrent": 1,
+   "cdnElementDirect": 0,
+   "snapshots": [
+    {
+     "label": "end",
+     "t": 137.3,
+     "state": {
+      "ct": 119.431682,
+      "paused": false,
+      "errorCounter": 0,
+      "lastSuccessTime": null,
+      "blacklisted": [],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {}
+    }
+   ]
+  },
+  "verdict": "не воспроизводится",
+  "why": "Ошибок: 1, но позиция восстановлена (последняя ct=118.9).",
+  "keyLines": [
+   "+0.1s 4ucia1 [bench] SW script evaluated, instance=4ucia1 script=?27",
+   "+0.1s 4ucia1 [SW] Install event fired at 1793115424759",
+   "+0.1s 4ucia1 [SW] Activate event fired at 1793115424761"
+  ]
+ },
+ {
+  "id": "h2a-preload-nosw",
+  "title": "Ошибка во время preload (ct=0), затем ошибка на ~1:30 (без SW)",
+  "hypothesis": "H2a",
+  "expected": "Первая ошибка при ct=0 оставляет lastSuccessTime=0 навсегда; после второй ошибки позиция не восстанавливается → серия с начала, плеер на паузе.",
+  "metrics": {
+   "errors": [
+    {
+     "t": 15,
+     "code": 2,
+     "ct": 0.02,
+     "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
+    }
+   ],
+   "errorCodes": {
+    "2": 1
+   },
+   "detachedErrors": 0,
+   "loadsAfterStart": 1,
+   "srcChangesAfterStart": 0,
+   "randReloads": 0,
+   "reloadsPerMinMax": 1,
+   "playingEvents": 2,
+   "backJumps": [],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 138,
+   "stalledSec": 0,
+   "lastCt": 138.87,
+   "lastPaused": false,
+   "controllerLost": false,
+   "siteCalls": {
+    "sworker.js": 2,
+    "swMain.js": 2,
+    "embed": 1,
+    "videoTelemetry": 1
+   },
+   "notifyBroken": 0,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": false,
+   "sw_serveEnter": 0,
+   "sw_serveFail": 0,
+   "sw_readDied": 0,
+   "sw_originNotOk": 0,
+   "sw_badRange": 0,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 0,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 0,
+   "sw_blacklistMsg": 0,
+   "sw_bypassBlacklisted": 0,
+   "sw_bypassDisabled": 0,
+   "sw_install": 1,
+   "sw_activate": 1,
+   "sw_evaluated": 1,
+   "swInstances": [
+    "7g4z29"
+   ],
+   "swBrowserReqByInstance": [
+    0
+   ],
+   "swTargetsCreated": 1,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 5,
+   "cdnByDest": {
+    "empty": 5
+   },
+   "cdnStatus": {
+    "206": 3,
+    "503": 2
+   },
+   "cdnCuts": 2,
+   "cdnMB": 38.1,
+   "cdnMaxConcurrent": 1,
+   "cdnElementDirect": 0,
+   "snapshots": [
+    {
+     "label": "end",
+     "t": 155.4,
+     "state": {
+      "ct": 139.37463,
+      "paused": false,
+      "errorCounter": 0,
+      "lastSuccessTime": null,
+      "blacklisted": [],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {}
+    }
+   ]
+  },
+  "verdict": "не воспроизводится",
+  "why": "Ошибок: 1, но позиция восстановлена (последняя ct=138.87).",
+  "keyLines": [
+   "+0.1s 7g4z29 [bench] SW script evaluated, instance=7g4z29 script=?27",
+   "+0.1s 7g4z29 [SW] Install event fired at 1793115564394",
+   "+0.1s 7g4z29 [SW] Activate event fired at 1793115564394"
+  ]
+ },
+ {
+  "id": "h2a-no-sw-support",
+  "title": "Без контроллера SW: ошибка на старте (ct=0), затем ошибка на ~3:09",
+  "hypothesis": "H2a",
+  "expected": "Ошибка code 4 при ct=0 → lastSuccessTime=0 навсегда; вторая ошибка (декодирование на ~3:09) → load() без восстановления → позиция 0, пауза.",
+  "metrics": {
+   "errors": [
+    {
+     "t": 0.1,
+     "code": 4,
+     "ct": 0,
+     "msg": "MEDIA_ELEMENT_ERROR: Format error"
+    },
+    {
+     "t": 40.4,
+     "code": 3,
+     "ct": 189.3,
+     "msg": "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 \"(null)\" (-12909): VTDecompressionOutputCallback"
+    },
+    {
+     "t": 41.7,
+     "code": 3,
+     "ct": 189.33,
+     "msg": "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 \"(null)\" (-12909): VTDecompressionOutputCallback"
+    },
+    {
+     "t": 44.2,
+     "code": 3,
+     "ct": 189.37,
+     "msg": "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 \"(null)\" (-12909): VTDecompressionOutputCallback"
+    },
+    {
+     "t": 48.5,
+     "code": 3,
+     "ct": 189.37,
+     "msg": "PipelineStatus::PIPELINE_ERROR_DECODE: Failed to send audio packet for decoding: {timestamp=189610667 duration=21333 size=347 is_key_frame=1 encrypted=0}"
+    },
+    {
+     "t": 52.4,
+     "code": 3,
+     "ct": 189.37,
+     "msg": "PipelineStatus::PIPELINE_ERROR_DECODE: Failed to send audio packet for decoding: {timestamp=189610667 duration=21333 size=347 is_key_frame=1 encrypted=0}"
+    }
+   ],
+   "errorCodes": {
+    "3": 5,
+    "4": 1
+   },
+   "detachedErrors": 0,
+   "loadsAfterStart": 5,
+   "srcChangesAfterStart": 1,
+   "randReloads": 0,
+   "reloadsPerMinMax": 5,
+   "playingEvents": 7,
+   "backJumps": [],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 34,
+   "stalledSec": 8,
+   "lastCt": 189.37,
+   "lastPaused": false,
+   "controllerLost": false,
+   "siteCalls": {
+    "embed": 1,
+    "sworker.js": 1,
+    "sources": 1,
+    "brokenVideo": 1,
+    "videoTelemetry": 1
+   },
+   "notifyBroken": 1,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": false,
+   "sw_serveEnter": 0,
+   "sw_serveFail": 0,
+   "sw_readDied": 0,
+   "sw_originNotOk": 0,
+   "sw_badRange": 0,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 0,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 0,
+   "sw_blacklistMsg": 0,
+   "sw_bypassBlacklisted": 0,
+   "sw_bypassDisabled": 0,
+   "sw_install": 0,
+   "sw_activate": 0,
+   "sw_evaluated": 0,
+   "swInstances": [],
+   "swBrowserReqByInstance": [],
+   "swTargetsCreated": 1,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 13,
+   "cdnByDest": {
+    "video": 13
+   },
+   "cdnStatus": {
+    "206": 12,
+    "503": 1
+   },
+   "cdnCuts": 0,
+   "cdnMB": 40.1,
+   "cdnMaxConcurrent": 1,
+   "cdnElementDirect": 13,
+   "snapshots": [
+    {
+     "label": "end",
+     "t": 66,
+     "state": {
+      "ct": 189.371034,
+      "paused": false,
+      "errorCounter": 6,
+      "lastSuccessTime": 189.371034,
+      "blacklisted": [],
+      "ctrl": false,
+      "rs": 4
+     },
+     "cache": {}
+    }
+   ]
+  },
+  "verdict": "не воспроизводится",
+  "why": "Ошибок: 6, но позиция восстановлена (последняя ct=189.37). Ошибки: code 4 при ct=0, code 3 при ct=189.3, code 3 при ct=189.33, code 3 при ct=189.37, code 3 при ct=189.37, code 3 при ct=189.37.",
+  "keyLines": []
+ },
+ {
+  "id": "h2b-decode-sw",
+  "title": "Ошибка декодирования в середине (SW): ветка blacklist",
+  "hypothesis": "H2b",
+  "expected": "MEDIA_ERR_DECODE → blacklist m → src(&rand) + load() без restoreLastTime → серия с начала.",
+  "metrics": {
+   "errors": [
+    {
+     "t": 30.9,
+     "code": 3,
+     "ct": 189.28,
+     "msg": "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 \"(null)\" (-12909): VTDecompressionOutputCallback"
+    },
+    {
+     "t": 31.7,
+     "code": 3,
+     "ct": 189.33,
+     "msg": "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 \"(null)\" (-12909): VTDecompressionOutputCallback"
+    },
+    {
+     "t": 32.9,
+     "code": 3,
+     "ct": 189.34,
+     "msg": "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 \"(null)\" (-12909): VTDecompressionOutputCallback"
+    },
+    {
+     "t": 35.5,
+     "code": 3,
+     "ct": 189.36,
+     "msg": "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 \"(null)\" (-12909): VTDecompressionOutputCallback"
+    },
+    {
+     "t": 39.4,
+     "code": 3,
+     "ct": 189.37,
+     "msg": "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 \"(null)\" (-12909): VTDecompressionOutputCallback"
+    },
+    {
+     "t": 43.4,
+     "code": 3,
+     "ct": 189.37,
+     "msg": "PipelineStatus::PIPELINE_ERROR_DECODE: Failed to send audio packet for decoding: {timestamp=189610667 duration=21333 size=347 is_key_frame=1 encrypted=0}"
+    },
+    {
+     "t": 69.4,
+     "code": 3,
+     "ct": 189.37,
+     "msg": "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 \"(null)\" (-12909): VTDecompressionOutputCallback"
+    }
+   ],
+   "errorCodes": {
+    "3": 7
+   },
+   "detachedErrors": 0,
+   "loadsAfterStart": 8,
+   "srcChangesAfterStart": 2,
+   "randReloads": 1,
+   "reloadsPerMinMax": 8,
+   "playingEvents": 9,
+   "backJumps": [],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 28,
+   "stalledSec": 20,
+   "lastCt": 189.37,
+   "lastPaused": true,
+   "controllerLost": false,
+   "siteCalls": {
+    "sworker.js": 2,
+    "swMain.js": 2,
+    "embed": 1,
+    "brokenVideo": 1,
+    "sources": 1,
+    "videoTelemetry": 1
+   },
+   "notifyBroken": 1,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": false,
+   "sw_serveEnter": 2,
+   "sw_serveFail": 0,
+   "sw_readDied": 0,
+   "sw_originNotOk": 0,
+   "sw_badRange": 0,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 0,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 2,
+   "sw_blacklistMsg": 1,
+   "sw_bypassBlacklisted": 19,
+   "sw_bypassDisabled": 0,
+   "sw_install": 1,
+   "sw_activate": 1,
+   "sw_evaluated": 1,
+   "swInstances": [
+    "j0kbml"
+   ],
+   "swBrowserReqByInstance": [
+    2
+   ],
+   "swTargetsCreated": 1,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 17,
+   "cdnByDest": {
+    "empty": 3,
+    "video": 14
+   },
+   "cdnStatus": {
+    "206": 17
+   },
+   "cdnCuts": 0,
+   "cdnMB": 130.4,
+   "cdnMaxConcurrent": 2,
+   "cdnElementDirect": 14,
+   "snapshots": [
+    {
+     "label": "end",
+     "t": 71.9,
+     "state": {
+      "ct": 189.373005,
+      "paused": true,
+      "errorCounter": 7,
+      "lastSuccessTime": 189.373005,
+      "blacklisted": [
+       "bench-A"
+      ],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {
+      "video-cache-meta": 0
+     }
+    }
+   ]
+  },
+  "verdict": "не воспроизводится",
+  "why": "Ошибок: 7, но позиция восстановлена (последняя ct=189.37). Коды ошибок: {\"3\":7}; blacklist: 0; src с &rand: 1.",
+  "keyLines": [
+   "+0.1s j0kbml [bench] SW script evaluated, instance=j0kbml script=?27",
+   "+0.1s j0kbml [SW] Install event fired at 1793115790201",
+   "+0.1s j0kbml [SW] Activate event fired at 1793115790203",
+   "+30.9s j0kbml [SW] Blacklisting mParam: bench-A",
+   "+30.9s j0kbml [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+31.1s j0kbml [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+32.7s j0kbml [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+32.8s j0kbml [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+32.8s j0kbml [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+32.8s j0kbml [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+32.8s j0kbml [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+34.7s j0kbml [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+35.0s j0kbml [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+39.4s j0kbml [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+39.4s j0kbml [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+43.3s j0kbml [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+43.4s j0kbml [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+43.4s j0kbml [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+43.4s j0kbml [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+43.4s j0kbml [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+69.3s j0kbml [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+69.3s j0kbml [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+69.3s j0kbml [SW] mParam bench-A is blacklisted, bypassing cache"
+  ]
+ },
+ {
+  "id": "h3-first-503-sw",
+  "title": "Первый запрос SW к CDN получает 503 (SW)",
+  "hypothesis": "H3",
+  "expected": "_ensureMeta глотает исключение → фальшивый 206 «bytes 0-104857600/*», а не откат на fetch(request); после ответа с неизвестным размером перемотка может не работать.",
+  "metrics": {
+   "errors": [],
+   "errorCodes": {},
+   "detachedErrors": 0,
+   "loadsAfterStart": 0,
+   "srcChangesAfterStart": 0,
+   "randReloads": 0,
+   "reloadsPerMinMax": 0,
+   "playingEvents": 3,
+   "backJumps": [],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 71,
+   "stalledSec": 6,
+   "lastCt": 316.02,
+   "lastPaused": false,
+   "controllerLost": false,
+   "siteCalls": {
+    "sworker.js": 2,
+    "swMain.js": 2,
+    "embed": 1
+   },
+   "notifyBroken": 0,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": false,
+   "sw_serveEnter": 3,
+   "sw_serveFail": 0,
+   "sw_readDied": 0,
+   "sw_originNotOk": 0,
+   "sw_badRange": 0,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 0,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 3,
+   "sw_blacklistMsg": 0,
+   "sw_bypassBlacklisted": 0,
+   "sw_bypassDisabled": 0,
+   "sw_install": 1,
+   "sw_activate": 1,
+   "sw_evaluated": 1,
+   "swInstances": [
+    "51xkt8"
+   ],
+   "swBrowserReqByInstance": [
+    3
+   ],
+   "swTargetsCreated": 1,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 9,
+   "cdnByDest": {
+    "empty": 9
+   },
+   "cdnStatus": {
+    "206": 7,
+    "503": 2
+   },
+   "cdnCuts": 0,
+   "cdnMB": 52.6,
+   "cdnMaxConcurrent": 2,
+   "cdnElementDirect": 0,
+   "snapshots": [
+    {
+     "label": "end",
+     "t": 83.4,
+     "state": {
+      "ct": 316.53554,
+      "paused": false,
+      "errorCounter": 0,
+      "lastSuccessTime": null,
+      "blacklisted": [],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {
+      "video-cache-meta": 1,
+      "video-cache-v1-bench-A": 47
+     }
+    }
+   ]
+  },
+  "verdict": "не воспроизводится",
+  "why": "browser req с total=MISSING (ответ 206 с '*' и запасным концом 100 МБ): 0; handler FAIL (честный откат): 0; ошибок <video>: 0 {}; прыжков назад: 0; несработавших перемоток: 0; стояло 6 с.",
+  "keyLines": [
+   "+0.1s 51xkt8 [bench] SW script evaluated, instance=51xkt8 script=?27",
+   "+0.1s 51xkt8 [SW] Install event fired at 1793115864288",
+   "+0.1s 51xkt8 [SW] Activate event fired at 1793115864289"
+  ]
+ },
+ {
+  "id": "h3-hidden-range-sw",
+  "title": "CDN не открывает Content-Range в Expose-Headers (SW)",
+  "hypothesis": "H3",
+  "expected": "Каждый ответ SW → «missing Content-Range» → meta null → фальшивый 206 → serve FAIL; после code 4 — blacklist и прямой путь.",
+  "metrics": {
+   "errors": [],
+   "errorCodes": {},
+   "detachedErrors": 0,
+   "loadsAfterStart": 0,
+   "srcChangesAfterStart": 0,
+   "randReloads": 0,
+   "reloadsPerMinMax": 0,
+   "playingEvents": 3,
+   "backJumps": [],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 77,
+   "stalledSec": 0,
+   "lastCt": 319.44,
+   "lastPaused": false,
+   "controllerLost": false,
+   "siteCalls": {
+    "sworker.js": 2,
+    "swMain.js": 2,
+    "embed": 1
+   },
+   "notifyBroken": 0,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": false,
+   "sw_serveEnter": 0,
+   "sw_serveFail": 0,
+   "sw_readDied": 0,
+   "sw_originNotOk": 0,
+   "sw_badRange": 17,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 17,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 0,
+   "sw_blacklistMsg": 0,
+   "sw_bypassBlacklisted": 0,
+   "sw_bypassDisabled": 0,
+   "sw_install": 1,
+   "sw_activate": 1,
+   "sw_evaluated": 1,
+   "swInstances": [
+    "hq8jyx"
+   ],
+   "swBrowserReqByInstance": [
+    0
+   ],
+   "swTargetsCreated": 1,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 22,
+   "cdnByDest": {
+    "empty": 22
+   },
+   "cdnStatus": {
+    "206": 22
+   },
+   "cdnCuts": 0,
+   "cdnMB": 56.1,
+   "cdnMaxConcurrent": 2,
+   "cdnElementDirect": 0,
+   "snapshots": [
+    {
+     "label": "end",
+     "t": 82,
+     "state": {
+      "ct": 319.450316,
+      "paused": false,
+      "errorCounter": 0,
+      "lastSuccessTime": null,
+      "blacklisted": [],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {}
+    }
+   ]
+  },
+  "verdict": "воспроизведено",
+  "why": "BAD range: 17; total=MISSING: 0; serve FAIL: 0; ошибок <video>: {}; blacklist: 0; прямых запросов <video>: 0; сыграно 77 с.",
+  "keyLines": [
+   "+0.1s hq8jyx [bench] SW script evaluated, instance=hq8jyx script=?27",
+   "+0.1s hq8jyx [SW] Install event fired at 1793115949954",
+   "+0.1s hq8jyx [SW] Activate event fired at 1793115949955",
+   "+0.5s hq8jyx [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206",
+   "+0.5s hq8jyx [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response",
+   "+1.5s hq8jyx [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206",
+   "+1.5s hq8jyx [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response",
+   "+6.5s hq8jyx [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206",
+   "+6.5s hq8jyx [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response",
+   "+11.5s hq8jyx [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206",
+   "+11.5s hq8jyx [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response",
+   "+16.5s hq8jyx [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206",
+   "+16.5s hq8jyx [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response",
+   "+21.5s hq8jyx [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206",
+   "+21.5s hq8jyx [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response",
+   "+26.5s hq8jyx [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206",
+   "+26.5s hq8jyx [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response",
+   "+31.5s hq8jyx [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206",
+   "+31.5s hq8jyx [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response",
+   "+36.5s hq8jyx [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206",
+   "+36.5s hq8jyx [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response",
+   "+41.5s hq8jyx [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206",
+   "+41.5s hq8jyx [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response",
+   "+46.5s hq8jyx [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206",
+   "+46.5s hq8jyx [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response",
+   "+51.5s hq8jyx [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206",
+   "+51.5s hq8jyx [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response",
+   "+56.5s hq8jyx [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206",
+   "+56.5s hq8jyx [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response",
+   "+61.5s hq8jyx [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206",
+   "+61.5s hq8jyx [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response",
+   "+66.5s hq8jyx [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206",
+   "+66.5s hq8jyx [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response",
+   "+71.5s hq8jyx [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206",
+   "+71.5s hq8jyx [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response",
+   "+76.5s hq8jyx [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206",
+   "+76.5s hq8jyx [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response"
+  ]
+ },
+ {
+  "id": "h4-expired-403-sw",
+  "title": "Подпись истекла: с 45-й секунды CDN отвечает 403 (SW)",
+  "hypothesis": "H4",
+  "expected": "Обрыв на 45 с → serve переоткрывает один раз → 403 → serve FAIL; источники через /sources/ не обновляются; ошибки до notifyBroken.",
+  "metrics": {
+   "errors": [],
+   "errorCodes": {},
+   "detachedErrors": 0,
+   "loadsAfterStart": 2,
+   "srcChangesAfterStart": 1,
+   "randReloads": 0,
+   "reloadsPerMinMax": 2,
+   "playingEvents": 2,
+   "backJumps": [],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 244,
+   "stalledSec": 0,
+   "lastCt": 244.36,
+   "lastPaused": false,
+   "controllerLost": false,
+   "siteCalls": {
+    "sworker.js": 2,
+    "swMain.js": 2,
+    "embed": 1,
+    "sources": 1,
+    "videoTelemetry": 1
+   },
+   "notifyBroken": 0,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": false,
+   "sw_serveEnter": 3,
+   "sw_serveFail": 0,
+   "sw_readDied": 0,
+   "sw_originNotOk": 0,
+   "sw_badRange": 0,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 0,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 3,
+   "sw_blacklistMsg": 0,
+   "sw_bypassBlacklisted": 0,
+   "sw_bypassDisabled": 0,
+   "sw_install": 1,
+   "sw_activate": 1,
+   "sw_evaluated": 1,
+   "swInstances": [
+    "veu3j5"
+   ],
+   "swBrowserReqByInstance": [
+    3
+   ],
+   "swTargetsCreated": 1,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 53,
+   "cdnByDest": {
+    "empty": 53
+   },
+   "cdnStatus": {
+    "206": 13,
+    "403": 40
+   },
+   "cdnCuts": 1,
+   "cdnMB": 65.4,
+   "cdnMaxConcurrent": 2,
+   "cdnElementDirect": 0,
+   "snapshots": [
+    {
+     "label": "end",
+     "t": 248.3,
+     "state": {
+      "ct": 244.878367,
+      "paused": false,
+      "errorCounter": 0,
+      "lastSuccessTime": null,
+      "blacklisted": [],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {
+      "video-cache-meta": 1,
+      "video-cache-v1-bench-A": 60
+     }
+    }
+   ]
+  },
+  "verdict": "не воспроизводится",
+  "why": "Ошибок <video> нет.",
+  "keyLines": [
+   "+0.1s veu3j5 [bench] SW script evaluated, instance=veu3j5 script=?27",
+   "+0.1s veu3j5 [SW] Install event fired at 1793116033987",
+   "+0.1s veu3j5 [SW] Activate event fired at 1793116033989"
+  ]
+ },
+ {
+  "id": "h5-twin-sw",
+  "title": "Под тем же m другой файл той же длины (SW, три открытия)",
+  "hypothesis": "H5",
+  "expected": "Куски A из кэша смешиваются с B → ошибка декодирования → blacklist → с начала; при следующем открытии (после остановки SW) — снова.",
+  "metrics": {
+   "errors": [
+    {
+     "t": 93.5,
+     "code": 3,
+     "ct": 360,
+     "msg": "PipelineStatus::PIPELINE_ERROR_DECODE: Failed to send audio packet for decoding: {timestamp=350250667 duration=21333 size=339 is_key_frame=1 encrypted=0}"
+    }
+   ],
+   "errorCodes": {
+    "3": 1
+   },
+   "detachedErrors": 0,
+   "loadsAfterStart": 4,
+   "srcChangesAfterStart": 3,
+   "randReloads": 1,
+   "reloadsPerMinMax": 3,
+   "playingEvents": 5,
+   "backJumps": [],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 123,
+   "stalledSec": 0,
+   "lastCt": 398.64,
+   "lastPaused": false,
+   "controllerLost": false,
+   "siteCalls": {
+    "sworker.js": 4,
+    "swMain.js": 4,
+    "embed": 3,
+    "videoTelemetry": 1
+   },
+   "notifyBroken": 0,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": false,
+   "sw_serveEnter": 7,
+   "sw_serveFail": 0,
+   "sw_readDied": 0,
+   "sw_originNotOk": 0,
+   "sw_badRange": 0,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 0,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 7,
+   "sw_blacklistMsg": 1,
+   "sw_bypassBlacklisted": 4,
+   "sw_bypassDisabled": 0,
+   "sw_install": 1,
+   "sw_activate": 1,
+   "sw_evaluated": 3,
+   "swInstances": [
+    "q1calr",
+    "7aylu8",
+    "4hj95n"
+   ],
+   "swBrowserReqByInstance": [
+    1,
+    2,
+    4
+   ],
+   "swTargetsCreated": 3,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 15,
+   "cdnByDest": {
+    "empty": 11,
+    "video": 4
+   },
+   "cdnStatus": {
+    "206": 15
+   },
+   "cdnCuts": 0,
+   "cdnMB": 128.3,
+   "cdnMaxConcurrent": 3,
+   "cdnElementDirect": 4,
+   "snapshots": [
+    {
+     "label": "after open 1",
+     "t": 42.6,
+     "state": {
+      "ct": 39.957379,
+      "paused": false,
+      "errorCounter": 0,
+      "lastSuccessTime": null,
+      "blacklisted": [],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {
+      "video-cache-meta": 1,
+      "video-cache-v1-bench-A": 42
+     }
+    },
+    {
+     "label": "after open 2",
+     "t": 133.9,
+     "state": {
+      "ct": 398.220971,
+      "paused": false,
+      "errorCounter": 0,
+      "lastSuccessTime": null,
+      "blacklisted": [
+       "bench-A"
+      ],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {
+      "video-cache-meta": 0
+     }
+    },
+    {
+     "label": "after open 3",
+     "t": 225.9,
+     "state": {
+      "ct": 399.140022,
+      "paused": false,
+      "errorCounter": 0,
+      "lastSuccessTime": null,
+      "blacklisted": [],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {
+      "video-cache-meta": 1,
+      "video-cache-v1-bench-A": 45
+     }
+    },
+    {
+     "label": "end",
+     "t": 226.5,
+     "state": "Error: embed frame context not found",
+     "cache": null
+    }
+   ]
+  },
+  "verdict": "частично",
+  "why": "MEDIA_ERR_DECODE: 1; blacklist: 0; сбросов в начало: 0; экземпляры SW: 3; кэш после открытий: after open 1={\"video-cache-meta\":1,\"video-cache-v1-bench-A\":42}; after open 2={\"video-cache-meta\":0}; after open 3={\"video-cache-meta\":1,\"video-cache-v1-bench-A\":45}; end=null.",
+  "keyLines": [
+   "+0.1s q1calr [bench] SW script evaluated, instance=q1calr script=?27",
+   "+0.1s q1calr [SW] Install event fired at 1793116284563",
+   "+0.1s q1calr [SW] Activate event fired at 1793116284566",
+   "+87.7s 7aylu8 [bench] SW script evaluated, instance=7aylu8 script=?27",
+   "+93.5s 7aylu8 [SW] Blacklisting mParam: bench-A",
+   "+93.5s 7aylu8 [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+94.4s 7aylu8 [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+94.4s 7aylu8 [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+94.4s 7aylu8 [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+179.0s 4hj95n [bench] SW script evaluated, instance=4hj95n script=?27"
+  ]
+ },
+ {
+  "id": "h7-sw-update",
+  "title": "Новая версия SW во время игры (swMain.js?v=25)",
+  "hypothesis": "H7",
+  "expected": "skipWaiting + clients.claim: новая версия забирает вкладку; поток старого воркера может оборваться.",
+  "metrics": {
+   "errors": [],
+   "errorCodes": {},
+   "detachedErrors": 0,
+   "loadsAfterStart": 0,
+   "srcChangesAfterStart": 0,
+   "randReloads": 0,
+   "reloadsPerMinMax": 0,
+   "playingEvents": 1,
+   "backJumps": [],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 99,
+   "stalledSec": 0,
+   "lastCt": 99.45,
+   "lastPaused": false,
+   "controllerLost": false,
+   "siteCalls": {
+    "sworker.js": 3,
+    "swMain.js": 3,
+    "embed": 1
+   },
+   "notifyBroken": 0,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": false,
+   "sw_serveEnter": 1,
+   "sw_serveFail": 0,
+   "sw_readDied": 0,
+   "sw_originNotOk": 0,
+   "sw_badRange": 0,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 0,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 1,
+   "sw_blacklistMsg": 0,
+   "sw_bypassBlacklisted": 0,
+   "sw_bypassDisabled": 0,
+   "sw_install": 2,
+   "sw_activate": 1,
+   "sw_evaluated": 2,
+   "swInstances": [
+    "ovhqdd",
+    "qhnrum"
+   ],
+   "swBrowserReqByInstance": [
+    1,
+    0
+   ],
+   "swTargetsCreated": 2,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 2,
+   "cdnByDest": {
+    "empty": 2
+   },
+   "cdnStatus": {
+    "206": 2
+   },
+   "cdnCuts": 0,
+   "cdnMB": 60.3,
+   "cdnMaxConcurrent": 2,
+   "cdnElementDirect": 0,
+   "snapshots": [
+    {
+     "label": "end",
+     "t": 103.4,
+     "state": {
+      "ct": 99.992469,
+      "paused": false,
+      "errorCounter": 0,
+      "lastSuccessTime": null,
+      "blacklisted": [],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {
+      "video-cache-meta": 1,
+      "video-cache-v1-bench-A": 61
+     }
+    }
+   ]
+  },
+  "verdict": "не воспроизводится",
+  "why": "экземпляров SW: 2; ошибок <video>: {}; прыжков назад: 0; serve FAIL: 0; стояло 0 с.",
+  "keyLines": [
+   "+0.1s ovhqdd [bench] SW script evaluated, instance=ovhqdd script=?27",
+   "+0.1s ovhqdd [SW] Install event fired at 1793116513232",
+   "+0.1s ovhqdd [SW] Activate event fired at 1793116513233",
+   "+43.0s qhnrum [bench] SW script evaluated, instance=qhnrum script=?27",
+   "+43.0s qhnrum [SW] Install event fired at 1793116556147"
+  ]
+ },
+ {
+  "id": "h8-stall-sw",
+  "title": "Зависший поток CDN: байты перестают идти, соединение не закрыто (sw)",
+  "hypothesis": "H8",
+  "expected": "Нет таймаута чтения ни в serve()/загрузчике SW, ни в плеере: после опустошения буфера плеер стоит без ошибки, пока пользователь не перемотает.",
+  "metrics": {
+   "errors": [],
+   "errorCodes": {},
+   "detachedErrors": 0,
+   "loadsAfterStart": 0,
+   "srcChangesAfterStart": 0,
+   "randReloads": 0,
+   "reloadsPerMinMax": 0,
+   "playingEvents": 2,
+   "backJumps": [],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 138,
+   "stalledSec": 0,
+   "lastCt": 144.36,
+   "lastPaused": false,
+   "controllerLost": false,
+   "siteCalls": {
+    "sworker.js": 2,
+    "swMain.js": 2,
+    "embed": 1
+   },
+   "notifyBroken": 0,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": false,
+   "sw_serveEnter": 1,
+   "sw_serveFail": 0,
+   "sw_readDied": 1,
+   "sw_originNotOk": 0,
+   "sw_badRange": 0,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 0,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 1,
+   "sw_blacklistMsg": 0,
+   "sw_bypassBlacklisted": 0,
+   "sw_bypassDisabled": 0,
+   "sw_install": 1,
+   "sw_activate": 1,
+   "sw_evaluated": 1,
+   "swInstances": [
+    "86ba46"
+   ],
+   "swBrowserReqByInstance": [
+    1
+   ],
+   "swTargetsCreated": 1,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 4,
+   "cdnByDest": {
+    "empty": 4
+   },
+   "cdnStatus": {
+    "206": 4
+   },
+   "cdnCuts": 0,
+   "cdnMB": 80.9,
+   "cdnMaxConcurrent": 2,
+   "cdnElementDirect": 0,
+   "snapshots": [
+    {
+     "label": "end",
+     "t": 143.4,
+     "state": {
+      "ct": 144.886781,
+      "paused": false,
+      "errorCounter": 0,
+      "lastSuccessTime": null,
+      "blacklisted": [],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {
+      "video-cache-meta": 1,
+      "video-cache-v1-bench-A": 75
+     }
+    }
+   ]
+  },
+  "verdict": "не воспроизводится",
+  "why": "плеер стоял 0 с без ошибки <video> (ошибок: 0); последняя позиция 144.36; запросов к CDN: 4 {\"empty\":4}.",
+  "keyLines": [
+   "+0.1s 86ba46 [bench] SW script evaluated, instance=86ba46 script=?27",
+   "+0.1s 86ba46 [SW] Install event fired at 1793116618873",
+   "+0.1s 86ba46 [SW] Activate event fired at 1793116618875",
+   "+25.7s 86ba46 [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 6291456 frontier= 6291456 err= Origin read timed out"
+  ]
+ },
+ {
+  "id": "h8-stall-nosw",
+  "title": "Зависший поток CDN: байты перестают идти, соединение не закрыто (nosw)",
+  "hypothesis": "H8",
+  "expected": "Нет таймаута чтения ни в serve()/загрузчике SW, ни в плеере: после опустошения буфера плеер стоит без ошибки, пока пользователь не перемотает.",
+  "metrics": {
+   "errors": [],
+   "errorCodes": {},
+   "detachedErrors": 0,
+   "loadsAfterStart": 1,
+   "srcChangesAfterStart": 0,
+   "randReloads": 0,
+   "reloadsPerMinMax": 1,
+   "playingEvents": 3,
+   "backJumps": [],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 107,
+   "stalledSec": 30,
+   "lastCt": 113.83,
+   "lastPaused": false,
+   "controllerLost": false,
+   "siteCalls": {
+    "sworker.js": 2,
+    "swMain.js": 2,
+    "embed": 1,
+    "videoTelemetry": 1
+   },
+   "notifyBroken": 0,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": false,
+   "sw_serveEnter": 0,
+   "sw_serveFail": 0,
+   "sw_readDied": 0,
+   "sw_originNotOk": 0,
+   "sw_badRange": 0,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 0,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 0,
+   "sw_blacklistMsg": 0,
+   "sw_bypassBlacklisted": 0,
+   "sw_bypassDisabled": 0,
+   "sw_install": 1,
+   "sw_activate": 1,
+   "sw_evaluated": 1,
+   "swInstances": [
+    "pkki8b"
+   ],
+   "swBrowserReqByInstance": [
+    0
+   ],
+   "swTargetsCreated": 1,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 2,
+   "cdnByDest": {
+    "empty": 2
+   },
+   "cdnStatus": {
+    "206": 2
+   },
+   "cdnCuts": 0,
+   "cdnMB": 37.6,
+   "cdnMaxConcurrent": 1,
+   "cdnElementDirect": 0,
+   "snapshots": [
+    {
+     "label": "end",
+     "t": 143.4,
+     "state": {
+      "ct": 114.339663,
+      "paused": false,
+      "errorCounter": 0,
+      "lastSuccessTime": null,
+      "blacklisted": [],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {}
+    }
+   ]
+  },
+  "verdict": "воспроизведено",
+  "why": "плеер стоял 30 с без ошибки <video> (ошибок: 0); последняя позиция 113.83; запросов к CDN: 2 {\"empty\":2}.",
+  "keyLines": [
+   "+0.1s pkki8b [bench] SW script evaluated, instance=pkki8b script=?27",
+   "+0.1s pkki8b [SW] Install event fired at 1793116764542",
+   "+0.1s pkki8b [SW] Activate event fired at 1793116764543"
+  ]
+ },
+ {
+  "id": "h6-long-play-sw",
+  "title": "Непрерывная игра 8 минут без DevTools на воркере",
+  "hypothesis": "H6",
+  "expected": "Chrome останавливает воркер с событием fetch дольше ~5 мин → обрыв потока примерно на 5-й минуте.",
+  "metrics": {
+   "errors": [],
+   "errorCodes": {},
+   "detachedErrors": 0,
+   "loadsAfterStart": 0,
+   "srcChangesAfterStart": 0,
+   "randReloads": 0,
+   "reloadsPerMinMax": 0,
+   "playingEvents": 1,
+   "backJumps": [],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 479,
+   "stalledSec": 0,
+   "lastCt": 479.93,
+   "lastPaused": false,
+   "controllerLost": false,
+   "siteCalls": {
+    "sworker.js": 2,
+    "swMain.js": 2,
+    "embed": 1
+   },
+   "notifyBroken": 0,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": false,
+   "sw_serveEnter": 2,
+   "sw_serveFail": 0,
+   "sw_readDied": 0,
+   "sw_originNotOk": 0,
+   "sw_badRange": 0,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 0,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 2,
+   "sw_blacklistMsg": 0,
+   "sw_bypassBlacklisted": 0,
+   "sw_bypassDisabled": 0,
+   "sw_install": 1,
+   "sw_activate": 1,
+   "sw_evaluated": 1,
+   "swInstances": [
+    "0jtz8j"
+   ],
+   "swBrowserReqByInstance": [
+    2
+   ],
+   "swTargetsCreated": 1,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 6,
+   "cdnByDest": {
+    "empty": 6
+   },
+   "cdnStatus": {
+    "206": 6
+   },
+   "cdnCuts": 0,
+   "cdnMB": 146.8,
+   "cdnMaxConcurrent": 2,
+   "cdnElementDirect": 0,
+   "snapshots": [
+    {
+     "label": "end",
+     "t": 485.2,
+     "state": {
+      "ct": 480.004379,
+      "paused": false,
+      "errorCounter": 0,
+      "lastSuccessTime": null,
+      "blacklisted": [],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {
+      "video-cache-meta": 1,
+      "video-cache-v1-bench-A": 141
+     }
+    }
+   ]
+  },
+  "verdict": "не воспроизводится",
+  "why": "экземпляров SW: 1 (0jtz8j); DevTools к SW: нет; ошибок <video>: {}; стояло 0 с; serve FAIL: 0.",
+  "keyLines": [
+   "+0.1s 0jtz8j [bench] SW script evaluated, instance=0jtz8j script=?27",
+   "+0.1s 0jtz8j [SW] Install event fired at 1793116910376",
+   "+0.1s 0jtz8j [SW] Activate event fired at 1793116910379"
+  ]
+ },
+ {
+  "id": "h6-long-pause-sw",
+  "title": "Пауза 6 минут, затем продолжение (SW)",
+  "hypothesis": "H6",
+  "expected": "За время паузы простаивающий SW останавливается; поток к <video> рвётся; после продолжения — кэширование выключено (новый экземпляр не получил setVideoCachingEnabled).",
+  "metrics": {
+   "errors": [],
+   "errorCodes": {},
+   "detachedErrors": 0,
+   "loadsAfterStart": 0,
+   "srcChangesAfterStart": 0,
+   "randReloads": 0,
+   "reloadsPerMinMax": 0,
+   "playingEvents": 2,
+   "backJumps": [],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 88,
+   "stalledSec": 0,
+   "lastCt": 89.95,
+   "lastPaused": false,
+   "controllerLost": false,
+   "siteCalls": {
+    "sworker.js": 2,
+    "swMain.js": 2,
+    "embed": 1
+   },
+   "notifyBroken": 0,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": false,
+   "sw_serveEnter": 2,
+   "sw_serveFail": 0,
+   "sw_readDied": 0,
+   "sw_originNotOk": 0,
+   "sw_badRange": 0,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 0,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 2,
+   "sw_blacklistMsg": 0,
+   "sw_bypassBlacklisted": 0,
+   "sw_bypassDisabled": 0,
+   "sw_install": 1,
+   "sw_activate": 1,
+   "sw_evaluated": 1,
+   "swInstances": [
+    "impvtk"
+   ],
+   "swBrowserReqByInstance": [
+    2
+   ],
+   "swTargetsCreated": 1,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 4,
+   "cdnByDest": {
+    "empty": 4
+   },
+   "cdnStatus": {
+    "206": 4
+   },
+   "cdnCuts": 0,
+   "cdnMB": 133.4,
+   "cdnMaxConcurrent": 2,
+   "cdnElementDirect": 0,
+   "snapshots": [
+    {
+     "label": "end",
+     "t": 454.9,
+     "state": {
+      "ct": 89.981663,
+      "paused": false,
+      "errorCounter": 0,
+      "lastSuccessTime": null,
+      "blacklisted": [],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {
+      "video-cache-meta": 1,
+      "video-cache-v1-bench-A": 133
+     }
+    }
+   ]
+  },
+  "verdict": "не воспроизводится",
+  "why": "экземпляров SW: 1; bypass (кэш выключен) после рестарта: 0; ошибок <video>: {}; стояло 0 с.",
+  "keyLines": [
+   "+0.1s impvtk [bench] SW script evaluated, instance=impvtk script=?27",
+   "+0.1s impvtk [SW] Install event fired at 1793117397557",
+   "+0.1s impvtk [SW] Activate event fired at 1793117397559"
+  ]
+ },
+ {
+  "id": "h6b-sw-restart",
+  "title": "SW остановлен браузером во время паузы, затем продолжение",
+  "hypothesis": "H6",
+  "expected": "Новый экземпляр начинает с videoCachingEnabled=false: после продолжения запросы <video> идут мимо SW и кэша, хотя кэш есть.",
+  "metrics": {
+   "errors": [],
+   "errorCodes": {},
+   "detachedErrors": 0,
+   "loadsAfterStart": 0,
+   "srcChangesAfterStart": 0,
+   "randReloads": 0,
+   "reloadsPerMinMax": 0,
+   "playingEvents": 3,
+   "backJumps": [],
+   "resetToZero": [],
+   "seekMisses": [],
+   "playedSec": 92,
+   "stalledSec": 0,
+   "lastCt": 24.37,
+   "lastPaused": false,
+   "controllerLost": false,
+   "siteCalls": {
+    "sworker.js": 2,
+    "swMain.js": 2,
+    "embed": 1
+   },
+   "notifyBroken": 0,
+   "playerExitLines": 0,
+   "playerBlacklist": 0,
+   "alternativeUsed": 0,
+   "infiniteLoop": false,
+   "sw_serveEnter": 3,
+   "sw_serveFail": 0,
+   "sw_readDied": 0,
+   "sw_originNotOk": 0,
+   "sw_badRange": 0,
+   "sw_extractMetaFailed": 0,
+   "sw_metaThrew": 0,
+   "sw_probeNotOk": 0,
+   "sw_handlerFail": 0,
+   "sw_totalMissing": 0,
+   "sw_browserReq": 3,
+   "sw_blacklistMsg": 0,
+   "sw_bypassBlacklisted": 0,
+   "sw_bypassDisabled": 0,
+   "sw_install": 1,
+   "sw_activate": 1,
+   "sw_evaluated": 2,
+   "swInstances": [
+    "kyon41",
+    "wqeqzb"
+   ],
+   "swBrowserReqByInstance": [
+    1,
+    2
+   ],
+   "swTargetsCreated": 2,
+   "swDevtoolsAttached": false,
+   "cdnRequests": 4,
+   "cdnByDest": {
+    "empty": 4
+   },
+   "cdnStatus": {
+    "206": 4
+   },
+   "cdnCuts": 0,
+   "cdnMB": 66.1,
+   "cdnMaxConcurrent": 2,
+   "cdnElementDirect": 0,
+   "snapshots": [
+    {
+     "label": "end",
+     "t": 128.5,
+     "state": {
+      "ct": 24.891196,
+      "paused": false,
+      "errorCounter": 0,
+      "lastSuccessTime": null,
+      "blacklisted": [],
+      "ctrl": true,
+      "rs": 4
+     },
+     "cache": {
+      "video-cache-meta": 1,
+      "video-cache-v1-bench-A": 65
+     }
+    }
+   ]
+  },
+  "verdict": "не воспроизводится",
+  "why": "экземпляров SW: 2; запросов, обслуженных новым экземпляром: 2; строк «Video caching disabled, bypassing SW»: 0; прямых запросов <video> к CDN: 0; ошибок <video>: 0; стояло 0 с.",
+  "keyLines": [
+   "+0.1s kyon41 [bench] SW script evaluated, instance=kyon41 script=?27",
+   "+0.1s kyon41 [SW] Install event fired at 1793117854786",
+   "+0.1s kyon41 [SW] Activate event fired at 1793117854788",
+   "+73.0s wqeqzb [bench] SW script evaluated, instance=wqeqzb script=?27"
+  ]
+ }
+]

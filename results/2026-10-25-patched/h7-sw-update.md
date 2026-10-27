@@ -16,6 +16,7 @@
 | load() после старта / src с &rand | 0 / 0 |
 | сброс в начало | [] |
 | прыжки назад | [] |
+| перемотка не сработала | [] |
 | сыграно / стояло, с | 99 / 0 |
 | notifyBroken (POST brokenVideo) | 0 |
 | экземпляры SW (по обёртке логов) | p8a8zv, rykq0r |
@@ -28,32 +29,32 @@
 ### Ключевые строки SW
 
 ```
-+0.5s p8a8zv [bench] SW script evaluated, instance=p8a8zv script=?24
-+0.5s p8a8zv [SW] Install event fired at 1792883400008
-+0.5s p8a8zv [SW] Activate event fired at 1792883400009
-+43.4s rykq0r [bench] SW script evaluated, instance=rykq0r script=?24
-+43.4s rykq0r [SW] Install event fired at 1792883442895
++0.1s p8a8zv [bench] SW script evaluated, instance=p8a8zv script=?24
++0.1s p8a8zv [SW] Install event fired at 1792883400008
++0.1s p8a8zv [SW] Activate event fired at 1792883400009
++43.0s rykq0r [bench] SW script evaluated, instance=rykq0r script=?24
++43.0s rykq0r [SW] Install event fired at 1792883442895
 ```
 
 ### Таймлайн
 
 ```
-+0.5s runner navigate
-+0.5s sw-target created
-+0.5s page: controllerchange
-+0.9s runner navigate
-+0.9s call src= el=main-video_html5_api
-+0.9s call load el=main-video_html5_api ct=0
-+0.9s video emptied ct=0
-+0.9s video loadstart ct=0
-+1.1s runner mute
-+2.7s video canplay ct=0
-+3.4s runner play
-+3.4s video playing ct=0
-+43.4s runner site-config {"engine":"singlethread","swVersion":25}
-+43.4s runner swUpdate
-+43.4s sw-target created
-+43.4s runner note "update: updated"
++0.0s runner navigate
++0.1s sw-target created
++0.1s page: controllerchange
++0.4s runner navigate
++0.5s call src= el=main-video_html5_api
++0.5s call load el=main-video_html5_api ct=0
++0.5s video emptied ct=0
++0.5s video loadstart ct=0
++0.7s runner mute
++2.2s video canplay ct=0
++3.0s runner play
++3.0s video playing ct=0
++43.0s runner site-config {"engine":"singlethread","swVersion":25}
++43.0s runner swUpdate
++43.0s sw-target created
++43.0s runner note "update: updated"
 ```
 
 ### Снимки состояния

@@ -15,10 +15,17 @@ export default {
     await b.seek(10); await b.wait(15);
   },
   judge(m) {
+    // Evidence that the new instance bypasses its cache: the old engine logs
+    // 'Video caching disabled, bypassing SW'; the newer one (v27+) does not log it,
+    // so also count the browser requests the second instance actually served.
     const bypass = m.sw_bypassDisabled;
+    const served = m.swBrowserReqByInstance || [];
+    const restarted = m.swInstances.length > 1;
+    const servedAfter = restarted ? served.slice(1).reduce((a, b) => a + b, 0) : 0;
+    const reproduced = restarted && (bypass > 0 || servedAfter === 0);
     return {
-      verdict: bypass ? 'воспроизведено' : 'не воспроизводится',
-      why: `экземпляров SW: ${m.swInstances.length}; запросов мимо SW («Video caching disabled, bypassing SW»): ${bypass}; прямых запросов <video> к CDN: ${m.cdnElementDirect}; ошибок <video>: ${m.errors.length}; стояло ${m.stalledSec} с.`,
+      verdict: !restarted ? 'ошибка стенда' : reproduced ? 'воспроизведено' : 'не воспроизводится',
+      why: `экземпляров SW: ${m.swInstances.length}; запросов, обслуженных новым экземпляром: ${servedAfter}; строк «Video caching disabled, bypassing SW»: ${bypass}; прямых запросов <video> к CDN: ${m.cdnElementDirect}; ошибок <video>: ${m.errors.length}; стояло ${m.stalledSec} с.`,
     };
   },
 };

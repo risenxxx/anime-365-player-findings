@@ -12,10 +12,11 @@
 
 | метрика | значение |
 |---|---|
-| ошибки <video> | +11.6s code=2 ct=8.15<br>+14.9s code=2 ct=10.53<br>+16s code=2 ct=10.57 |
+| ошибки <video> | +11.2s code=2 ct=8.15<br>+14.4s code=2 ct=10.53<br>+15.5s code=2 ct=10.57 |
 | load() после старта / src с &rand | 3 / 0 |
 | сброс в начало | [] |
 | прыжки назад | [] |
+| перемотка не сработала | [] |
 | сыграно / стояло, с | 142 / 0 |
 | notifyBroken (POST brokenVideo) | 0 |
 | экземпляры SW (по обёртке логов) | 2ybki9 |
@@ -28,74 +29,74 @@
 ### Ключевые строки SW
 
 ```
-+0.6s 2ybki9 [bench] SW script evaluated, instance=2ybki9 script=?24
-+0.6s 2ybki9 [SW] Install event fired at 1792881799690
-+0.6s 2ybki9 [SW] Activate event fired at 1792881799691
-+1.0s 2ybki9 [SW] Video caching disabled, bypassing SW
-+11.5s 2ybki9 [SW] Video caching disabled, bypassing SW
-+12.1s 2ybki9 [SW] Video caching disabled, bypassing SW
-+14.7s 2ybki9 [SW] Video caching disabled, bypassing SW
-+15.9s 2ybki9 [SW] Video caching disabled, bypassing SW
-+18.0s 2ybki9 [SW] Video caching disabled, bypassing SW
-+43.4s 2ybki9 [SW] Video caching disabled, bypassing SW
-+69.4s 2ybki9 [SW] Video caching disabled, bypassing SW
-+97.0s 2ybki9 [SW] Video caching disabled, bypassing SW
-+124.5s 2ybki9 [SW] Video caching disabled, bypassing SW
-+150.8s 2ybki9 [SW] Video caching disabled, bypassing SW
++0.1s 2ybki9 [bench] SW script evaluated, instance=2ybki9 script=?24
++0.1s 2ybki9 [SW] Install event fired at 1792881799690
++0.1s 2ybki9 [SW] Activate event fired at 1792881799691
++0.5s 2ybki9 [SW] Video caching disabled, bypassing SW
++11.1s 2ybki9 [SW] Video caching disabled, bypassing SW
++11.7s 2ybki9 [SW] Video caching disabled, bypassing SW
++14.2s 2ybki9 [SW] Video caching disabled, bypassing SW
++15.4s 2ybki9 [SW] Video caching disabled, bypassing SW
++17.6s 2ybki9 [SW] Video caching disabled, bypassing SW
++42.9s 2ybki9 [SW] Video caching disabled, bypassing SW
++69.0s 2ybki9 [SW] Video caching disabled, bypassing SW
++96.5s 2ybki9 [SW] Video caching disabled, bypassing SW
++124.0s 2ybki9 [SW] Video caching disabled, bypassing SW
++150.4s 2ybki9 [SW] Video caching disabled, bypassing SW
 ```
 
 ### Таймлайн
 
 ```
-+0.5s runner navigate
-+0.5s sw-target created
-+0.6s page: controllerchange
-+0.9s runner navigate
-+1.0s call src= el=main-video_html5_api
-+1.0s call load el=main-video_html5_api ct=0
-+1.0s video emptied ct=0
-+1.0s video loadstart ct=0
-+1.2s runner mute
-+2.7s video canplay ct=0
-+3.4s runner play
-+3.4s video playing ct=0
-+11.6s video error ct=8.15 code=2 "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
-+11.6s player: Error #2: A network error caused the video download to fail part-way.
-+11.6s player: Current time:  7.915473
-+11.6s video pause ct=8.15 code=2 "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
-+12.1s call load el=main-video_html5_api ct=8.15
-+12.1s video emptied ct=0
-+12.1s video loadstart ct=0
-+12.2s video canplay ct=0
-+12.2s video seeking ct=7.92
-+12.2s video waiting ct=7.92
-+12.2s video canplay ct=7.92
-+12.2s video playing ct=7.92
-+14.9s video error ct=10.53 code=2 "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
-+14.9s player: Error #2: A network error caused the video download to fail part-way.
-+14.9s player: Current time:  10.517403
-+14.9s video pause ct=10.53 code=2 "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
-+15.9s call load el=main-video_html5_api ct=10.53
-+15.9s video emptied ct=0
-+15.9s video loadstart ct=0
-+15.9s video canplay ct=0
-+15.9s video seeking ct=10.52
-+15.9s video waiting ct=10.52
-+15.9s video canplay ct=10.52
-+15.9s video playing ct=10.52
-+16.0s video error ct=10.57 code=2 "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
-+16.0s player: Error #2: A network error caused the video download to fail part-way.
-+16.0s player: Current time:  10.517437
-+16.0s video pause ct=10.57 code=2 "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
-+18.0s player: using alternative sources
-+18.0s call load el=main-video_html5_api ct=10.57
-+18.0s video emptied ct=0
-+18.0s video loadstart ct=0
-+18.0s video canplay ct=0
-+18.0s video seeking ct=10.52
-+18.0s video waiting ct=10.52
-+18.0s video canplay ct=10.52
-+18.0s video playing ct=10.52
++0.0s runner navigate
++0.1s sw-target created
++0.1s page: controllerchange
++0.4s runner navigate
++0.5s call src= el=main-video_html5_api
++0.5s call load el=main-video_html5_api ct=0
++0.5s video emptied ct=0
++0.5s video loadstart ct=0
++0.7s runner mute
++2.3s video canplay ct=0
++3.0s runner play
++3.0s video playing ct=0
++11.2s video error ct=8.15 code=2 "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
++11.2s player: Error #2: A network error caused the video download to fail part-way.
++11.2s player: Current time:  7.915473
++11.2s video pause ct=8.15 code=2 "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
++11.7s call load el=main-video_html5_api ct=8.15
++11.7s video emptied ct=0
++11.7s video loadstart ct=0
++11.7s video canplay ct=0
++11.7s video seeking ct=7.92
++11.7s video waiting ct=7.92
++11.7s video canplay ct=7.92
++11.7s video playing ct=7.92
++14.4s video error ct=10.53 code=2 "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
++14.4s player: Error #2: A network error caused the video download to fail part-way.
++14.4s player: Current time:  10.517403
++14.4s video pause ct=10.53 code=2 "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
++15.4s call load el=main-video_html5_api ct=10.53
++15.4s video emptied ct=0
++15.4s video loadstart ct=0
++15.4s video canplay ct=0
++15.4s video seeking ct=10.52
++15.4s video waiting ct=10.52
++15.4s video canplay ct=10.52
++15.4s video playing ct=10.52
++15.5s video error ct=10.57 code=2 "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
++15.5s player: Error #2: A network error caused the video download to fail part-way.
++15.5s player: Current time:  10.517437
++15.5s video pause ct=10.57 code=2 "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
++17.5s player: using alternative sources
++17.5s call load el=main-video_html5_api ct=10.57
++17.5s video emptied ct=0
++17.5s video loadstart ct=0
++17.5s video canplay ct=0
++17.5s video seeking ct=10.52
++17.5s video waiting ct=10.52
++17.5s video canplay ct=10.52
++17.5s video playing ct=10.52
 ```
 
 ### Снимки состояния

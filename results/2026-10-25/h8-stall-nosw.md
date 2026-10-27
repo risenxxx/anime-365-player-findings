@@ -16,6 +16,7 @@
 | load() после старта / src с &rand | 0 / 0 |
 | сброс в начало | [] |
 | прыжки назад | [] |
+| перемотка не сработала | [] |
 | сыграно / стояло, с | 24 / 114 |
 | notifyBroken (POST brokenVideo) | 0 |
 | экземпляры SW (по обёртке логов) | qfv4ga |
@@ -28,32 +29,32 @@
 ### Ключевые строки SW
 
 ```
-+0.5s qfv4ga [bench] SW script evaluated, instance=qfv4ga script=?24
-+0.6s qfv4ga [SW] Install event fired at 1792879554389
-+0.6s qfv4ga [SW] Activate event fired at 1792879554390
-+1.0s qfv4ga [SW] Video caching disabled, bypassing SW
++0.1s qfv4ga [bench] SW script evaluated, instance=qfv4ga script=?24
++0.1s qfv4ga [SW] Install event fired at 1792879554389
++0.1s qfv4ga [SW] Activate event fired at 1792879554390
++0.5s qfv4ga [SW] Video caching disabled, bypassing SW
 ```
 
 ### Таймлайн
 
 ```
-+0.5s runner navigate
-+0.5s sw-target created
-+0.6s page: controllerchange
-+0.9s runner navigate
-+1.0s call src= el=main-video_html5_api
-+1.0s call load el=main-video_html5_api ct=0
-+1.0s video emptied ct=0
-+1.0s video loadstart ct=0
-+1.2s runner mute
-+2.7s video canplay ct=0
-+3.4s runner play
-+3.4s video playing ct=0
-+28.0s video waiting ct=24.52
-+103.5s runner note "ct before the nudge: 24.5"
-+103.5s runner seek 29.520122
-+103.5s video seeking ct=29.52
-+103.5s video waiting ct=29.52
++0.0s runner navigate
++0.0s sw-target created
++0.1s page: controllerchange
++0.4s runner navigate
++0.5s call src= el=main-video_html5_api
++0.5s call load el=main-video_html5_api ct=0
++0.5s video emptied ct=0
++0.5s video loadstart ct=0
++0.7s runner mute
++2.2s video canplay ct=0
++2.9s runner play
++3.0s video playing ct=0
++27.5s video waiting ct=24.52
++103.0s runner note "ct before the nudge: 24.5"
++103.0s runner seek 29.520122
++103.0s video seeking ct=29.52
++103.0s video waiting ct=29.52
 ```
 
 ### Снимки состояния

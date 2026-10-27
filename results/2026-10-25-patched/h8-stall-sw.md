@@ -16,6 +16,7 @@
 | load() после старта / src с &rand | 0 / 0 |
 | сброс в начало | [] |
 | прыжки назад | [] |
+| перемотка не сработала | [] |
 | сыграно / стояло, с | 138 / 0 |
 | notifyBroken (POST brokenVideo) | 0 |
 | экземпляры SW (по обёртке логов) | 66clrs |
@@ -28,33 +29,33 @@
 ### Ключевые строки SW
 
 ```
-+0.5s 66clrs [bench] SW script evaluated, instance=66clrs script=?24
-+0.5s 66clrs [SW] Install event fired at 1792883505583
-+0.5s 66clrs [SW] Activate event fired at 1792883505584
-+23.1s 66clrs [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 6291456 frontier= 6291456 err= origin read stalled
++0.1s 66clrs [bench] SW script evaluated, instance=66clrs script=?24
++0.1s 66clrs [SW] Install event fired at 1792883505583
++0.1s 66clrs [SW] Activate event fired at 1792883505584
++22.6s 66clrs [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 6291456 frontier= 6291456 err= origin read stalled
 ```
 
 ### Таймлайн
 
 ```
++0.0s runner navigate
++0.1s sw-target created
++0.1s page: controllerchange
 +0.4s runner navigate
-+0.5s sw-target created
-+0.5s page: controllerchange
-+0.8s runner navigate
-+0.9s call src= el=main-video_html5_api
-+0.9s call load el=main-video_html5_api ct=0
-+0.9s video emptied ct=0
-+0.9s video loadstart ct=0
-+1.1s runner mute
-+2.7s video canplay ct=0
-+3.4s runner play
-+3.4s video playing ct=0
-+103.4s runner note "ct before the nudge: 99.9"
-+103.4s runner seek 104.917891
-+103.4s video seeking ct=104.92
-+103.4s video waiting ct=104.92
-+103.4s video canplay ct=104.92
-+103.4s video playing ct=104.92
++0.5s call src= el=main-video_html5_api
++0.5s call load el=main-video_html5_api ct=0
++0.5s video emptied ct=0
++0.5s video loadstart ct=0
++0.7s runner mute
++2.2s video canplay ct=0
++2.9s runner play
++3.0s video playing ct=0
++103.0s runner note "ct before the nudge: 99.9"
++103.0s runner seek 104.917891
++103.0s video seeking ct=104.92
++103.0s video waiting ct=104.92
++103.0s video canplay ct=104.92
++103.0s video playing ct=104.92
 ```
 
 ### Снимки состояния

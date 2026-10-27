@@ -16,6 +16,7 @@
 | load() после старта / src с &rand | 0 / 0 |
 | сброс в начало | [] |
 | прыжки назад | [] |
+| перемотка не сработала | [] |
 | сыграно / стояло, с | 479 / 0 |
 | notifyBroken (POST brokenVideo) | 0 |
 | экземпляры SW (по обёртке логов) | 4pk9rf |
@@ -28,30 +29,30 @@
 ### Ключевые строки SW
 
 ```
-+0.5s 4pk9rf [bench] SW script evaluated, instance=4pk9rf script=?24
-+0.5s 4pk9rf [SW] Install event fired at 1792883796745
-+0.5s 4pk9rf [SW] Activate event fired at 1792883796746
++0.1s 4pk9rf [bench] SW script evaluated, instance=4pk9rf script=?24
++0.1s 4pk9rf [SW] Install event fired at 1792883796745
++0.1s 4pk9rf [SW] Activate event fired at 1792883796746
 ```
 
 ### Таймлайн
 
 ```
++0.0s runner navigate
++0.1s sw-target created
++0.1s page: controllerchange
 +0.4s runner navigate
-+0.5s sw-target created
-+0.5s page: controllerchange
-+0.8s runner navigate
-+0.9s call src= el=main-video_html5_api
-+0.9s call load el=main-video_html5_api ct=0
-+0.9s video emptied ct=0
-+0.9s video loadstart ct=0
-+1.1s runner mute
-+3.9s call src= el=main-video_html5_api
-+3.9s call load el=main-video_html5_api ct=0
-+3.9s video emptied ct=0
-+3.9s video loadstart ct=0
-+4.2s video canplay ct=0
-+4.9s runner play
-+4.9s video playing ct=0
++0.5s call src= el=main-video_html5_api
++0.5s call load el=main-video_html5_api ct=0
++0.5s video emptied ct=0
++0.5s video loadstart ct=0
++0.7s runner mute
++3.5s call src= el=main-video_html5_api
++3.5s call load el=main-video_html5_api ct=0
++3.5s video emptied ct=0
++3.5s video loadstart ct=0
++3.8s video canplay ct=0
++4.5s runner play
++4.5s video playing ct=0
 ```
 
 ### Снимки состояния

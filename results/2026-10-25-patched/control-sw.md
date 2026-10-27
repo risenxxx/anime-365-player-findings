@@ -16,6 +16,7 @@ serve enter: 3; записей в кэше: 295; прямых запросов <
 | load() после старта / src с &rand | 0 / 0 |
 | сброс в начало | [] |
 | прыжки назад | [] |
+| перемотка не сработала | [] |
 | сыграно / стояло, с | 108 / 0 |
 | notifyBroken (POST brokenVideo) | 0 |
 | экземпляры SW (по обёртке логов) | z2jdy2 |
@@ -28,36 +29,36 @@ serve enter: 3; записей в кэше: 295; прямых запросов <
 ### Ключевые строки SW
 
 ```
-+0.6s z2jdy2 [bench] SW script evaluated, instance=z2jdy2 script=?24
-+0.6s z2jdy2 [SW] Install event fired at 1792880793191
-+0.6s z2jdy2 [SW] Activate event fired at 1792880793193
++0.1s z2jdy2 [bench] SW script evaluated, instance=z2jdy2 script=?24
++0.1s z2jdy2 [SW] Install event fired at 1792880793191
++0.1s z2jdy2 [SW] Activate event fired at 1792880793193
 ```
 
 ### Таймлайн
 
 ```
-+0.5s runner navigate
-+0.6s sw-target created
-+0.6s page: controllerchange
-+0.9s runner navigate
-+1.0s call src= el=main-video_html5_api
-+1.0s call load el=main-video_html5_api ct=0
-+1.0s video emptied ct=0
-+1.0s video loadstart ct=0
-+1.2s runner mute
-+1.4s video canplay ct=0
-+1.9s runner play
-+1.9s video playing ct=0
-+61.9s runner seek 600
-+62.0s video seeking ct=600
-+62.0s video waiting ct=600
-+62.0s video canplay ct=600
-+62.0s video playing ct=600
-+92.0s runner seek 300
-+92.0s video seeking ct=300
-+92.0s video waiting ct=300
-+92.0s video canplay ct=300
-+92.0s video playing ct=300
++0.0s runner navigate
++0.1s sw-target created
++0.1s page: controllerchange
++0.4s runner navigate
++0.5s call src= el=main-video_html5_api
++0.5s call load el=main-video_html5_api ct=0
++0.5s video emptied ct=0
++0.5s video loadstart ct=0
++0.7s runner mute
++0.9s video canplay ct=0
++1.4s runner play
++1.4s video playing ct=0
++61.4s runner seek 600
++61.5s video seeking ct=600
++61.5s video waiting ct=600
++61.5s video canplay ct=600
++61.5s video playing ct=600
++91.5s runner seek 300
++91.5s video seeking ct=300
++91.5s video waiting ct=300
++91.5s video canplay ct=300
++91.5s video playing ct=300
 ```
 
 ### Снимки состояния

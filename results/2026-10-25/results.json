@@ -15,6 +15,7 @@
    "playingEvents": 3,
    "backJumps": [],
    "resetToZero": [],
+   "seekMisses": [],
    "playedSec": 108,
    "stalledSec": 0,
    "lastCt": 319.89,
@@ -49,6 +50,9 @@
    "sw_evaluated": 1,
    "swInstances": [
     "aoy0b0"
+   ],
+   "swBrowserReqByInstance": [
+    3
    ],
    "swTargetsCreated": 1,
    "swDevtoolsAttached": false,
@@ -86,16 +90,16 @@
   "verdict": "стенд работает",
   "why": "serve enter: 3; записей в кэше: 295; прямых запросов <video> к CDN: 0; ошибок: 0.",
   "keyLines": [
-   "+0.5s aoy0b0 [bench] SW script evaluated, instance=aoy0b0 script=?24",
-   "+0.5s aoy0b0 [SW] Install event fired at 1792876697086",
-   "+0.5s aoy0b0 [SW] Activate event fired at 1792876697087"
+   "+0.1s aoy0b0 [bench] SW script evaluated, instance=aoy0b0 script=?24",
+   "+0.1s aoy0b0 [SW] Install event fired at 1792876697086",
+   "+0.1s aoy0b0 [SW] Activate event fired at 1792876697087"
   ]
  },
  {
   "id": "control-nosw",
   "title": "Контроль: без сбоев, кэширование SW выключено",
   "hypothesis": "контроль",
-  "expected": "Игра без ошибок; все медиазапросы идут от <video> напрямую (dest=video), SW пишет `Video caching disabled, bypassing SW`.",
+  "expected": "Игра без ошибок; SW не обслуживает запросы из своего кэша (нет `serve enter`): до v27 запросы шли мимо SW (dest=video), с v27 SW проксирует их без кэша (dest=empty).",
   "metrics": {
    "errors": [],
    "errorCodes": {},
@@ -107,6 +111,7 @@
    "playingEvents": 3,
    "backJumps": [],
    "resetToZero": [],
+   "seekMisses": [],
    "playedSec": 107,
    "stalledSec": 0,
    "lastCt": 319.44,
@@ -142,6 +147,9 @@
    "swInstances": [
     "5wcxec"
    ],
+   "swBrowserReqByInstance": [
+    0
+   ],
    "swTargetsCreated": 1,
    "swDevtoolsAttached": false,
    "cdnRequests": 3,
@@ -175,12 +183,12 @@
   "verdict": "стенд работает",
   "why": "serve enter: 0; запросы к CDN: {\"video\":3}; bypass-строк SW: 3; ошибок: 0.",
   "keyLines": [
-   "+0.6s 5wcxec [bench] SW script evaluated, instance=5wcxec script=?24",
-   "+0.6s 5wcxec [SW] Install event fired at 1792876811330",
-   "+0.6s 5wcxec [SW] Activate event fired at 1792876811331",
-   "+1.0s 5wcxec [SW] Video caching disabled, bypassing SW",
-   "+62.0s 5wcxec [SW] Video caching disabled, bypassing SW",
-   "+92.0s 5wcxec [SW] Video caching disabled, bypassing SW"
+   "+0.1s 5wcxec [bench] SW script evaluated, instance=5wcxec script=?24",
+   "+0.1s 5wcxec [SW] Install event fired at 1792876811330",
+   "+0.1s 5wcxec [SW] Activate event fired at 1792876811331",
+   "+0.6s 5wcxec [SW] Video caching disabled, bypassing SW",
+   "+61.5s 5wcxec [SW] Video caching disabled, bypassing SW",
+   "+91.5s 5wcxec [SW] Video caching disabled, bypassing SW"
   ]
  },
  {
@@ -199,6 +207,7 @@
    "playingEvents": 1,
    "backJumps": [],
    "resetToZero": [],
+   "seekMisses": [],
    "playedSec": 149,
    "stalledSec": 0,
    "lastCt": 149.45,
@@ -233,6 +242,9 @@
    "sw_evaluated": 1,
    "swInstances": [
     "89oveg"
+   ],
+   "swBrowserReqByInstance": [
+    1
    ],
    "swTargetsCreated": 1,
    "swDevtoolsAttached": false,
@@ -270,10 +282,10 @@
   "verdict": "не воспроизводится",
   "why": "Ни одной ошибки <video>: сбой поглощён ниже плеера (повтор в SW или в медиастеке Chrome).",
   "keyLines": [
-   "+0.5s 89oveg [bench] SW script evaluated, instance=89oveg script=?24",
-   "+0.5s 89oveg [SW] Install event fired at 1792876925427",
-   "+0.5s 89oveg [SW] Activate event fired at 1792876925427",
-   "+11.2s 89oveg [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 6291456 frontier= 6291456 err= network error"
+   "+0.1s 89oveg [bench] SW script evaluated, instance=89oveg script=?24",
+   "+0.1s 89oveg [SW] Install event fired at 1792876925427",
+   "+0.1s 89oveg [SW] Activate event fired at 1792876925427",
+   "+10.8s 89oveg [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 6291456 frontier= 6291456 err= network error"
   ]
  },
  {
@@ -292,6 +304,7 @@
    "playingEvents": 1,
    "backJumps": [],
    "resetToZero": [],
+   "seekMisses": [],
    "playedSec": 149,
    "stalledSec": 0,
    "lastCt": 149.45,
@@ -327,6 +340,9 @@
    "swInstances": [
     "mqx31x"
    ],
+   "swBrowserReqByInstance": [
+    0
+   ],
    "swTargetsCreated": 1,
    "swDevtoolsAttached": false,
    "cdnRequests": 7,
@@ -360,16 +376,16 @@
   "verdict": "не воспроизводится",
   "why": "Ни одной ошибки <video>: сбой поглощён ниже плеера (повтор в SW или в медиастеке Chrome).",
   "keyLines": [
-   "+0.6s mqx31x [bench] SW script evaluated, instance=mqx31x script=?24",
-   "+0.6s mqx31x [SW] Install event fired at 1792877081094",
-   "+0.6s mqx31x [SW] Activate event fired at 1792877081096",
-   "+1.0s mqx31x [SW] Video caching disabled, bypassing SW",
-   "+11.6s mqx31x [SW] Video caching disabled, bypassing SW",
-   "+41.0s mqx31x [SW] Video caching disabled, bypassing SW",
-   "+67.3s mqx31x [SW] Video caching disabled, bypassing SW",
-   "+93.2s mqx31x [SW] Video caching disabled, bypassing SW",
-   "+120.7s mqx31x [SW] Video caching disabled, bypassing SW",
-   "+147.3s mqx31x [SW] Video caching disabled, bypassing SW"
+   "+0.1s mqx31x [bench] SW script evaluated, instance=mqx31x script=?24",
+   "+0.1s mqx31x [SW] Install event fired at 1792877081094",
+   "+0.1s mqx31x [SW] Activate event fired at 1792877081096",
+   "+0.5s mqx31x [SW] Video caching disabled, bypassing SW",
+   "+11.1s mqx31x [SW] Video caching disabled, bypassing SW",
+   "+40.5s mqx31x [SW] Video caching disabled, bypassing SW",
+   "+66.8s mqx31x [SW] Video caching disabled, bypassing SW",
+   "+92.7s mqx31x [SW] Video caching disabled, bypassing SW",
+   "+120.2s mqx31x [SW] Video caching disabled, bypassing SW",
+   "+146.8s mqx31x [SW] Video caching disabled, bypassing SW"
   ]
  },
  {
@@ -388,6 +404,7 @@
    "playingEvents": 1,
    "backJumps": [],
    "resetToZero": [],
+   "seekMisses": [],
    "playedSec": 149,
    "stalledSec": 0,
    "lastCt": 149.46,
@@ -422,6 +439,9 @@
    "sw_evaluated": 1,
    "swInstances": [
     "p82p9w"
+   ],
+   "swBrowserReqByInstance": [
+    2
    ],
    "swTargetsCreated": 1,
    "swDevtoolsAttached": false,
@@ -460,12 +480,12 @@
   "verdict": "не воспроизводится",
   "why": "Ни одной ошибки <video>: сбой поглощён ниже плеера (повтор в SW или в медиастеке Chrome).",
   "keyLines": [
-   "+0.5s p82p9w [bench] SW script evaluated, instance=p82p9w script=?24",
-   "+0.6s p82p9w [SW] Install event fired at 1792877236752",
-   "+0.6s p82p9w [SW] Activate event fired at 1792877236752",
-   "+11.3s p82p9w [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 6291456 frontier= 6291456 err= network error",
-   "+11.3s p82p9w [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+11.3s p82p9w [SEEK-DIAG] serve FAIL m= bench-A start= 0 pos= 6291456 end= 307695338 servedSoFar= 6291456 total= 307695339 connFrontier= 6291456 connDead= true err= Fetch failed: 503"
+   "+0.1s p82p9w [bench] SW script evaluated, instance=p82p9w script=?24",
+   "+0.1s p82p9w [SW] Install event fired at 1792877236752",
+   "+0.1s p82p9w [SW] Activate event fired at 1792877236752",
+   "+10.8s p82p9w [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 6291456 frontier= 6291456 err= network error",
+   "+10.8s p82p9w [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+10.8s p82p9w [SEEK-DIAG] serve FAIL m= bench-A start= 0 pos= 6291456 end= 307695338 servedSoFar= 6291456 total= 307695339 connFrontier= 6291456 connDead= true err= Fetch failed: 503"
   ]
  },
  {
@@ -476,37 +496,37 @@
   "metrics": {
    "errors": [
     {
-     "t": 11.6,
+     "t": 11.1,
      "code": 2,
      "ct": 8.14,
      "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
     },
     {
-     "t": 41.2,
+     "t": 40.7,
      "code": 2,
      "ct": 36.87,
      "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
     },
     {
-     "t": 67.1,
+     "t": 66.6,
      "code": 2,
      "ct": 62.15,
      "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
     },
     {
-     "t": 95.2,
+     "t": 94.7,
      "code": 2,
      "ct": 89.49,
      "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
     },
     {
-     "t": 123.2,
+     "t": 122.8,
      "code": 2,
      "ct": 116.77,
      "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
     },
     {
-     "t": 150.2,
+     "t": 149.7,
      "code": 2,
      "ct": 143,
      "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
@@ -523,6 +543,7 @@
    "playingEvents": 7,
    "backJumps": [],
    "resetToZero": [],
+   "seekMisses": [],
    "playedSec": 142,
    "stalledSec": 4,
    "lastCt": 145.04,
@@ -559,6 +580,9 @@
    "swInstances": [
     "1tyy66"
    ],
+   "swBrowserReqByInstance": [
+    0
+   ],
    "swTargetsCreated": 1,
    "swDevtoolsAttached": false,
    "cdnRequests": 13,
@@ -593,28 +617,28 @@
   "verdict": "воспроизведено",
   "why": "6 ошибок <video> подряд, после каждой load() и снова playing (playing: 7); счётчик errorCounter сбрасывается, notifyBroken не вызван ни разу.",
   "keyLines": [
-   "+0.5s 1tyy66 [bench] SW script evaluated, instance=1tyy66 script=?24",
-   "+0.6s 1tyy66 [SW] Install event fired at 1792877392429",
-   "+0.6s 1tyy66 [SW] Activate event fired at 1792877392431",
-   "+1.0s 1tyy66 [SW] Video caching disabled, bypassing SW",
-   "+11.6s 1tyy66 [SW] Video caching disabled, bypassing SW",
-   "+12.1s 1tyy66 [SW] Video caching disabled, bypassing SW",
-   "+14.7s 1tyy66 [SW] Video caching disabled, bypassing SW",
+   "+0.1s 1tyy66 [bench] SW script evaluated, instance=1tyy66 script=?24",
+   "+0.1s 1tyy66 [SW] Install event fired at 1792877392429",
+   "+0.1s 1tyy66 [SW] Activate event fired at 1792877392431",
+   "+0.5s 1tyy66 [SW] Video caching disabled, bypassing SW",
+   "+11.1s 1tyy66 [SW] Video caching disabled, bypassing SW",
+   "+11.7s 1tyy66 [SW] Video caching disabled, bypassing SW",
+   "+14.2s 1tyy66 [SW] Video caching disabled, bypassing SW",
+   "+40.7s 1tyy66 [SW] Video caching disabled, bypassing SW",
    "+41.2s 1tyy66 [SW] Video caching disabled, bypassing SW",
-   "+41.7s 1tyy66 [SW] Video caching disabled, bypassing SW",
-   "+41.7s 1tyy66 [SW] Video caching disabled, bypassing SW",
+   "+41.3s 1tyy66 [SW] Video caching disabled, bypassing SW",
+   "+66.6s 1tyy66 [SW] Video caching disabled, bypassing SW",
    "+67.1s 1tyy66 [SW] Video caching disabled, bypassing SW",
-   "+67.6s 1tyy66 [SW] Video caching disabled, bypassing SW",
-   "+67.6s 1tyy66 [SW] Video caching disabled, bypassing SW",
+   "+67.2s 1tyy66 [SW] Video caching disabled, bypassing SW",
+   "+94.7s 1tyy66 [SW] Video caching disabled, bypassing SW",
    "+95.2s 1tyy66 [SW] Video caching disabled, bypassing SW",
-   "+95.7s 1tyy66 [SW] Video caching disabled, bypassing SW",
-   "+95.8s 1tyy66 [SW] Video caching disabled, bypassing SW",
-   "+123.1s 1tyy66 [SW] Video caching disabled, bypassing SW",
-   "+123.7s 1tyy66 [SW] Video caching disabled, bypassing SW",
-   "+123.8s 1tyy66 [SW] Video caching disabled, bypassing SW",
+   "+95.3s 1tyy66 [SW] Video caching disabled, bypassing SW",
+   "+122.6s 1tyy66 [SW] Video caching disabled, bypassing SW",
+   "+123.3s 1tyy66 [SW] Video caching disabled, bypassing SW",
+   "+123.3s 1tyy66 [SW] Video caching disabled, bypassing SW",
+   "+149.7s 1tyy66 [SW] Video caching disabled, bypassing SW",
    "+150.2s 1tyy66 [SW] Video caching disabled, bypassing SW",
-   "+150.7s 1tyy66 [SW] Video caching disabled, bypassing SW",
-   "+150.7s 1tyy66 [SW] Video caching disabled, bypassing SW"
+   "+150.2s 1tyy66 [SW] Video caching disabled, bypassing SW"
   ]
  },
  {
@@ -633,6 +657,7 @@
    "playingEvents": 1,
    "backJumps": [],
    "resetToZero": [],
+   "seekMisses": [],
    "playedSec": 149,
    "stalledSec": 0,
    "lastCt": 149.46,
@@ -667,6 +692,9 @@
    "sw_evaluated": 1,
    "swInstances": [
     "18xo2q"
+   ],
+   "swBrowserReqByInstance": [
+    11
    ],
    "swTargetsCreated": 1,
    "swDevtoolsAttached": false,
@@ -705,30 +733,30 @@
   "verdict": "не воспроизводится",
   "why": "Ни одной ошибки <video>: сбой поглощён ниже плеера (повтор в SW или в медиастеке Chrome).",
   "keyLines": [
-   "+0.5s 18xo2q [bench] SW script evaluated, instance=18xo2q script=?24",
-   "+0.5s 18xo2q [SW] Install event fired at 1792877548061",
-   "+0.5s 18xo2q [SW] Activate event fired at 1792877548063",
-   "+11.2s 18xo2q [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 6291456 frontier= 6291456 err= network error",
-   "+11.2s 18xo2q [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+11.2s 18xo2q [SEEK-DIAG] serve FAIL m= bench-A start= 0 pos= 6291456 end= 307695338 servedSoFar= 6291456 total= 307695339 connFrontier= 6291456 connDead= true err= Fetch failed: 503",
-   "+11.5s 18xo2q [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+11.5s 18xo2q [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+11.9s 18xo2q [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+11.9s 18xo2q [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+0.1s 18xo2q [bench] SW script evaluated, instance=18xo2q script=?24",
+   "+0.1s 18xo2q [SW] Install event fired at 1792877548061",
+   "+0.1s 18xo2q [SW] Activate event fired at 1792877548063",
+   "+10.8s 18xo2q [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 6291456 frontier= 6291456 err= network error",
+   "+10.8s 18xo2q [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+10.8s 18xo2q [SEEK-DIAG] serve FAIL m= bench-A start= 0 pos= 6291456 end= 307695338 servedSoFar= 6291456 total= 307695339 connFrontier= 6291456 connDead= true err= Fetch failed: 503",
+   "+11.1s 18xo2q [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+11.1s 18xo2q [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+11.4s 18xo2q [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+11.4s 18xo2q [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+11.8s 18xo2q [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+11.8s 18xo2q [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
    "+12.3s 18xo2q [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
    "+12.3s 18xo2q [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
    "+12.8s 18xo2q [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
    "+12.8s 18xo2q [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+13.3s 18xo2q [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+13.3s 18xo2q [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+13.8s 18xo2q [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+13.8s 18xo2q [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+14.4s 18xo2q [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+14.4s 18xo2q [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+15.1s 18xo2q [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+15.1s 18xo2q [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+15.8s 18xo2q [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+15.8s 18xo2q [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503"
+   "+13.4s 18xo2q [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+13.4s 18xo2q [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+14.0s 18xo2q [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+14.0s 18xo2q [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+14.6s 18xo2q [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+14.6s 18xo2q [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+15.3s 18xo2q [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+15.3s 18xo2q [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503"
   ]
  },
  {
@@ -739,25 +767,25 @@
   "metrics": {
    "errors": [
     {
-     "t": 11.6,
+     "t": 11.2,
      "code": 2,
      "ct": 8.15,
      "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
     },
     {
-     "t": 14.8,
+     "t": 14.4,
      "code": 2,
      "ct": 10.52,
      "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
     },
     {
-     "t": 15.4,
+     "t": 15,
      "code": 2,
      "ct": 10.57,
      "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
     },
     {
-     "t": 16,
+     "t": 15.6,
      "code": 2,
      "ct": 10.58,
      "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
@@ -774,6 +802,7 @@
    "playingEvents": 5,
    "backJumps": [],
    "resetToZero": [],
+   "seekMisses": [],
    "playedSec": 144,
    "stalledSec": 0,
    "lastCt": 146.88,
@@ -810,6 +839,9 @@
    "swInstances": [
     "mi2icn"
    ],
+   "swBrowserReqByInstance": [
+    0
+   ],
    "swTargetsCreated": 1,
    "swDevtoolsAttached": false,
    "cdnRequests": 11,
@@ -844,21 +876,21 @@
   "verdict": "частично",
   "why": "Ошибок: 4, playing: 5, notifyBroken: 0.",
   "keyLines": [
-   "+0.5s mi2icn [bench] SW script evaluated, instance=mi2icn script=?24",
-   "+0.5s mi2icn [SW] Install event fired at 1792877703673",
-   "+0.5s mi2icn [SW] Activate event fired at 1792877703674",
-   "+1.0s mi2icn [SW] Video caching disabled, bypassing SW",
-   "+11.5s mi2icn [SW] Video caching disabled, bypassing SW",
-   "+12.1s mi2icn [SW] Video caching disabled, bypassing SW",
-   "+14.7s mi2icn [SW] Video caching disabled, bypassing SW",
-   "+15.3s mi2icn [SW] Video caching disabled, bypassing SW",
-   "+16.0s mi2icn [SW] Video caching disabled, bypassing SW",
-   "+16.5s mi2icn [SW] Video caching disabled, bypassing SW",
-   "+36.9s mi2icn [SW] Video caching disabled, bypassing SW",
-   "+68.2s mi2icn [SW] Video caching disabled, bypassing SW",
-   "+95.4s mi2icn [SW] Video caching disabled, bypassing SW",
-   "+122.9s mi2icn [SW] Video caching disabled, bypassing SW",
-   "+149.7s mi2icn [SW] Video caching disabled, bypassing SW"
+   "+0.1s mi2icn [bench] SW script evaluated, instance=mi2icn script=?24",
+   "+0.1s mi2icn [SW] Install event fired at 1792877703673",
+   "+0.1s mi2icn [SW] Activate event fired at 1792877703674",
+   "+0.6s mi2icn [SW] Video caching disabled, bypassing SW",
+   "+11.1s mi2icn [SW] Video caching disabled, bypassing SW",
+   "+11.7s mi2icn [SW] Video caching disabled, bypassing SW",
+   "+14.3s mi2icn [SW] Video caching disabled, bypassing SW",
+   "+14.9s mi2icn [SW] Video caching disabled, bypassing SW",
+   "+15.6s mi2icn [SW] Video caching disabled, bypassing SW",
+   "+16.1s mi2icn [SW] Video caching disabled, bypassing SW",
+   "+36.5s mi2icn [SW] Video caching disabled, bypassing SW",
+   "+67.8s mi2icn [SW] Video caching disabled, bypassing SW",
+   "+95.0s mi2icn [SW] Video caching disabled, bypassing SW",
+   "+122.5s mi2icn [SW] Video caching disabled, bypassing SW",
+   "+149.2s mi2icn [SW] Video caching disabled, bypassing SW"
   ]
  },
  {
@@ -869,25 +901,25 @@
   "metrics": {
    "errors": [
     {
-     "t": 42.3,
+     "t": 41.8,
      "code": 2,
      "ct": 24.52,
      "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
     },
     {
-     "t": 93,
+     "t": 92.5,
      "code": 2,
      "ct": 53.6,
      "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
     },
     {
-     "t": 143.7,
+     "t": 143.2,
      "code": 2,
      "ct": 82.78,
      "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
     },
     {
-     "t": 194.4,
+     "t": 193.9,
      "code": 2,
      "ct": 111.8,
      "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
@@ -904,6 +936,7 @@
    "playingEvents": 5,
    "backJumps": [],
    "resetToZero": [],
+   "seekMisses": [],
    "playedSec": 120,
    "stalledSec": 86,
    "lastCt": 120.93,
@@ -939,6 +972,9 @@
    "sw_evaluated": 1,
    "swInstances": [
     "gbngz1"
+   ],
+   "swBrowserReqByInstance": [
+    186
    ],
    "swTargetsCreated": 1,
    "swDevtoolsAttached": false,
@@ -977,46 +1013,46 @@
   "verdict": "частично",
   "why": "Ошибок: 4, playing: 5, notifyBroken: 0.",
   "keyLines": [
-   "+0.6s gbngz1 [bench] SW script evaluated, instance=gbngz1 script=?24",
-   "+0.6s gbngz1 [SW] Install event fired at 1792877859333",
-   "+0.6s gbngz1 [SW] Activate event fired at 1792877859334",
-   "+11.3s gbngz1 [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 6291456 frontier= 6291456 err= network error",
-   "+11.3s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+11.3s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 0 pos= 6291456 end= 307695338 servedSoFar= 6291456 total= 307695339 connFrontier= 6291456 connDead= true err= Fetch failed: 503",
-   "+11.6s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+11.6s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+12.0s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+12.0s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+0.1s gbngz1 [bench] SW script evaluated, instance=gbngz1 script=?24",
+   "+0.1s gbngz1 [SW] Install event fired at 1792877859333",
+   "+0.1s gbngz1 [SW] Activate event fired at 1792877859334",
+   "+10.8s gbngz1 [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 6291456 frontier= 6291456 err= network error",
+   "+10.8s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+10.8s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 0 pos= 6291456 end= 307695338 servedSoFar= 6291456 total= 307695339 connFrontier= 6291456 connDead= true err= Fetch failed: 503",
+   "+11.1s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+11.1s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+11.5s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+11.5s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+11.9s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+11.9s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
    "+12.4s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
    "+12.4s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+12.8s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+12.8s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+13.3s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+13.3s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+13.9s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+13.9s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+14.5s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+14.5s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+15.2s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+15.2s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+15.9s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+15.9s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+16.6s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+16.6s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+17.4s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+17.4s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+18.3s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+18.3s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+19.2s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+19.2s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+20.2s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+20.2s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+21.2s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+21.2s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+22.2s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+22.2s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+23.3s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
-   "+23.3s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503"
+   "+12.9s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+12.9s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+13.4s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+13.4s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+14.0s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+14.0s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+14.7s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+14.7s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+15.4s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+15.4s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+16.2s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+16.2s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+17.0s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+17.0s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+17.8s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+17.8s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+18.7s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+18.7s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+19.7s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+19.7s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+20.7s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+20.7s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+21.8s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+21.8s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+22.9s gbngz1 [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 6291456 status= 503",
+   "+22.9s gbngz1 [SEEK-DIAG] serve FAIL m= bench-A start= 6291456 pos= 6291456 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503"
   ]
  },
  {
@@ -1035,6 +1071,7 @@
    "playingEvents": 1,
    "backJumps": [],
    "resetToZero": [],
+   "seekMisses": [],
    "playedSec": 119,
    "stalledSec": 0,
    "lastCt": 119.45,
@@ -1070,6 +1107,9 @@
    "sw_evaluated": 1,
    "swInstances": [
     "zzmnws"
+   ],
+   "swBrowserReqByInstance": [
+    11
    ],
    "swTargetsCreated": 1,
    "swDevtoolsAttached": false,
@@ -1108,30 +1148,30 @@
   "verdict": "не воспроизводится",
   "why": "Ошибки <video> не возникло, сбой поглощён ниже плеера.",
   "keyLines": [
-   "+0.5s zzmnws [bench] SW script evaluated, instance=zzmnws script=?24",
-   "+0.6s zzmnws [SW] Install event fired at 1792878075001",
-   "+0.6s zzmnws [SW] Activate event fired at 1792878075002",
-   "+5.4s zzmnws [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 2752512 frontier= 2752512 err= network error",
-   "+5.4s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
-   "+5.4s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 0 pos= 2752512 end= 307695338 servedSoFar= 2752512 total= 307695339 connFrontier= 2752512 connDead= true err= Fetch failed: 503",
-   "+5.8s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
-   "+5.8s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+6.1s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
-   "+6.1s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+0.1s zzmnws [bench] SW script evaluated, instance=zzmnws script=?24",
+   "+0.1s zzmnws [SW] Install event fired at 1792878075001",
+   "+0.1s zzmnws [SW] Activate event fired at 1792878075002",
+   "+5.0s zzmnws [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 2752512 frontier= 2752512 err= network error",
+   "+5.0s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
+   "+5.0s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 0 pos= 2752512 end= 307695338 servedSoFar= 2752512 total= 307695339 connFrontier= 2752512 connDead= true err= Fetch failed: 503",
+   "+5.3s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
+   "+5.3s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+5.6s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
+   "+5.6s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+6.0s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
+   "+6.0s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
    "+6.5s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
    "+6.5s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
    "+7.0s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
    "+7.0s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+7.5s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
-   "+7.5s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+8.0s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
-   "+8.0s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+8.7s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
-   "+8.7s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+9.3s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
-   "+9.3s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
-   "+10.0s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
-   "+10.0s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503"
+   "+7.6s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
+   "+7.6s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+8.2s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
+   "+8.2s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+8.8s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
+   "+8.8s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503",
+   "+9.5s zzmnws [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 2752512 status= 503",
+   "+9.5s zzmnws [SEEK-DIAG] serve FAIL m= bench-A start= 2752512 pos= 2752512 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 503"
   ]
  },
  {
@@ -1142,7 +1182,7 @@
   "metrics": {
    "errors": [
     {
-     "t": 17.5,
+     "t": 17,
      "code": 2,
      "ct": 0,
      "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
@@ -1159,6 +1199,7 @@
    "playingEvents": 2,
    "backJumps": [],
    "resetToZero": [],
+   "seekMisses": [],
    "playedSec": 118,
    "stalledSec": 0,
    "lastCt": 118.88,
@@ -1195,6 +1236,9 @@
    "swInstances": [
     "sbv7ju"
    ],
+   "swBrowserReqByInstance": [
+    0
+   ],
    "swTargetsCreated": 1,
    "swDevtoolsAttached": false,
    "cdnRequests": 4,
@@ -1229,13 +1273,13 @@
   "verdict": "не воспроизводится",
   "why": "Ошибок: 1, но позиция восстановлена (последняя ct=118.88).",
   "keyLines": [
-   "+0.5s sbv7ju [bench] SW script evaluated, instance=sbv7ju script=?24",
-   "+0.5s sbv7ju [SW] Install event fired at 1792878214669",
-   "+0.5s sbv7ju [SW] Activate event fired at 1792878214669",
-   "+1.0s sbv7ju [SW] Video caching disabled, bypassing SW",
-   "+5.7s sbv7ju [SW] Video caching disabled, bypassing SW",
-   "+18.0s sbv7ju [SW] Video caching disabled, bypassing SW",
-   "+110.6s sbv7ju [SW] Video caching disabled, bypassing SW"
+   "+0.1s sbv7ju [bench] SW script evaluated, instance=sbv7ju script=?24",
+   "+0.1s sbv7ju [SW] Install event fired at 1792878214669",
+   "+0.1s sbv7ju [SW] Activate event fired at 1792878214669",
+   "+0.5s sbv7ju [SW] Video caching disabled, bypassing SW",
+   "+5.3s sbv7ju [SW] Video caching disabled, bypassing SW",
+   "+17.5s sbv7ju [SW] Video caching disabled, bypassing SW",
+   "+110.2s sbv7ju [SW] Video caching disabled, bypassing SW"
   ]
  },
  {
@@ -1246,13 +1290,13 @@
   "metrics": {
    "errors": [
     {
-     "t": 15.5,
+     "t": 15,
      "code": 2,
      "ct": 0.01,
      "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
     },
     {
-     "t": 115.8,
+     "t": 115.3,
      "code": 2,
      "ct": 99.75,
      "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
@@ -1269,6 +1313,7 @@
    "playingEvents": 3,
    "backJumps": [],
    "resetToZero": [],
+   "seekMisses": [],
    "playedSec": 136,
    "stalledSec": 0,
    "lastCt": 138.07,
@@ -1305,6 +1350,9 @@
    "swInstances": [
     "wc2cvh"
    ],
+   "swBrowserReqByInstance": [
+    0
+   ],
    "swTargetsCreated": 1,
    "swDevtoolsAttached": false,
    "cdnRequests": 5,
@@ -1339,16 +1387,16 @@
   "verdict": "не воспроизводится",
   "why": "Ошибок: 2, но позиция восстановлена (последняя ct=138.07).",
   "keyLines": [
-   "+0.6s wc2cvh [bench] SW script evaluated, instance=wc2cvh script=?24",
-   "+0.6s wc2cvh [SW] Install event fired at 1792878354363",
-   "+0.6s wc2cvh [SW] Activate event fired at 1792878354365",
-   "+1.0s wc2cvh [SW] Video caching disabled, bypassing SW",
-   "+3.9s wc2cvh [SW] Video caching disabled, bypassing SW",
-   "+16.0s wc2cvh [SW] Video caching disabled, bypassing SW",
-   "+115.7s wc2cvh [SW] Video caching disabled, bypassing SW",
-   "+116.3s wc2cvh [SW] Video caching disabled, bypassing SW",
-   "+116.4s wc2cvh [SW] Video caching disabled, bypassing SW",
-   "+116.4s wc2cvh [SW] Video caching disabled, bypassing SW"
+   "+0.1s wc2cvh [bench] SW script evaluated, instance=wc2cvh script=?24",
+   "+0.1s wc2cvh [SW] Install event fired at 1792878354363",
+   "+0.1s wc2cvh [SW] Activate event fired at 1792878354365",
+   "+0.5s wc2cvh [SW] Video caching disabled, bypassing SW",
+   "+3.4s wc2cvh [SW] Video caching disabled, bypassing SW",
+   "+15.5s wc2cvh [SW] Video caching disabled, bypassing SW",
+   "+115.2s wc2cvh [SW] Video caching disabled, bypassing SW",
+   "+115.8s wc2cvh [SW] Video caching disabled, bypassing SW",
+   "+115.9s wc2cvh [SW] Video caching disabled, bypassing SW",
+   "+115.9s wc2cvh [SW] Video caching disabled, bypassing SW"
   ]
  },
  {
@@ -1359,13 +1407,13 @@
   "metrics": {
    "errors": [
     {
-     "t": 0.6,
+     "t": 0.1,
      "code": 4,
      "ct": 0,
      "msg": "MEDIA_ELEMENT_ERROR: Format error"
     },
     {
-     "t": 40.9,
+     "t": 40.3,
      "code": 3,
      "ct": 189.23,
      "msg": "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 \"(null)\" (-12909): VTDecompressionOutputCallback"
@@ -1383,19 +1431,20 @@
    "playingEvents": 3,
    "backJumps": [
     {
-     "t": 41.6,
+     "t": 41,
      "from": 188.93,
      "to": 0
     }
    ],
    "resetToZero": [
     {
-     "t": 40.9,
+     "t": 40.3,
      "before": 189.23,
      "after": 0,
      "pausedAfter": false
     }
    ],
+   "seekMisses": [],
    "playedSec": 54,
    "stalledSec": 0,
    "lastCt": 20.38,
@@ -1429,6 +1478,7 @@
    "sw_activate": 0,
    "sw_evaluated": 0,
    "swInstances": [],
+   "swBrowserReqByInstance": [],
    "swTargetsCreated": 1,
    "swDevtoolsAttached": false,
    "cdnRequests": 4,
@@ -1472,7 +1522,7 @@
   "metrics": {
    "errors": [
     {
-     "t": 31.3,
+     "t": 30.8,
      "code": 3,
      "ct": 189.22,
      "msg": "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 \"(null)\" (-12909): VTDecompressionOutputCallback"
@@ -1489,19 +1539,20 @@
    "playingEvents": 3,
    "backJumps": [
     {
-     "t": 31.9,
+     "t": 31.5,
      "from": 188.9,
      "to": 0
     }
    ],
    "resetToZero": [
     {
-     "t": 31.3,
+     "t": 30.8,
      "before": 189.22,
      "after": 0,
      "pausedAfter": false
     }
    ],
+   "seekMisses": [],
    "playedSec": 63,
    "stalledSec": 0,
    "lastCt": 35.94,
@@ -1537,6 +1588,9 @@
    "sw_evaluated": 1,
    "swInstances": [
     "3n88l4"
+   ],
+   "swBrowserReqByInstance": [
+    2
    ],
    "swTargetsCreated": 1,
    "swDevtoolsAttached": false,
@@ -1577,18 +1631,18 @@
   "verdict": "воспроизведено",
   "why": "После ошибки позиция ушла в начало: 189 с → 0 с. Коды ошибок: {\"3\":1}; blacklist: 1; src с &rand: 1.",
   "keyLines": [
-   "+0.5s 3n88l4 [bench] SW script evaluated, instance=3n88l4 script=?24",
-   "+0.5s 3n88l4 [SW] Install event fired at 1792878580266",
-   "+0.6s 3n88l4 [SW] Activate event fired at 1792878580269",
-   "+31.3s 3n88l4 [SW] Blacklisting mParam: bench-A",
-   "+31.3s 3n88l4 [SW] mParam bench-A is blacklisted, bypassing cache"
+   "+0.1s 3n88l4 [bench] SW script evaluated, instance=3n88l4 script=?24",
+   "+0.1s 3n88l4 [SW] Install event fired at 1792878580266",
+   "+0.1s 3n88l4 [SW] Activate event fired at 1792878580269",
+   "+30.8s 3n88l4 [SW] Blacklisting mParam: bench-A",
+   "+30.8s 3n88l4 [SW] mParam bench-A is blacklisted, bypassing cache"
   ]
  },
  {
   "id": "h3-first-503-sw",
   "title": "Первый запрос SW к CDN получает 503 (SW)",
   "hypothesis": "H3",
-  "expected": "_ensureMeta глотает исключение → фальшивый 206 «bytes 0-104857599/*», а не откат на fetch(request).",
+  "expected": "_ensureMeta глотает исключение → фальшивый 206 «bytes 0-104857600/*», а не откат на fetch(request); после ответа с неизвестным размером перемотка может не работать.",
   "metrics": {
    "errors": [],
    "errorCodes": {},
@@ -1600,6 +1654,18 @@
    "playingEvents": 3,
    "backJumps": [],
    "resetToZero": [],
+   "seekMisses": [
+    {
+     "t": 33,
+     "target": 700,
+     "got": 7.43
+    },
+    {
+     "t": 63,
+     "target": 300,
+     "got": 7.43
+    }
+   ],
    "playedSec": 77,
    "stalledSec": 0,
    "lastCt": 19.43,
@@ -1635,6 +1701,9 @@
    "swInstances": [
     "x6ofhb"
    ],
+   "swBrowserReqByInstance": [
+    3
+   ],
    "swTargetsCreated": 1,
    "swDevtoolsAttached": false,
    "cdnRequests": 7,
@@ -1669,18 +1738,18 @@
     }
    ]
   },
-  "verdict": "механизм подтверждён, видимых последствий нет",
-  "why": "browser req с total=MISSING (ответ 206 с '*' и запасным концом 100 МБ): 1; handler FAIL (честный откат): 0; ошибок <video>: 0 {}; прыжков назад: 0; стояло 0 с.",
+  "verdict": "воспроизведено",
+  "why": "browser req с total=MISSING (ответ 206 с '*' и запасным концом 100 МБ): 1; handler FAIL (честный откат): 0; ошибок <video>: 0 {}; прыжков назад: 0; несработавших перемоток: 2; стояло 0 с.",
   "keyLines": [
-   "+0.6s x6ofhb [bench] SW script evaluated, instance=x6ofhb script=?24",
-   "+0.6s x6ofhb [SW] Install event fired at 1792878654484",
-   "+0.6s x6ofhb [SW] Activate event fired at 1792878654485",
-   "+1.0s x6ofhb [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 0 status= 503",
-   "+1.0s x6ofhb [SEEK-DIAG] meta/open THREW m= bench-A err= Fetch failed: 503",
-   "+1.0s x6ofhb [SEEK-DIAG] browser req m= bench-A start= 0 end= 104857600 total= MISSING seek= false mode= singlethread",
-   "+1.0s x6ofhb [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 0 status= 503",
-   "+1.0s x6ofhb [SEEK-DIAG] meta/open THREW m= bench-A err= Fetch failed: 503",
-   "+1.0s x6ofhb [SEEK-DIAG] serve enter m= bench-A start= 0 end= 104857600 total= MISSING seek= false"
+   "+0.1s x6ofhb [bench] SW script evaluated, instance=x6ofhb script=?24",
+   "+0.1s x6ofhb [SW] Install event fired at 1792878654484",
+   "+0.1s x6ofhb [SW] Activate event fired at 1792878654485",
+   "+0.5s x6ofhb [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 0 status= 503",
+   "+0.5s x6ofhb [SEEK-DIAG] meta/open THREW m= bench-A err= Fetch failed: 503",
+   "+0.5s x6ofhb [SEEK-DIAG] browser req m= bench-A start= 0 end= 104857600 total= MISSING seek= false mode= singlethread",
+   "+0.5s x6ofhb [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 0 status= 503",
+   "+0.5s x6ofhb [SEEK-DIAG] meta/open THREW m= bench-A err= Fetch failed: 503",
+   "+0.5s x6ofhb [SEEK-DIAG] serve enter m= bench-A start= 0 end= 104857600 total= MISSING seek= false"
   ]
  },
  {
@@ -1691,7 +1760,7 @@
   "metrics": {
    "errors": [
     {
-     "t": 1,
+     "t": 0.6,
      "code": 4,
      "ct": 0,
      "msg": "MEDIA_ELEMENT_ERROR: Format error"
@@ -1708,6 +1777,7 @@
    "playingEvents": 3,
    "backJumps": [],
    "resetToZero": [],
+   "seekMisses": [],
    "playedSec": 78,
    "stalledSec": 0,
    "lastCt": 319.42,
@@ -1743,6 +1813,9 @@
    "sw_evaluated": 1,
    "swInstances": [
     "a2r52e"
+   ],
+   "swBrowserReqByInstance": [
+    1
    ],
    "swTargetsCreated": 1,
    "swDevtoolsAttached": false,
@@ -1782,21 +1855,21 @@
   "verdict": "воспроизведено",
   "why": "BAD range: 3; total=MISSING: 1; serve FAIL: 1; ошибок <video>: {\"4\":1}; blacklist: 1; прямых запросов <video>: 3; сыграно 78 с.",
   "keyLines": [
-   "+0.5s a2r52e [bench] SW script evaluated, instance=a2r52e script=?24",
-   "+0.5s a2r52e [SW] Install event fired at 1792878740130",
-   "+0.5s a2r52e [SW] Activate event fired at 1792878740131",
-   "+1.0s a2r52e [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206",
-   "+1.0s a2r52e [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response",
-   "+1.0s a2r52e [SEEK-DIAG] browser req m= bench-A start= 0 end= 104857600 total= MISSING seek= false mode= singlethread",
-   "+1.0s a2r52e [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206",
-   "+1.0s a2r52e [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response",
-   "+1.0s a2r52e [SEEK-DIAG] serve enter m= bench-A start= 0 end= 104857600 total= MISSING seek= false",
-   "+1.0s a2r52e [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206",
-   "+1.0s a2r52e [SEEK-DIAG] serve FAIL m= bench-A start= 0 pos= 0 end= 104857600 servedSoFar= 0 total= MISSING connFrontier= null connDead= null err= Bad range response: missing Content-Range header on 206 response",
-   "+1.0s a2r52e [SW] Blacklisting mParam: bench-A",
-   "+1.0s a2r52e [SW] mParam bench-A is blacklisted, bypassing cache",
-   "+31.9s a2r52e [SW] mParam bench-A is blacklisted, bypassing cache",
-   "+61.9s a2r52e [SW] mParam bench-A is blacklisted, bypassing cache"
+   "+0.1s a2r52e [bench] SW script evaluated, instance=a2r52e script=?24",
+   "+0.1s a2r52e [SW] Install event fired at 1792878740130",
+   "+0.1s a2r52e [SW] Activate event fired at 1792878740131",
+   "+0.5s a2r52e [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206",
+   "+0.5s a2r52e [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response",
+   "+0.5s a2r52e [SEEK-DIAG] browser req m= bench-A start= 0 end= 104857600 total= MISSING seek= false mode= singlethread",
+   "+0.6s a2r52e [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206",
+   "+0.6s a2r52e [SEEK-DIAG] meta/open THREW m= bench-A err= Bad range response: missing Content-Range header on 206 response",
+   "+0.6s a2r52e [SEEK-DIAG] serve enter m= bench-A start= 0 end= 104857600 total= MISSING seek= false",
+   "+0.6s a2r52e [SEEK-DIAG] origin BAD range m= bench-A atByte= 0 reason= missing Content-Range header on 206 response cr= null status= 206",
+   "+0.6s a2r52e [SEEK-DIAG] serve FAIL m= bench-A start= 0 pos= 0 end= 104857600 servedSoFar= 0 total= MISSING connFrontier= null connDead= null err= Bad range response: missing Content-Range header on 206 response",
+   "+0.6s a2r52e [SW] Blacklisting mParam: bench-A",
+   "+0.6s a2r52e [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+31.5s a2r52e [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+61.5s a2r52e [SW] mParam bench-A is blacklisted, bypassing cache"
   ]
  },
  {
@@ -1807,25 +1880,25 @@
   "metrics": {
    "errors": [
     {
-     "t": 131.3,
+     "t": 130.8,
      "code": 2,
      "ct": 121.62,
      "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
     },
     {
-     "t": 162.8,
+     "t": 162.3,
      "code": 2,
      "ct": 121.62,
      "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
     },
     {
-     "t": 194.3,
+     "t": 193.8,
      "code": 2,
      "ct": 121.62,
      "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
     },
     {
-     "t": 225.9,
+     "t": 225.3,
      "code": 2,
      "ct": 121.62,
      "msg": "PipelineStatus::PIPELINE_ERROR_READ: FFmpegDemuxer: data source error"
@@ -1842,6 +1915,7 @@
    "playingEvents": 1,
    "backJumps": [],
    "resetToZero": [],
+   "seekMisses": [],
    "playedSec": 121,
    "stalledSec": 119,
    "lastCt": 121.52,
@@ -1877,6 +1951,9 @@
    "sw_evaluated": 1,
    "swInstances": [
     "2fbeyi"
+   ],
+   "swBrowserReqByInstance": [
+    152
    ],
    "swTargetsCreated": 1,
    "swDevtoolsAttached": false,
@@ -1915,46 +1992,46 @@
   "verdict": "воспроизведено",
   "why": "serve FAIL: 149, origin NOT OK: 149; ошибок <video>: 4; notifyBroken: 0; запросов /sources/: 0 (обновления подписанных ссылок не было); запросов к CDN после истечения: 353 (403).",
   "keyLines": [
-   "+0.6s 2fbeyi [bench] SW script evaluated, instance=2fbeyi script=?24",
-   "+0.6s 2fbeyi [SW] Install event fired at 1792878824309",
-   "+0.6s 2fbeyi [SW] Activate event fired at 1792878824310",
-   "+95.0s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
-   "+95.0s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 0 pos= 27262976 end= 307695338 servedSoFar= 27262976 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
-   "+100.6s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
-   "+100.6s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
-   "+101.0s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
-   "+101.0s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
-   "+101.4s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
-   "+101.4s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
+   "+0.1s 2fbeyi [bench] SW script evaluated, instance=2fbeyi script=?24",
+   "+0.1s 2fbeyi [SW] Install event fired at 1792878824309",
+   "+0.1s 2fbeyi [SW] Activate event fired at 1792878824310",
+   "+94.5s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
+   "+94.5s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 0 pos= 27262976 end= 307695338 servedSoFar= 27262976 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
+   "+100.1s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
+   "+100.1s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
+   "+100.5s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
+   "+100.5s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
+   "+100.9s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
+   "+100.9s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
+   "+101.3s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
+   "+101.3s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
    "+101.8s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
    "+101.8s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
    "+102.4s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
    "+102.4s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
-   "+102.9s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
-   "+102.9s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
-   "+103.5s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
-   "+103.5s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
-   "+104.2s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
-   "+104.2s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
-   "+104.9s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
-   "+104.9s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
-   "+105.6s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
-   "+105.6s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
-   "+106.5s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
-   "+106.5s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
-   "+107.3s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
-   "+107.3s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
-   "+108.2s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
-   "+108.2s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
-   "+109.2s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
-   "+109.2s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
-   "+110.2s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
-   "+110.2s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
-   "+111.2s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
-   "+111.2s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
-   "+112.3s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
-   "+112.3s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
-   "+113.5s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403"
+   "+103.0s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
+   "+103.0s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
+   "+103.7s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
+   "+103.7s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
+   "+104.4s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
+   "+104.4s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
+   "+105.1s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
+   "+105.1s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
+   "+105.9s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
+   "+105.9s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
+   "+106.8s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
+   "+106.8s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
+   "+107.7s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
+   "+107.7s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
+   "+108.7s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
+   "+108.7s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
+   "+109.7s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
+   "+109.7s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
+   "+110.7s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
+   "+110.7s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
+   "+111.8s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403",
+   "+111.8s 2fbeyi [SEEK-DIAG] serve FAIL m= bench-A start= 27262976 pos= 27262976 end= 307695338 servedSoFar= 0 total= 307695339 connFrontier= null connDead= null err= Fetch failed: 403",
+   "+113.0s 2fbeyi [SEEK-DIAG] origin fetch NOT OK m= bench-A atByte= 27262976 status= 403"
   ]
  },
  {
@@ -1965,13 +2042,13 @@
   "metrics": {
    "errors": [
     {
-     "t": 94,
+     "t": 93.5,
      "code": 3,
      "ct": 360,
      "msg": "PipelineStatus::PIPELINE_ERROR_DECODE: Failed to send audio packet for decoding: {timestamp=350250667 duration=21333 size=339 is_key_frame=1 encrypted=0}"
     },
     {
-     "t": 185.3,
+     "t": 184.8,
      "code": 3,
      "ct": 360,
      "msg": "PipelineStatus::PIPELINE_ERROR_DECODE: Failed to send audio packet for decoding: {timestamp=350250667 duration=21333 size=339 is_key_frame=1 encrypted=0}"
@@ -1989,16 +2066,28 @@
    "backJumps": [],
    "resetToZero": [
     {
-     "t": 94,
+     "t": 93.5,
      "before": 360,
      "after": 0,
      "pausedAfter": false
     },
     {
-     "t": 185.3,
+     "t": 184.8,
      "before": 360,
      "after": 0,
      "pausedAfter": false
+    }
+   ],
+   "seekMisses": [
+    {
+     "t": 93.5,
+     "target": 360,
+     "got": 2.2
+    },
+    {
+     "t": 184.8,
+     "target": 360,
+     "got": 3.2
     }
    ],
    "playedSec": 116,
@@ -2037,6 +2126,11 @@
     "xc34ix",
     "w6hf83",
     "vtudkb"
+   ],
+   "swBrowserReqByInstance": [
+    1,
+    2,
+    2
    ],
    "swTargetsCreated": 3,
    "swDevtoolsAttached": false,
@@ -2119,20 +2213,20 @@
   "verdict": "воспроизведено",
   "why": "MEDIA_ERR_DECODE: 2; blacklist: 2; сбросов в начало: 2; экземпляры SW: 3; кэш после открытий: after open 1={\"video-cache-meta\":1,\"video-cache-v1-bench-A\":42}; after open 2={\"video-cache-meta\":1,\"video-cache-v1-bench-A\":58}; after open 3={\"video-cache-meta\":1,\"video-cache-v1-bench-A\":64}; end=null.",
   "keyLines": [
-   "+0.6s xc34ix [bench] SW script evaluated, instance=xc34ix script=?24",
-   "+0.6s xc34ix [SW] Install event fired at 1792879075002",
-   "+0.6s xc34ix [SW] Activate event fired at 1792879075003",
-   "+88.2s w6hf83 [bench] SW script evaluated, instance=w6hf83 script=?24",
-   "+94.0s w6hf83 [SW] Blacklisting mParam: bench-A",
-   "+94.0s w6hf83 [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 76677120 frontier= 76677120 err= dropped",
-   "+94.0s w6hf83 [SW] mParam bench-A is blacklisted, bypassing cache",
-   "+94.9s w6hf83 [SW] mParam bench-A is blacklisted, bypassing cache",
-   "+94.9s w6hf83 [SW] mParam bench-A is blacklisted, bypassing cache",
-   "+179.5s vtudkb [bench] SW script evaluated, instance=vtudkb script=?24",
-   "+185.3s vtudkb [SW] Blacklisting mParam: bench-A",
-   "+185.3s vtudkb [SW] mParam bench-A is blacklisted, bypassing cache",
-   "+186.2s vtudkb [SW] mParam bench-A is blacklisted, bypassing cache",
-   "+186.2s vtudkb [SW] mParam bench-A is blacklisted, bypassing cache"
+   "+0.1s xc34ix [bench] SW script evaluated, instance=xc34ix script=?24",
+   "+0.1s xc34ix [SW] Install event fired at 1792879075002",
+   "+0.1s xc34ix [SW] Activate event fired at 1792879075003",
+   "+87.7s w6hf83 [bench] SW script evaluated, instance=w6hf83 script=?24",
+   "+93.5s w6hf83 [SW] Blacklisting mParam: bench-A",
+   "+93.5s w6hf83 [SEEK-DIAG] origin read DIED mid-serve m= bench-A pos= 76677120 frontier= 76677120 err= dropped",
+   "+93.5s w6hf83 [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+94.4s w6hf83 [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+94.4s w6hf83 [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+179.0s vtudkb [bench] SW script evaluated, instance=vtudkb script=?24",
+   "+184.8s vtudkb [SW] Blacklisting mParam: bench-A",
+   "+184.8s vtudkb [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+185.7s vtudkb [SW] mParam bench-A is blacklisted, bypassing cache",
+   "+185.7s vtudkb [SW] mParam bench-A is blacklisted, bypassing cache"
   ]
  },
  {
@@ -2151,6 +2245,7 @@
    "playingEvents": 1,
    "backJumps": [],
    "resetToZero": [],
+   "seekMisses": [],
    "playedSec": 99,
    "stalledSec": 0,
    "lastCt": 99.45,
@@ -2186,6 +2281,10 @@
    "swInstances": [
     "ky4kpd",
     "d1hgeo"
+   ],
+   "swBrowserReqByInstance": [
+    1,
+    0
    ],
    "swTargetsCreated": 2,
    "swDevtoolsAttached": false,
@@ -2223,11 +2322,11 @@
   "verdict": "не воспроизводится",
   "why": "экземпляров SW: 2; ошибок <video>: {}; прыжков назад: 0; serve FAIL: 0; стояло 0 с.",
   "keyLines": [
-   "+0.5s ky4kpd [bench] SW script evaluated, instance=ky4kpd script=?24",
-   "+0.5s ky4kpd [SW] Install event fired at 1792879303023",
-   "+0.5s ky4kpd [SW] Activate event fired at 1792879303024",
-   "+43.5s d1hgeo [bench] SW script evaluated, instance=d1hgeo script=?24",
-   "+43.5s d1hgeo [SW] Install event fired at 1792879345943"
+   "+0.1s ky4kpd [bench] SW script evaluated, instance=ky4kpd script=?24",
+   "+0.1s ky4kpd [SW] Install event fired at 1792879303023",
+   "+0.1s ky4kpd [SW] Activate event fired at 1792879303024",
+   "+43.0s d1hgeo [bench] SW script evaluated, instance=d1hgeo script=?24",
+   "+43.0s d1hgeo [SW] Install event fired at 1792879345943"
   ]
  },
  {
@@ -2246,6 +2345,7 @@
    "playingEvents": 1,
    "backJumps": [],
    "resetToZero": [],
+   "seekMisses": [],
    "playedSec": 24,
    "stalledSec": 114,
    "lastCt": 29.52,
@@ -2281,6 +2381,9 @@
    "sw_evaluated": 1,
    "swInstances": [
     "5hff6u"
+   ],
+   "swBrowserReqByInstance": [
+    1
    ],
    "swTargetsCreated": 1,
    "swDevtoolsAttached": false,
@@ -2318,9 +2421,9 @@
   "verdict": "воспроизведено",
   "why": "плеер стоял 114 с без ошибки <video> (ошибок: 0); последняя позиция 29.52; запросов к CDN: 1 {\"empty\":1}.",
   "keyLines": [
-   "+0.5s 5hff6u [bench] SW script evaluated, instance=5hff6u script=?24",
-   "+0.6s 5hff6u [SW] Install event fired at 1792879408733",
-   "+0.6s 5hff6u [SW] Activate event fired at 1792879408736"
+   "+0.1s 5hff6u [bench] SW script evaluated, instance=5hff6u script=?24",
+   "+0.1s 5hff6u [SW] Install event fired at 1792879408733",
+   "+0.1s 5hff6u [SW] Activate event fired at 1792879408736"
   ]
  },
  {
@@ -2339,6 +2442,7 @@
    "playingEvents": 1,
    "backJumps": [],
    "resetToZero": [],
+   "seekMisses": [],
    "playedSec": 24,
    "stalledSec": 114,
    "lastCt": 29.52,
@@ -2375,6 +2479,9 @@
    "swInstances": [
     "qfv4ga"
    ],
+   "swBrowserReqByInstance": [
+    0
+   ],
    "swTargetsCreated": 1,
    "swDevtoolsAttached": false,
    "cdnRequests": 1,
@@ -2408,10 +2515,10 @@
   "verdict": "воспроизведено",
   "why": "плеер стоял 114 с без ошибки <video> (ошибок: 0); последняя позиция 29.52; запросов к CDN: 1 {\"video\":1}.",
   "keyLines": [
-   "+0.5s qfv4ga [bench] SW script evaluated, instance=qfv4ga script=?24",
-   "+0.6s qfv4ga [SW] Install event fired at 1792879554389",
-   "+0.6s qfv4ga [SW] Activate event fired at 1792879554390",
-   "+1.0s qfv4ga [SW] Video caching disabled, bypassing SW"
+   "+0.1s qfv4ga [bench] SW script evaluated, instance=qfv4ga script=?24",
+   "+0.1s qfv4ga [SW] Install event fired at 1792879554389",
+   "+0.1s qfv4ga [SW] Activate event fired at 1792879554390",
+   "+0.5s qfv4ga [SW] Video caching disabled, bypassing SW"
   ]
  },
  {
@@ -2430,6 +2537,7 @@
    "playingEvents": 1,
    "backJumps": [],
    "resetToZero": [],
+   "seekMisses": [],
    "playedSec": 479,
    "stalledSec": 0,
    "lastCt": 479.94,
@@ -2464,6 +2572,9 @@
    "sw_evaluated": 1,
    "swInstances": [
     "8vfgrr"
+   ],
+   "swBrowserReqByInstance": [
+    2
    ],
    "swTargetsCreated": 1,
    "swDevtoolsAttached": false,
@@ -2501,9 +2612,9 @@
   "verdict": "не воспроизводится",
   "why": "экземпляров SW: 1 (8vfgrr); DevTools к SW: нет; ошибок <video>: {}; стояло 0 с; serve FAIL: 0.",
   "keyLines": [
-   "+0.6s 8vfgrr [bench] SW script evaluated, instance=8vfgrr script=?24",
-   "+0.6s 8vfgrr [SW] Install event fired at 1792879700101",
-   "+0.6s 8vfgrr [SW] Activate event fired at 1792879700101"
+   "+0.1s 8vfgrr [bench] SW script evaluated, instance=8vfgrr script=?24",
+   "+0.1s 8vfgrr [SW] Install event fired at 1792879700101",
+   "+0.1s 8vfgrr [SW] Activate event fired at 1792879700101"
   ]
  },
  {
@@ -2522,6 +2633,7 @@
    "playingEvents": 2,
    "backJumps": [],
    "resetToZero": [],
+   "seekMisses": [],
    "playedSec": 88,
    "stalledSec": 0,
    "lastCt": 89.95,
@@ -2556,6 +2668,9 @@
    "sw_evaluated": 1,
    "swInstances": [
     "pcil3r"
+   ],
+   "swBrowserReqByInstance": [
+    2
    ],
    "swTargetsCreated": 1,
    "swDevtoolsAttached": false,
@@ -2593,9 +2708,9 @@
   "verdict": "не воспроизводится",
   "why": "экземпляров SW: 1; bypass (кэш выключен) после рестарта: 0; ошибок <video>: {}; стояло 0 с.",
   "keyLines": [
-   "+0.6s pcil3r [bench] SW script evaluated, instance=pcil3r script=?24",
-   "+0.6s pcil3r [SW] Install event fired at 1792880187366",
-   "+0.6s pcil3r [SW] Activate event fired at 1792880187367"
+   "+0.1s pcil3r [bench] SW script evaluated, instance=pcil3r script=?24",
+   "+0.1s pcil3r [SW] Install event fired at 1792880187366",
+   "+0.1s pcil3r [SW] Activate event fired at 1792880187367"
   ]
  },
  {
@@ -2614,6 +2729,7 @@
    "playingEvents": 3,
    "backJumps": [],
    "resetToZero": [],
+   "seekMisses": [],
    "playedSec": 89,
    "stalledSec": 3,
    "lastCt": 20.69,
@@ -2650,6 +2766,10 @@
     "qiycme",
     "w3xooo"
    ],
+   "swBrowserReqByInstance": [
+    1,
+    0
+   ],
    "swTargetsCreated": 2,
    "swDevtoolsAttached": false,
    "cdnRequests": 4,
@@ -2685,14 +2805,14 @@
    ]
   },
   "verdict": "воспроизведено",
-  "why": "экземпляров SW: 2; запросов мимо SW («Video caching disabled, bypassing SW»): 2; прямых запросов <video> к CDN: 2; ошибок <video>: 0; стояло 3 с.",
+  "why": "экземпляров SW: 2; запросов, обслуженных новым экземпляром: 0; строк «Video caching disabled, bypassing SW»: 2; прямых запросов <video> к CDN: 2; ошибок <video>: 0; стояло 3 с.",
   "keyLines": [
-   "+0.7s qiycme [bench] SW script evaluated, instance=qiycme script=?24",
-   "+0.7s qiycme [SW] Install event fired at 1792880644725",
-   "+0.7s qiycme [SW] Activate event fired at 1792880644727",
-   "+73.6s w3xooo [bench] SW script evaluated, instance=w3xooo script=?24",
-   "+78.8s w3xooo [SW] Video caching disabled, bypassing SW",
-   "+113.6s w3xooo [SW] Video caching disabled, bypassing SW"
+   "+0.1s qiycme [bench] SW script evaluated, instance=qiycme script=?24",
+   "+0.1s qiycme [SW] Install event fired at 1792880644725",
+   "+0.1s qiycme [SW] Activate event fired at 1792880644727",
+   "+73.0s w3xooo [bench] SW script evaluated, instance=w3xooo script=?24",
+   "+78.2s w3xooo [SW] Video caching disabled, bypassing SW",
+   "+113.0s w3xooo [SW] Video caching disabled, bypassing SW"
   ]
  }
 ]

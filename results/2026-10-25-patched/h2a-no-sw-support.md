@@ -12,10 +12,11 @@
 
 | метрика | значение |
 |---|---|
-| ошибки <video> | +0.6s code=4 ct=0<br>+40.8s code=3 ct=189.22<br>+42.2s code=3 ct=189.25<br>+44.3s code=3 ct=189.29<br>+48.6s code=3 ct=189.24 |
+| ошибки <video> | +0.1s code=4 ct=0<br>+40.4s code=3 ct=189.22<br>+41.7s code=3 ct=189.25<br>+43.9s code=3 ct=189.29<br>+48.1s code=3 ct=189.24 |
 | load() после старта / src с &rand | 3 / 0 |
 | сброс в начало | [] |
 | прыжки назад | [] |
+| перемотка не сработала | [] |
 | сыграно / стояло, с | 34 / 12 |
 | notifyBroken (POST brokenVideo) | 1 |
 | экземпляры SW (по обёртке логов) | — |
@@ -34,72 +35,72 @@
 ### Таймлайн
 
 ```
-+0.5s runner navigate
-+0.6s call src= el=main-video_html5_api
++0.1s runner navigate
++0.1s call src= el=main-video_html5_api
++0.1s call load el=main-video_html5_api ct=0
++0.1s video emptied ct=0
++0.1s video loadstart ct=0
++0.1s video error ct=0 code=4 "MEDIA_ELEMENT_ERROR: Format error"
++0.1s player: Error #4: The video could not be loaded, either because the server or network failed or because the format is not supported.
++0.1s player: Current time:  null
++0.1s sw-target created
++0.3s runner mute
 +0.6s call load el=main-video_html5_api ct=0
-+0.6s video emptied ct=0
-+0.6s video loadstart ct=0
-+0.6s video error ct=0 code=4 "MEDIA_ELEMENT_ERROR: Format error"
-+0.6s player: Error #4: The video could not be loaded, either because the server or network failed or because the format is not supported.
-+0.6s player: Current time:  null
-+0.6s sw-target created
-+0.8s runner mute
-+1.1s call load el=main-video_html5_api ct=0
-+1.1s video emptied ct=0
-+1.1s video loadstart ct=0
-+1.5s video canplay ct=0
-+5.1s runner user-play (player is paused after an error)
-+5.1s video playing ct=0
-+6.0s runner play
-+21.1s runner seek 170
-+21.1s video seeking ct=170
-+21.1s video waiting ct=170
-+21.6s video canplay ct=170
-+21.6s video playing ct=170
-+40.8s video error ct=189.22 code=3 "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 "(null)" (-12909): VTDecompressionOutputCallback"
-+40.8s player: Error #3: The video playback was aborted due to a corruption problem or because the video used features your browser did not support.
-+40.8s player: Current time:  189.069373
-+40.8s video pause ct=189.22 code=3 "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 "(null)" (-12909): VTDecompressionOutputCallback"
-+41.8s call load el=main-video_html5_api ct=189.22
-+41.8s video emptied ct=0
-+41.9s video loadstart ct=0
-+41.9s video canplay ct=0
-+41.9s video seeking ct=189.07
-+41.9s video waiting ct=189.07
-+41.9s video canplay ct=189.07
-+41.9s video playing ct=189.07
-+42.2s video error ct=189.25 code=3 "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 "(null)" (-12909): VTDecompressionOutputCallback"
-+42.2s player: Error #3: The video playback was aborted due to a corruption problem or because the video used features your browser did not support.
-+42.2s player: Current time:  189.214372
-+42.2s video pause ct=189.25 code=3 "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 "(null)" (-12909): VTDecompressionOutputCallback"
-+44.2s player: using alternative sources
-+44.2s call load el=main-video_html5_api ct=189.25
-+44.2s video emptied ct=0
-+44.2s video loadstart ct=0
-+44.2s video canplay ct=0
-+44.2s video seeking ct=189.21
-+44.2s video waiting ct=189.21
-+44.2s video canplay ct=189.21
-+44.2s video playing ct=189.21
-+44.3s video error ct=189.29 code=3 "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 "(null)" (-12909): VTDecompressionOutputCallback"
-+44.3s player: Error #3: The video playback was aborted due to a corruption problem or because the video used features your browser did not support.
-+44.3s player: Current time:  189.214415
-+44.3s video pause ct=189.29 code=3 "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 "(null)" (-12909): VTDecompressionOutputCallback"
-+48.3s call load el=main-video_html5_api ct=189.29
-+48.3s video emptied ct=0
-+48.3s video loadstart ct=0
-+48.4s video canplay ct=0
-+48.4s video seeking ct=189.11
-+48.4s video waiting ct=189.11
-+48.4s video canplay ct=189.11
-+48.4s video playing ct=189.11
-+48.6s video error ct=189.24 code=3 "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 "(null)" (-12909): VTDecompressionOutputCallback"
-+48.6s player: Error #3: The video playback was aborted due to a corruption problem or because the video used features your browser did not support.
-+48.6s player: Current time:  189.114477
-+48.6s player: Notify broken.
-+48.6s video pause ct=189.24 code=3 "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 "(null)" (-12909): VTDecompressionOutputCallback"
-+53.2s runner user-play (player is paused after an error)
-+53.2s video playing ct=189.24 code=3 "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 "(null)" (-12909): VTDecompressionOutputCallback"
++0.7s video emptied ct=0
++0.7s video loadstart ct=0
++1.0s video canplay ct=0
++4.6s runner user-play (player is paused after an error)
++4.6s video playing ct=0
++5.6s runner play
++20.6s runner seek 170
++20.6s video seeking ct=170
++20.6s video waiting ct=170
++21.1s video canplay ct=170
++21.1s video playing ct=170
++40.4s video error ct=189.22 code=3 "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 "(null)" (-12909): VTDecompressionOutputCallback"
++40.4s player: Error #3: The video playback was aborted due to a corruption problem or because the video used features your browser did not support.
++40.4s player: Current time:  189.069373
++40.4s video pause ct=189.22 code=3 "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 "(null)" (-12909): VTDecompressionOutputCallback"
++41.4s call load el=main-video_html5_api ct=189.22
++41.4s video emptied ct=0
++41.4s video loadstart ct=0
++41.4s video canplay ct=0
++41.4s video seeking ct=189.07
++41.4s video waiting ct=189.07
++41.5s video canplay ct=189.07
++41.5s video playing ct=189.07
++41.7s video error ct=189.25 code=3 "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 "(null)" (-12909): VTDecompressionOutputCallback"
++41.7s player: Error #3: The video playback was aborted due to a corruption problem or because the video used features your browser did not support.
++41.7s player: Current time:  189.214372
++41.7s video pause ct=189.25 code=3 "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 "(null)" (-12909): VTDecompressionOutputCallback"
++43.7s player: using alternative sources
++43.7s call load el=main-video_html5_api ct=189.25
++43.7s video emptied ct=0
++43.7s video loadstart ct=0
++43.7s video canplay ct=0
++43.7s video seeking ct=189.21
++43.7s video waiting ct=189.21
++43.8s video canplay ct=189.21
++43.8s video playing ct=189.21
++43.9s video error ct=189.29 code=3 "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 "(null)" (-12909): VTDecompressionOutputCallback"
++43.9s player: Error #3: The video playback was aborted due to a corruption problem or because the video used features your browser did not support.
++43.9s player: Current time:  189.214415
++43.9s video pause ct=189.29 code=3 "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 "(null)" (-12909): VTDecompressionOutputCallback"
++47.9s call load el=main-video_html5_api ct=189.29
++47.9s video emptied ct=0
++47.9s video loadstart ct=0
++47.9s video canplay ct=0
++47.9s video seeking ct=189.11
++47.9s video waiting ct=189.11
++48.0s video canplay ct=189.11
++48.0s video playing ct=189.11
++48.1s video error ct=189.24 code=3 "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 "(null)" (-12909): VTDecompressionOutputCallback"
++48.1s player: Error #3: The video playback was aborted due to a corruption problem or because the video used features your browser did not support.
++48.1s player: Current time:  189.114477
++48.1s player: Notify broken.
++48.1s video pause ct=189.24 code=3 "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 "(null)" (-12909): VTDecompressionOutputCallback"
++52.7s runner user-play (player is paused after an error)
++52.7s video playing ct=189.24 code=3 "PipelineStatus::PIPELINE_ERROR_DECODE: Error Domain=NSOSStatusErrorDomain Code=-12909 "(null)" (-12909): VTDecompressionOutputCallback"
 ```
 
 ### Снимки состояния
